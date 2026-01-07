@@ -68,7 +68,7 @@ export default function Home() {
             delay: 0.2
           }}>
               <Heart className="w-4 h-4 text-accent" />
-              <span className="text-sm font-medium">Trusted by 500+ North MS Businesses</span>
+              <span className="text-sm font-medium">Trusted by local businesses across SE Mississippi</span>
             </motion.div>
             <motion.h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" initial={{
             opacity: 0,
