@@ -15,9 +15,6 @@ const navigation = [{
   name: "For Businesses",
   href: "/for-businesses"
 }, {
-  name: "Automations",
-  href: "/automations"
-}, {
   name: "About",
   href: "/about"
 }, {
