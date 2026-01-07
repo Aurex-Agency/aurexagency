@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { AppointmentDialog } from "@/components/AppointmentDialog";
 
 const navigation = [{
   name: "Home",
@@ -93,9 +94,11 @@ export function Header() {
             <Phone className="w-4 h-4" />
             (662) 555-1234
           </a>
-          <Button variant="accent" size="lg">
-            Schedule an Appointment
-          </Button>
+          <AppointmentDialog>
+            <Button variant="accent" size="lg">
+              Schedule an Appointment
+            </Button>
+          </AppointmentDialog>
         </div>
 
         {/* Mobile Menu Button */}

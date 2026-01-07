@@ -13,6 +13,7 @@ import {
   CheckCircle2
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AppointmentDialog } from "@/components/AppointmentDialog";
 
 const automations = [
   {
@@ -88,12 +89,12 @@ export default function Automations() {
               Put your marketing and customer communication on autopilot. Focus on what you do best while we handle the rest.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="accent" size="xl" asChild>
-                <Link to="/contact">
+              <AppointmentDialog>
+                <Button variant="accent" size="xl">
                   Schedule an Appointment
                   <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+                </Button>
+              </AppointmentDialog>
               <Button variant="outline-light" size="xl">
                 See How It Works
               </Button>
@@ -285,12 +286,12 @@ export default function Automations() {
           <p className="text-primary-foreground/70 text-lg mb-8 max-w-2xl mx-auto">
             Schedule a demo to see how automation can save you time and grow your business.
           </p>
-          <Button variant="accent" size="xl" asChild>
-            <Link to="/contact">
+          <AppointmentDialog>
+            <Button variant="accent" size="xl">
               Schedule an Appointment
               <ArrowRight className="w-5 h-5" />
-            </Link>
-          </Button>
+            </Button>
+          </AppointmentDialog>
         </div>
       </section>
     </Layout>

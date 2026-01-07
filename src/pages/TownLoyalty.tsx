@@ -12,6 +12,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AppointmentDialog } from "@/components/AppointmentDialog";
 
 const benefits = [
   {
@@ -224,12 +225,12 @@ export default function TownLoyalty() {
           <p className="text-primary-foreground/70 text-lg mb-8 max-w-2xl mx-auto">
             Schedule a call with our team to learn how a town-wide loyalty program can transform your local economy.
           </p>
-          <Button variant="accent" size="xl" asChild>
-            <Link to="/contact">
+          <AppointmentDialog>
+            <Button variant="accent" size="xl">
               Schedule a Call
               <ArrowRight className="w-5 h-5" />
-            </Link>
-          </Button>
+            </Button>
+          </AppointmentDialog>
         </div>
       </section>
     </Layout>

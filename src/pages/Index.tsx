@@ -4,6 +4,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/scr
 import { ArrowRight, Users, Zap, TrendingUp, Building2, Heart, CheckCircle2, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { AppointmentDialog } from "@/components/AppointmentDialog";
 const features = [{
   icon: Users,
   title: "Town-Wide Loyalty",
@@ -115,12 +116,12 @@ export default function Home() {
             duration: 0.6,
             delay: 0.6
           }}>
-              <Button variant="accent" size="xl" asChild>
-                <Link to="/contact">
+              <AppointmentDialog>
+                <Button variant="accent" size="xl">
                   Schedule an Appointment
                   <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+                </Button>
+              </AppointmentDialog>
               <Button variant="outline-light" size="xl" asChild>
                 <Link to="/town-loyalty">Learn More</Link>
               </Button>
@@ -276,12 +277,12 @@ export default function Home() {
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">Schedule a free consultation call and see how Aurex Agency can help you build stronger scalable systems, increase customer lifetime value, and allow you to focus on working on your business.</p>
               <div className="flex justify-center">
-                <Button variant="accent" size="xl" asChild>
-                  <Link to="/contact">
+                <AppointmentDialog>
+                  <Button variant="accent" size="xl">
                     Schedule an Appointment
                     <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
+                  </Button>
+                </AppointmentDialog>
               </div>
             </div>
           </ScrollReveal>
