@@ -48,7 +48,7 @@ export function Header() {
             (662) 555-1234
           </a>
           <Button variant="accent" size="lg">
-            Book a Demo
+            Schedule an Appointment
           </Button>
         </div>
 
