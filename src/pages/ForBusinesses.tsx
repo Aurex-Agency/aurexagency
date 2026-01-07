@@ -295,14 +295,14 @@ export default function ForBusinesses() {
         <div className="container text-center">
           <ScrollReveal>
             <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4">
-              Start Your 14-Day Free Trial
+              Ready to Grow Your Business?
             </h2>
             <p className="text-primary-foreground/70 text-lg mb-8 max-w-2xl mx-auto">
-              No credit card required. Set up in minutes. See results in days.
+              Schedule a free consultation with our team to discuss how we can help you build customer loyalty and scale your operations.
             </p>
             <Button variant="accent" size="xl" asChild>
               <Link to="/contact">
-                Start Free Trial
+                Schedule Your Appointment
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
