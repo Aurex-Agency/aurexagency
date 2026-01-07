@@ -1,5 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/scroll-reveal";
+import { motion } from "framer-motion";
 import { 
   ArrowRight, 
   Heart,
@@ -66,14 +68,29 @@ export default function About() {
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 lg:py-28">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          >
+            <motion.h1 
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               About Smart Loyalty
-            </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80 mb-8">
+            </motion.h1>
+            <motion.p 
+              className="text-lg md:text-xl text-primary-foreground/80 mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               We're on a mission to help North Mississippi businesses thrive through the power of customer loyalty and smart technology.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
@@ -81,7 +98,7 @@ export default function About() {
       <section className="py-16 lg:py-24">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <ScrollReveal direction="left">
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6">
                 Our Story
               </h2>
@@ -99,24 +116,33 @@ export default function About() {
                   Today, we're proud to serve over 500 businesses across North Mississippi, helping them build stronger customer relationships and grow their revenue.
                 </p>
               </div>
-            </div>
-            <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl p-8 lg:p-12">
-              <div className="flex items-center gap-3 mb-6">
-                <MapPin className="w-6 h-6 text-primary" />
-                <span className="font-display text-xl font-bold text-foreground">Proudly Local</span>
+            </ScrollReveal>
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl p-8 lg:p-12">
+                <div className="flex items-center gap-3 mb-6">
+                  <MapPin className="w-6 h-6 text-primary" />
+                  <span className="font-display text-xl font-bold text-foreground">Proudly Local</span>
+                </div>
+                <p className="text-muted-foreground mb-6">
+                  Headquartered in Tupelo, MS, serving communities across North Mississippi.
+                </p>
+                <div className="space-y-3">
+                  {milestones.map((milestone, index) => (
+                    <motion.div 
+                      key={milestone.year} 
+                      className="flex gap-4"
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1, duration: 0.4 }}
+                    >
+                      <div className="font-display font-bold text-primary w-12">{milestone.year}</div>
+                      <div className="text-foreground">{milestone.event}</div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              <p className="text-muted-foreground mb-6">
-                Headquartered in Tupelo, MS, serving communities across North Mississippi.
-              </p>
-              <div className="space-y-3">
-                {milestones.map((milestone) => (
-                  <div key={milestone.year} className="flex gap-4">
-                    <div className="font-display font-bold text-primary w-12">{milestone.year}</div>
-                    <div className="text-foreground">{milestone.event}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -124,83 +150,85 @@ export default function About() {
       {/* Values */}
       <section className="py-16 lg:py-24 subtle-gradient">
         <div className="container">
-          <div className="text-center mb-12 lg:mb-16">
+          <ScrollReveal className="text-center mb-12 lg:mb-16">
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
               What We Stand For
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Our values guide everything we do, from product development to customer support.
             </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          </ScrollReveal>
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value) => (
-              <div 
-                key={value.title}
-                className="bg-card rounded-2xl p-6 shadow-soft text-center"
-              >
-                <div className="w-14 h-14 rounded-xl hero-gradient flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-7 h-7 text-primary-foreground" />
+              <StaggerItem key={value.title}>
+                <div 
+                  className="bg-card rounded-2xl p-6 shadow-soft text-center h-full"
+                >
+                  <div className="w-14 h-14 rounded-xl hero-gradient flex items-center justify-center mx-auto mb-4">
+                    <value.icon className="w-7 h-7 text-primary-foreground" />
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                    {value.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="font-display text-lg font-bold text-foreground mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {value.description}
-                </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Team */}
       <section className="py-16 lg:py-24">
         <div className="container">
-          <div className="text-center mb-12 lg:mb-16">
+          <ScrollReveal className="text-center mb-12 lg:mb-16">
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Meet the Team
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               A dedicated team of local professionals committed to your success.
             </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          </ScrollReveal>
+          <StaggerContainer className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {team.map((member) => (
-              <div 
-                key={member.name}
-                className="text-center"
-              >
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 mx-auto mb-4 flex items-center justify-center">
-                  <span className="font-display text-3xl font-bold text-primary">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </span>
+              <StaggerItem key={member.name}>
+                <div className="text-center">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 mx-auto mb-4 flex items-center justify-center">
+                    <span className="font-display text-3xl font-bold text-primary">
+                      {member.name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-foreground mb-1">
+                    {member.name}
+                  </h3>
+                  <div className="text-primary font-medium text-sm mb-3">{member.role}</div>
+                  <p className="text-muted-foreground text-sm">{member.bio}</p>
                 </div>
-                <h3 className="font-display text-xl font-bold text-foreground mb-1">
-                  {member.name}
-                </h3>
-                <div className="text-primary font-medium text-sm mb-3">{member.role}</div>
-                <p className="text-muted-foreground text-sm">{member.bio}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="container text-center">
-          <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4">
-            Let's Build Something Together
-          </h2>
-          <p className="text-primary-foreground/70 text-lg mb-8 max-w-2xl mx-auto">
-            Ready to see how Smart Loyalty can help your business or community thrive?
-          </p>
-          <Button variant="accent" size="xl" asChild>
-            <Link to="/contact">
-              Get in Touch
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </Button>
+          <ScrollReveal>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4">
+              Let's Build Something Together
+            </h2>
+            <p className="text-primary-foreground/70 text-lg mb-8 max-w-2xl mx-auto">
+              Ready to see how Smart Loyalty can help your business or community thrive?
+            </p>
+            <Button variant="accent" size="xl" asChild>
+              <Link to="/contact">
+                Get in Touch
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
+          </ScrollReveal>
         </div>
       </section>
     </Layout>
