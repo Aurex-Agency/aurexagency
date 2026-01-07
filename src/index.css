@@ -122,6 +122,29 @@
 
   .accent-gradient {
     background: var(--gradient-accent);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .accent-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transform: skewX(-25deg);
+    transition: left 0.5s ease;
+  }
+
+  .accent-gradient:hover::before {
+    left: 150%;
   }
 
   .subtle-gradient {
