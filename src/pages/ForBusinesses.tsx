@@ -11,9 +11,16 @@ import {
   Repeat,
   MessageSquare,
   CheckCircle2,
-  Star
+  Star,
+  Mail,
+  Calendar,
+  FileText,
+  Users,
+  Clock,
+  Zap
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AppointmentDialog } from "@/components/AppointmentDialog";
 
 const features = [
   {
@@ -45,6 +52,62 @@ const features = [
     icon: Store,
     title: "Easy Integration",
     description: "Works with your existing POS or standalone. Setup takes minutes, not weeks.",
+  },
+];
+
+const automations = [
+  {
+    icon: Mail,
+    title: "Email Marketing",
+    description: "Automated newsletters, promotional campaigns, and personalized follow-ups that nurture customer relationships.",
+  },
+  {
+    icon: MessageSquare,
+    title: "SMS Campaigns",
+    description: "Text message marketing with high open rates. Perfect for time-sensitive offers and reminders.",
+  },
+  {
+    icon: Calendar,
+    title: "Appointment Reminders",
+    description: "Reduce no-shows with automated appointment confirmations and reminders via text or email.",
+  },
+  {
+    icon: FileText,
+    title: "Review Requests",
+    description: "Automatically request reviews from happy customers to build your online reputation.",
+  },
+  {
+    icon: Users,
+    title: "Customer Segmentation",
+    description: "Target the right customers with the right message based on their behavior and preferences.",
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics & Reporting",
+    description: "Track campaign performance and customer engagement with easy-to-understand dashboards.",
+  },
+];
+
+const useCases = [
+  {
+    title: "Restaurants & Cafes",
+    description: "Automated birthday offers, slow-day promotions, and post-visit follow-ups that keep tables full.",
+    benefits: ["Birthday campaign automation", "Slow-day flash sales", "Review generation"],
+  },
+  {
+    title: "Retail Stores",
+    description: "Win back lapsed customers, announce new arrivals, and reward your VIPs automatically.",
+    benefits: ["New arrival announcements", "VIP early access", "Inventory clearance alerts"],
+  },
+  {
+    title: "Service Businesses",
+    description: "Never miss a follow-up. Automate appointment reminders, service due notices, and satisfaction surveys.",
+    benefits: ["Appointment reminders", "Service due notifications", "Post-service surveys"],
+  },
+  {
+    title: "Health & Wellness",
+    description: "Keep clients engaged with class reminders, membership renewal notices, and wellness tips.",
+    benefits: ["Class/session reminders", "Membership renewals", "Progress check-ins"],
   },
 ];
 
@@ -106,7 +169,7 @@ export default function ForBusinesses() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Smart Loyalty for Your Business
+              Loyalty & Automations for Your Business
             </motion.h1>
             <motion.p 
               className="text-lg md:text-xl text-primary-foreground/80 mb-8"
@@ -114,7 +177,7 @@ export default function ForBusinesses() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Turn first-time visitors into lifelong customers with a loyalty program that's easy to set up and powerful to use.
+              Turn first-time visitors into lifelong customers with loyalty programs and smart automations that save you time and grow your business.
             </motion.p>
             <motion.div 
               className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -122,21 +185,50 @@ export default function ForBusinesses() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Button variant="accent" size="xl" asChild>
-                <Link to="/contact">
-                  Start Free Trial
+              <AppointmentDialog>
+                <Button variant="accent" size="xl">
+                  Schedule an Appointment
                   <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+                </Button>
+              </AppointmentDialog>
               <Button variant="outline-light" size="xl">
-                See Demo
+                See How It Works
               </Button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Features */}
+      {/* Time Savings Stats */}
+      <section className="py-16 lg:py-24 bg-card border-b border-border">
+        <div className="container">
+          <StaggerContainer className="grid md:grid-cols-3 gap-8 text-center">
+            <StaggerItem>
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-primary" />
+              </div>
+              <div className="font-display text-3xl font-bold text-foreground mb-2">10+ Hours</div>
+              <p className="text-muted-foreground">Saved per week on average</p>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                <MessageSquare className="w-8 h-8 text-accent" />
+              </div>
+              <div className="font-display text-3xl font-bold text-foreground mb-2">50,000+</div>
+              <p className="text-muted-foreground">Messages sent automatically monthly</p>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="w-16 h-16 rounded-2xl bg-success/10 flex items-center justify-center mx-auto mb-4">
+                <BarChart3 className="w-8 h-8 text-success" />
+              </div>
+              <div className="font-display text-3xl font-bold text-foreground mb-2">3x</div>
+              <p className="text-muted-foreground">Average increase in engagement</p>
+            </StaggerItem>
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Loyalty Features */}
       <section className="py-16 lg:py-24">
         <div className="container">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
@@ -169,8 +261,159 @@ export default function ForBusinesses() {
         </div>
       </section>
 
-      {/* Results */}
+      {/* Automation Features */}
       <section className="py-16 lg:py-24 subtle-gradient">
+        <div className="container">
+          <ScrollReveal className="text-center mb-12 lg:mb-16">
+            <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-2 mb-4">
+              <Zap className="w-4 h-4 text-accent" />
+              <span className="text-sm font-medium text-accent">Save 10+ Hours Every Week</span>
+            </div>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Powerful Automation Tools
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Put your marketing and customer communication on autopilot.
+            </p>
+          </ScrollReveal>
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {automations.map((automation) => (
+              <StaggerItem key={automation.title}>
+                <div 
+                  className="bg-card rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 h-full"
+                >
+                  <div className="w-12 h-12 rounded-xl hero-gradient flex items-center justify-center mb-4">
+                    <automation.icon className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                    {automation.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {automation.description}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Use Cases */}
+      <section className="py-16 lg:py-24">
+        <div className="container">
+          <ScrollReveal className="text-center mb-12 lg:mb-16">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Built for Every Industry
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our solutions are tailored to the unique needs of your business type.
+            </p>
+          </ScrollReveal>
+          <StaggerContainer className="grid md:grid-cols-2 gap-6">
+            {useCases.map((useCase) => (
+              <StaggerItem key={useCase.title}>
+                <div className="bg-card rounded-2xl p-8 shadow-soft h-full">
+                  <h3 className="font-display text-xl font-bold text-foreground mb-3">
+                    {useCase.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    {useCase.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {useCase.benefits.map((benefit) => (
+                      <li key={benefit} className="flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-success shrink-0" />
+                        <span className="text-sm text-foreground">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16 lg:py-24 subtle-gradient">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <ScrollReveal direction="left">
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6">
+                Set It Up Once, Let It Run Forever
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Our platform is designed for busy business owners. No technical skills required.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Choose from pre-built automation templates",
+                  "Customize messages to match your brand voice",
+                  "Set your triggers and timing preferences",
+                  "Launch and watch your engagement grow",
+                  "Adjust and optimize based on real results",
+                ].map((item, index) => (
+                  <li key={item} className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full hero-gradient flex items-center justify-center shrink-0">
+                      <span className="text-primary-foreground font-semibold text-sm">{index + 1}</span>
+                    </div>
+                    <span className="text-foreground pt-1">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl p-8">
+                <div className="bg-card rounded-2xl p-6 shadow-medium mb-4">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center">
+                      <CheckCircle2 className="w-5 h-5 text-success" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Birthday Campaign</div>
+                      <div className="text-sm text-success">Active • 127 sent this month</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Automatically sends birthday offers 3 days before customer birthdays
+                  </p>
+                </div>
+                <div className="bg-card rounded-2xl p-6 shadow-medium mb-4">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center">
+                      <CheckCircle2 className="w-5 h-5 text-success" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Win-Back Campaign</div>
+                      <div className="text-sm text-success">Active • 89 sent this month</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Re-engages customers who haven't visited in 30+ days
+                  </p>
+                </div>
+                <div className="bg-card rounded-2xl p-6 shadow-medium">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center">
+                      <CheckCircle2 className="w-5 h-5 text-success" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Review Request</div>
+                      <div className="text-sm text-success">Active • 234 sent this month</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Requests reviews 24 hours after a positive interaction
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Results */}
+      <section className="py-16 lg:py-24">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
@@ -228,7 +471,7 @@ export default function ForBusinesses() {
       </section>
 
       {/* Pricing */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 subtle-gradient">
         <div className="container">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -300,12 +543,12 @@ export default function ForBusinesses() {
             <p className="text-primary-foreground/70 text-lg mb-8 max-w-2xl mx-auto">
               Schedule a free consultation with our team to discuss how we can help you build customer loyalty and scale your operations.
             </p>
-            <Button variant="accent" size="xl" asChild>
-              <Link to="/contact">
+            <AppointmentDialog>
+              <Button variant="accent" size="xl">
                 Schedule Your Appointment
                 <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
+              </Button>
+            </AppointmentDialog>
           </ScrollReveal>
         </div>
       </section>
