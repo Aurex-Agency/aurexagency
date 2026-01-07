@@ -117,7 +117,7 @@ export default function Home() {
           }}>
               <Button variant="accent" size="xl" asChild>
                 <Link to="/contact">
-                  Book a Free Demo
+                  Speak with Our Team
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
@@ -277,7 +277,7 @@ export default function Home() {
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">Schedule a free consultation call and see how Aurex Agency can help you build stronger scalable systems, increase customer lifetime value, and allow you to focus on working on your business.</p>
               <Button variant="accent" size="xl" asChild>
                 <Link to="/contact">
-                  Book Your Free Demo
+                  Speak with Our Team
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>

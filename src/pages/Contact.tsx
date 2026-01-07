@@ -204,17 +204,17 @@ export default function Contact() {
             
             {/* Contact Info */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Book a Demo Card */}
+              {/* Speak with Our Team Card */}
               <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-8 text-primary-foreground">
                 <div className="flex items-center gap-3 mb-4">
                   <Calendar className="w-8 h-8" />
-                  <h3 className="font-display text-xl font-bold">Book a Demo</h3>
+                  <h3 className="font-display text-xl font-bold">Speak with Our Team</h3>
                 </div>
                 <p className="text-primary-foreground/80 mb-6">
-                  See Smart Loyalty in action. Schedule a free 30-minute demo with our team.
+                  See Smart Loyalty in action. Schedule a free 30-minute call with our team.
                 </p>
                 <Button variant="accent" size="lg" className="w-full">
-                  Schedule Your Demo
+                  Schedule a Call
                 </Button>
               </div>
               
