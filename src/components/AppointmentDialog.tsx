@@ -30,7 +30,7 @@ const contactOptions = [
     description: "Speak directly with our team during business hours",
     action: "Call Now",
     href: "tel:+16625551234",
-    gradient: "from-secondary to-secondary/80",
+    gradient: "from-emerald-500 to-green-600",
   },
 ];
 
