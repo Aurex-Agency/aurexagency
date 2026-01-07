@@ -11,6 +11,7 @@ import {
   Calendar
 } from "lucide-react";
 import { useState } from "react";
+import { AppointmentDialog } from "@/components/AppointmentDialog";
 
 const contactInfo = [
   {
@@ -213,9 +214,11 @@ export default function Contact() {
                 <p className="text-primary-foreground/80 mb-6">
                   See Smart Loyalty in action. Schedule a free 30-minute call with our team.
                 </p>
-                <Button variant="accent" size="lg" className="w-full">
-                  Schedule Now
-                </Button>
+                <AppointmentDialog>
+                  <Button variant="accent" size="lg" className="w-full">
+                    Schedule Now
+                  </Button>
+                </AppointmentDialog>
               </div>
               
               {/* Contact Details */}
