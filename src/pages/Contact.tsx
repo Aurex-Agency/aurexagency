@@ -2,6 +2,8 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/scroll-reveal";
+import { motion } from "framer-motion";
 import { 
   Phone, 
   Mail, 
@@ -67,14 +69,29 @@ export default function Contact() {
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground py-20 lg:py-28">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <motion.div 
+            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          >
+            <motion.h1 
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Let's Talk
-            </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80">
+            </motion.h1>
+            <motion.p 
+              className="text-lg md:text-xl text-primary-foreground/80"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               Ready to grow your business? Schedule a free demo or reach out with any questions. We're here to help.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
