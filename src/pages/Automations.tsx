@@ -90,7 +90,7 @@ export default function Automations() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="accent" size="xl" asChild>
                 <Link to="/contact">
-                  Speak with Our Team
+                  Schedule an Appointment
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
@@ -287,7 +287,7 @@ export default function Automations() {
           </p>
           <Button variant="accent" size="xl" asChild>
             <Link to="/contact">
-              Speak with Our Team
+              Schedule an Appointment
               <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>
