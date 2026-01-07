@@ -275,12 +275,14 @@ export default function Home() {
                 Ready to Grow Your Business?
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">Schedule a free consultation call and see how Aurex Agency can help you build stronger scalable systems, increase customer lifetime value, and allow you to focus on working on your business.</p>
-              <Button variant="accent" size="xl" asChild>
-                <Link to="/contact">
-                  Schedule an Appointment
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+              <div className="flex justify-center">
+                <Button variant="accent" size="xl" asChild>
+                  <Link to="/contact">
+                    Schedule an Appointment
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </ScrollReveal>
         </div>
