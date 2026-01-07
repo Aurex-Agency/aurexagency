@@ -82,7 +82,7 @@ export default function Home() {
           }}>
               Grow Your Business with{" "}
               <span className="relative">
-                Smart Loyalty
+                Aurex Agency
                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-accent" viewBox="0 0 200 12" preserveAspectRatio="none">
                   <motion.path d="M0,8 Q50,0 100,8 T200,8" stroke="currentColor" strokeWidth="4" fill="none" initial={{
                   pathLength: 0
