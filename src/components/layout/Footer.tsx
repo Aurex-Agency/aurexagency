@@ -1,21 +1,26 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-
 const footerLinks = {
-  services: [
-    { name: "Town Loyalty Program", href: "/town-loyalty" },
-    { name: "Business Loyalty", href: "/for-businesses" },
-    { name: "Business Automations", href: "/automations" },
-  ],
-  company: [
-    { name: "About Us", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ],
+  services: [{
+    name: "Town Loyalty Program",
+    href: "/town-loyalty"
+  }, {
+    name: "Business Loyalty",
+    href: "/for-businesses"
+  }, {
+    name: "Business Automations",
+    href: "/automations"
+  }],
+  company: [{
+    name: "About Us",
+    href: "/about"
+  }, {
+    name: "Contact",
+    href: "/contact"
+  }]
 };
-
 export function Footer() {
-  return (
-    <footer className="bg-foreground text-primary-foreground">
+  return <footer className="bg-foreground text-primary-foreground">
       <div className="container py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
@@ -24,7 +29,7 @@ export function Footer() {
               <div className="w-10 h-10 rounded-xl accent-gradient flex items-center justify-center">
                 <span className="text-accent-foreground font-display font-bold text-lg">SL</span>
               </div>
-              <span className="font-display font-bold text-xl">Smart Loyalty</span>
+              <span className="font-display font-bold text-xl">Aurex Agency</span>
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Helping North Mississippi businesses grow with smart loyalty programs and automation solutions.
@@ -35,16 +40,11 @@ export function Footer() {
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Services</h4>
             <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link 
-                    to={link.href}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
-                  >
+              {footerLinks.services.map(link => <li key={link.name}>
+                  <Link to={link.href} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -52,16 +52,11 @@ export function Footer() {
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Company</h4>
             <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link 
-                    to={link.href}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
-                  >
+              {footerLinks.company.map(link => <li key={link.name}>
+                  <Link to={link.href} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -70,19 +65,13 @@ export function Footer() {
             <h4 className="font-display font-semibold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-3">
               <li>
-                <a 
-                  href="tel:+16625551234"
-                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
-                >
+                <a href="tel:+16625551234" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
                   <Phone className="w-4 h-4" />
                   (662) 555-1234
                 </a>
               </li>
               <li>
-                <a 
-                  href="mailto:hello@smartloyalty.com"
-                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
-                >
+                <a href="mailto:hello@smartloyalty.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
                   <Mail className="w-4 h-4" />
                   hello@smartloyalty.com
                 </a>
@@ -110,6 +99,5 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 }
