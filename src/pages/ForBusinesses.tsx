@@ -50,42 +50,31 @@ const features = [
 
 const pricing = [
   {
-    name: "Starter",
-    price: "49",
-    description: "Perfect for single-location businesses",
+    name: "Loyalty Program",
+    price: "300",
+    setupFee: "300",
+    description: "Build lasting customer relationships",
     features: [
       "Digital loyalty cards",
-      "Basic rewards program",
-      "Customer database",
-      "Monthly reports",
-      "Email support",
-    ],
-  },
-  {
-    name: "Growth",
-    price: "99",
-    popular: true,
-    description: "For businesses ready to scale",
-    features: [
-      "Everything in Starter",
+      "Custom rewards program",
+      "Customer database & insights",
       "Automated campaigns",
-      "SMS marketing (500/mo)",
-      "Advanced analytics",
-      "Priority support",
-      "Custom branding",
+      "SMS & email marketing",
+      "Dedicated support",
     ],
   },
   {
-    name: "Pro",
-    price: "199",
-    description: "For multi-location businesses",
+    name: "Custom Automations",
+    price: "Custom",
+    popular: true,
+    description: "Scale your business with tailored solutions",
     features: [
-      "Everything in Growth",
-      "Unlimited SMS",
-      "Multi-location support",
-      "API access",
-      "Dedicated success manager",
-      "Custom integrations",
+      "Business process automation",
+      "Custom workflow design",
+      "Integration with your tools",
+      "Growth strategy consulting",
+      "Ongoing optimization",
+      "Priority support",
     ],
   },
 ];
@@ -249,7 +238,7 @@ export default function ForBusinesses() {
               No hidden fees. No long-term contracts. Cancel anytime.
             </p>
           </ScrollReveal>
-          <StaggerContainer className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <StaggerContainer className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {pricing.map((plan) => (
               <StaggerItem key={plan.name}>
                 <div 
@@ -259,7 +248,7 @@ export default function ForBusinesses() {
                 >
                   {plan.popular && (
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                      Most Popular
+                      Let's Talk
                     </div>
                   )}
                   <div className="mb-6">
@@ -267,8 +256,17 @@ export default function ForBusinesses() {
                     <p className="text-muted-foreground text-sm mt-1">{plan.description}</p>
                   </div>
                   <div className="mb-6">
-                    <span className="font-display text-4xl font-bold text-foreground">${plan.price}</span>
-                    <span className="text-muted-foreground">/month</span>
+                    {plan.price === "Custom" ? (
+                      <span className="font-display text-4xl font-bold text-foreground">Custom Pricing</span>
+                    ) : (
+                      <>
+                        <span className="font-display text-4xl font-bold text-foreground">${plan.price}</span>
+                        <span className="text-muted-foreground">/month</span>
+                        {plan.setupFee && (
+                          <div className="text-sm text-muted-foreground mt-1">+ ${plan.setupFee} setup fee</div>
+                        )}
+                      </>
+                    )}
                   </div>
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature) => (
@@ -283,7 +281,7 @@ export default function ForBusinesses() {
                     className="w-full"
                     asChild
                   >
-                    <Link to="/contact">Get Started</Link>
+                    <Link to="/contact">{plan.price === "Custom" ? "Contact Us" : "Get Started"}</Link>
                   </Button>
                 </div>
               </StaggerItem>
