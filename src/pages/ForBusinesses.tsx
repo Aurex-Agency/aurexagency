@@ -147,9 +147,22 @@ export default function ForBusinesses() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 50%, hsl(15 70% 30%) 100%)" }}>
-        <GoldSparkles count={8} />
-        <div className="container relative z-10">
+      <section className="relative min-h-[70vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 50%, hsl(15 70% 30%) 100%)" }}>
+        <GoldSparkles count={10} />
+        
+        {/* Rotating ring decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[500px] lg:w-[650px] h-[350px] md:h-[500px] lg:h-[650px] pointer-events-none">
+          <motion.div
+            className="w-full h-full rounded-full border border-accent/20"
+            style={{
+              background: "conic-gradient(from 0deg, transparent, hsl(43 100% 50% / 0.1), transparent, hsl(43 100% 50% / 0.1), transparent)"
+            }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+        
+        <div className="container relative z-10 py-20 lg:py-28">
           <motion.div 
             className="max-w-3xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -157,7 +170,7 @@ export default function ForBusinesses() {
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
           >
             <motion.div 
-              className="inline-flex items-center gap-2 glass-dark rounded-full px-4 py-2 mb-6"
+              className="inline-flex items-center gap-2 glass-dark rounded-full px-5 py-2.5 mb-8"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -166,15 +179,24 @@ export default function ForBusinesses() {
               <span className="text-sm font-medium text-primary-foreground">Built for Local Businesses</span>
             </motion.div>
             <motion.h1 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               Loyalty & <MetallicGoldText>Automations</MetallicGoldText> for Your Business
+              <motion.div 
+                className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-4"
+                style={{ width: "60%", maxWidth: "300px" }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+              >
+                <div className="w-full h-full gold-metallic" />
+              </motion.div>
             </motion.h1>
             <motion.p 
-              className="text-lg md:text-xl text-primary-foreground/80 mb-8 px-4"
+              className="text-lg md:text-xl text-primary-foreground/80 mb-10 px-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -188,18 +210,22 @@ export default function ForBusinesses() {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <AppointmentDialog>
-                <Button variant="accent" size="xl" className="shadow-gold">
+                <Button variant="accent" size="xl" className="shadow-gold-intense animate-pulse-gold gold-border-glow">
                   Schedule an Appointment
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </AppointmentDialog>
-              <Button variant="outline" size="xl" className="glass-dark border-accent/30 text-primary-foreground hover:bg-white/10">
+              <Button variant="outline" size="xl" className="glass-dark border-accent/30 text-primary-foreground hover:bg-white/10 hover:border-accent/50">
                 See How It Works
               </Button>
             </motion.div>
           </motion.div>
         </div>
-        <GoldDivider className="absolute bottom-0 left-0 right-0" />
+        
+        {/* Decorative bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
+          <GoldDivider className="absolute bottom-0" />
+        </div>
       </section>
 
       {/* Time Savings Stats */}
