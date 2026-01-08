@@ -133,10 +133,9 @@ export default function Home() {
                     <span 
                       className="inline-block drop-shadow-lg"
                       style={{
-                        fontFamily: "'Cinzel Decorative', serif",
-                        fontSize: "1.15em",
-                        fontWeight: 900,
-                        letterSpacing: "0.08em",
+                        fontFamily: "'Righteous', cursive",
+                        fontSize: "1.25em",
+                        letterSpacing: "0.06em",
                         background: "linear-gradient(135deg, hsl(48 100% 85%) 0%, hsl(43 100% 65%) 20%, hsl(38 100% 50%) 40%, hsl(43 100% 60%) 60%, hsl(48 100% 80%) 80%, hsl(43 100% 65%) 100%)",
                         backgroundSize: "300% 300%",
                         WebkitBackgroundClip: "text",
