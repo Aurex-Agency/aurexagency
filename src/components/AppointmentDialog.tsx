@@ -165,17 +165,17 @@ export function AppointmentDialog({ children }: AppointmentDialogProps) {
 
       {/* Email Form Modal */}
       <Dialog open={emailFormOpen} onOpenChange={setEmailFormOpen}>
-        <DialogContent className="sm:max-w-2xl w-[95vw] max-h-[90vh] p-0 overflow-hidden border-border/50 bg-background/95 backdrop-blur-xl shadow-strong">
-          <DialogHeader className="p-4 sm:p-6 pb-0">
+        <DialogContent className="sm:max-w-2xl w-[95vw] h-[85vh] sm:h-[90vh] p-0 overflow-hidden border-border/50 bg-background backdrop-blur-xl shadow-strong flex flex-col">
+          <DialogHeader className="p-4 sm:p-6 pb-2 flex-shrink-0">
             <DialogTitle className="font-display text-xl sm:text-2xl font-bold text-center">
               Send Us a Message
             </DialogTitle>
           </DialogHeader>
-          <div className="p-4 sm:p-6 pt-2">
-            <div className="w-full h-[600px] sm:h-[700px] rounded-lg overflow-hidden">
+          <div className="flex-1 overflow-y-auto px-4 sm:px-6 pb-4 sm:pb-6">
+            <div className="w-full min-h-[800px] sm:min-h-[923px] rounded-lg">
               <iframe
                 src="https://api.leadconnectorhq.com/widget/form/pNS2YnsEyXrKhWKN1pC4"
-                style={{ width: "100%", height: "100%", border: "none", borderRadius: "3px" }}
+                style={{ width: "100%", height: "100%", minHeight: "800px", border: "none", borderRadius: "3px" }}
                 id="inline-pNS2YnsEyXrKhWKN1pC4"
                 data-layout='{"id":"INLINE"}'
                 data-trigger-type="alwaysShow"
