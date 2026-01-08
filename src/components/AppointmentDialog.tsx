@@ -171,26 +171,25 @@ export function AppointmentDialog({ children }: AppointmentDialogProps) {
               Send Us a Message
             </DialogTitle>
           </DialogHeader>
-          <div className="flex-1 overflow-y-auto px-4 sm:px-6 pb-4 sm:pb-6">
-            <div className="w-full min-h-[800px] sm:min-h-[923px] rounded-lg">
-              <iframe
-                src="https://api.leadconnectorhq.com/widget/form/pNS2YnsEyXrKhWKN1pC4"
-                style={{ width: "100%", height: "100%", minHeight: "800px", border: "none", borderRadius: "3px" }}
-                id="inline-pNS2YnsEyXrKhWKN1pC4"
-                data-layout='{"id":"INLINE"}'
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name="Aurex Website"
-                data-height="923"
-                data-layout-iframe-id="inline-pNS2YnsEyXrKhWKN1pC4"
-                data-form-id="pNS2YnsEyXrKhWKN1pC4"
-                title="Aurex Website"
-              />
-            </div>
+          <div className="flex-1 px-4 sm:px-6 pb-4 sm:pb-6 overflow-hidden">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/pNS2YnsEyXrKhWKN1pC4"
+              className="w-full h-full rounded-lg"
+              style={{ border: "none" }}
+              id="inline-pNS2YnsEyXrKhWKN1pC4"
+              data-layout='{"id":"INLINE"}'
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Aurex Website"
+              data-height="923"
+              data-layout-iframe-id="inline-pNS2YnsEyXrKhWKN1pC4"
+              data-form-id="pNS2YnsEyXrKhWKN1pC4"
+              title="Aurex Website"
+            />
           </div>
         </DialogContent>
       </Dialog>
