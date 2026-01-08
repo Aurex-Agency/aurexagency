@@ -42,16 +42,37 @@
     --gradient-subtle: linear-gradient(180deg, hsl(30 15% 97%) 0%, hsl(30 20% 93%) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(0 75% 42%) 0%, hsl(0 65% 25%) 50%, hsl(15 30% 12%) 100%);
     
-    /* Glassmorphism */
-    --glass-bg: hsl(0 0% 100% / 0.7);
-    --glass-border: hsl(0 0% 100% / 0.3);
-    --glass-shadow: 0 8px 32px 0 hsl(0 75% 42% / 0.15);
+    /* Metallic Gold */
+    --gold-metallic: linear-gradient(135deg, 
+      hsl(48 100% 75%) 0%, 
+      hsl(43 100% 55%) 25%, 
+      hsl(38 100% 45%) 50%, 
+      hsl(43 100% 55%) 75%, 
+      hsl(48 100% 75%) 100%
+    );
+    --gold-shine: linear-gradient(90deg,
+      transparent 0%,
+      hsl(48 100% 85% / 0.8) 45%,
+      hsl(48 100% 95% / 1) 50%,
+      hsl(48 100% 85% / 0.8) 55%,
+      transparent 100%
+    );
+    
+    /* Glassmorphism - Higher contrast */
+    --glass-bg: hsl(0 0% 100% / 0.85);
+    --glass-border: hsl(43 100% 50% / 0.3);
+    --glass-shadow: 0 8px 32px 0 hsl(0 75% 42% / 0.2);
+    
+    /* Dark glass for hero */
+    --glass-dark-bg: hsl(0 30% 8% / 0.6);
+    --glass-dark-border: hsl(43 100% 50% / 0.2);
     
     --shadow-soft: 0 2px 8px -2px hsl(15 30% 12% / 0.08);
     --shadow-medium: 0 8px 24px -8px hsl(15 30% 12% / 0.12);
     --shadow-strong: 0 16px 48px -12px hsl(15 30% 12% / 0.18);
-    --shadow-glow: 0 0 40px -10px hsl(43 100% 50% / 0.4);
-    --shadow-gold: 0 4px 20px -4px hsl(43 100% 50% / 0.5);
+    --shadow-glow: 0 0 40px -10px hsl(43 100% 50% / 0.5);
+    --shadow-gold: 0 4px 30px -4px hsl(43 100% 50% / 0.6);
+    --shadow-gold-intense: 0 0 60px -10px hsl(43 100% 55% / 0.8);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -96,8 +117,8 @@
     --input: 15 20% 20%;
     --ring: 0 70% 55%;
 
-    --glass-bg: hsl(15 20% 12% / 0.8);
-    --glass-border: hsl(0 0% 100% / 0.1);
+    --glass-bg: hsl(15 20% 12% / 0.9);
+    --glass-border: hsl(43 100% 50% / 0.2);
 
     --sidebar-background: 15 20% 10%;
     --sidebar-foreground: 30 20% 95%;
@@ -150,7 +171,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.6),
       transparent
     );
     transform: skewX(-25deg);
@@ -165,21 +186,52 @@
     background: var(--gradient-subtle);
   }
 
-  /* Glassmorphism */
+  /* Metallic Gold Effect */
+  .gold-metallic {
+    background: var(--gold-metallic);
+    background-size: 200% 200%;
+    animation: metallicShift 3s ease-in-out infinite;
+  }
+
+  @keyframes metallicShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .text-gold-metallic {
+    background: var(--gold-metallic);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: metallicShift 3s ease-in-out infinite;
+  }
+
+  /* Glassmorphism - Higher contrast */
   .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
   }
 
-  .glass-strong {
-    background: hsl(0 0% 100% / 0.85);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid hsl(0 0% 100% / 0.4);
-    box-shadow: var(--glass-shadow);
+  .glass-dark {
+    background: var(--glass-dark-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-dark-border);
+    box-shadow: 0 8px 32px 0 hsl(0 0% 0% / 0.3);
+  }
+
+  .glass-card {
+    background: hsl(0 0% 100% / 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(43 100% 50% / 0.15);
+    box-shadow: 
+      0 4px 24px -4px hsl(0 75% 42% / 0.1),
+      0 0 0 1px hsl(0 0% 100% / 0.5) inset;
   }
 
   .shadow-soft {
@@ -202,6 +254,10 @@
     box-shadow: var(--shadow-gold);
   }
 
+  .shadow-gold-intense {
+    box-shadow: var(--shadow-gold-intense);
+  }
+
   .text-gradient {
     background: var(--gradient-hero);
     -webkit-background-clip: text;
@@ -216,31 +272,38 @@
     background-clip: text;
   }
 
-  /* Retro gold shine effect */
-  .gold-shine {
+  /* Sparkle container */
+  .sparkle-container {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
   }
 
-  .gold-shine::after {
+  /* Gold border glow */
+  .gold-border-glow {
+    position: relative;
+  }
+
+  .gold-border-glow::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent 30%,
-      hsl(43 100% 70% / 0.3) 50%,
-      transparent 70%
-    );
-    animation: goldShine 3s ease-in-out infinite;
+    inset: -2px;
+    background: var(--gold-metallic);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(8px);
   }
 
-  @keyframes goldShine {
-    0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-    50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  /* Retro divider */
+  .retro-divider {
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsl(43 100% 50% / 0.3) 20%,
+      hsl(43 100% 60%) 50%,
+      hsl(43 100% 50% / 0.3) 80%,
+      transparent 100%
+    );
   }
 }
 
@@ -277,7 +340,53 @@
   }
 
   @keyframes pulseGold {
-    0%, 100% { box-shadow: 0 0 20px -5px hsl(43 100% 50% / 0.4); }
-    50% { box-shadow: 0 0 40px -5px hsl(43 100% 50% / 0.7); }
+    0%, 100% { box-shadow: 0 0 20px -5px hsl(43 100% 50% / 0.5); }
+    50% { box-shadow: 0 0 50px -5px hsl(43 100% 55% / 0.8); }
+  }
+
+  .animate-sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2.5s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 8px hsl(43 100% 50% / 0.4)); }
+    50% { filter: drop-shadow(0 0 20px hsl(43 100% 55% / 0.8)); }
+  }
+
+  .animate-rotate-slow {
+    animation: rotateSlow 20s linear infinite;
+  }
+
+  @keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Hue shift animation for scroll effect */
+  .animate-hue-shift {
+    animation: hueShift 10s linear infinite;
+  }
+
+  @keyframes hueShift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(30deg); }
   }
 }
