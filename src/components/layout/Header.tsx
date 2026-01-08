@@ -4,6 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppointmentDialog } from "@/components/AppointmentDialog";
+import aurexLogo from "@/assets/aurex-logo.png";
 
 const navigation = [{
   name: "Home",
@@ -68,14 +69,15 @@ const iconVariants = {
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  return <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
-      <nav className="container flex items-center justify-between py-4">
+  return <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50">
+      <nav className="container flex items-center justify-between py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-xl hero-gradient flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-lg">AA</span>
-          </div>
-          <span className="font-display font-bold text-xl text-foreground">Aurex Agency </span>
+          <img 
+            src={aurexLogo} 
+            alt="Aurex Agency" 
+            className="h-12 w-auto drop-shadow-lg"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -92,7 +94,7 @@ export function Header() {
             (662) 555-1234
           </a>
           <AppointmentDialog>
-            <Button variant="accent" size="lg">
+            <Button variant="accent" size="lg" className="shadow-gold">
               Schedule an Appointment
             </Button>
           </AppointmentDialog>
@@ -118,7 +120,7 @@ export function Header() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
-            className="lg:hidden bg-card border-b border-border overflow-hidden"
+            className="lg:hidden glass border-b border-border/50 overflow-hidden"
             variants={menuVariants}
             initial="closed"
             animate="open"
