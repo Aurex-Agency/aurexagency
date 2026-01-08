@@ -131,18 +131,19 @@ export default function Home() {
                   Grow Your Business with{" "}
                   <span className="block mt-2 sm:mt-3">
                     <span 
-                      className="inline-block drop-shadow-lg tracking-wide"
+                      className="inline-block drop-shadow-lg"
                       style={{
-                        fontFamily: "'Bebas Neue', sans-serif",
-                        fontSize: "1.3em",
-                        letterSpacing: "0.05em",
-                        background: "linear-gradient(135deg, hsl(48 100% 75%) 0%, hsl(43 100% 55%) 25%, hsl(38 100% 45%) 50%, hsl(43 100% 55%) 75%, hsl(48 100% 75%) 100%)",
-                        backgroundSize: "200% 200%",
+                        fontFamily: "'Cinzel Decorative', serif",
+                        fontSize: "1.15em",
+                        fontWeight: 900,
+                        letterSpacing: "0.08em",
+                        background: "linear-gradient(135deg, hsl(48 100% 85%) 0%, hsl(43 100% 65%) 20%, hsl(38 100% 50%) 40%, hsl(43 100% 60%) 60%, hsl(48 100% 80%) 80%, hsl(43 100% 65%) 100%)",
+                        backgroundSize: "300% 300%",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         backgroundClip: "text",
-                        animation: "metallicShift 3s ease-in-out infinite",
-                        textShadow: "0 4px 30px hsl(43 100% 50% / 0.3)"
+                        animation: "metallicShift 4s ease-in-out infinite",
+                        filter: "drop-shadow(0 4px 20px hsl(43 100% 50% / 0.5))"
                       }}
                     >
                       AUREX AGENCY
