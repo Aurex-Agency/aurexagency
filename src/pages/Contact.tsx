@@ -67,9 +67,22 @@ export default function Contact() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 50%, hsl(15 70% 30%) 100%)" }}>
-        <GoldSparkles count={8} />
-        <div className="container relative z-10">
+      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 50%, hsl(15 70% 30%) 100%)" }}>
+        <GoldSparkles count={10} />
+        
+        {/* Rotating ring decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[450px] lg:w-[550px] h-[300px] md:h-[450px] lg:h-[550px] pointer-events-none">
+          <motion.div
+            className="w-full h-full rounded-full border border-accent/20"
+            style={{
+              background: "conic-gradient(from 0deg, transparent, hsl(43 100% 50% / 0.1), transparent, hsl(43 100% 50% / 0.1), transparent)"
+            }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+        
+        <div className="container relative z-10 py-20 lg:py-28">
           <motion.div 
             className="max-w-3xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -77,12 +90,21 @@ export default function Contact() {
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
           >
             <motion.h1 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               Let's <MetallicGoldText>Talk</MetallicGoldText>
+              <motion.div 
+                className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-4"
+                style={{ width: "40%", maxWidth: "180px" }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <div className="w-full h-full gold-metallic" />
+              </motion.div>
             </motion.h1>
             <motion.p 
               className="text-lg md:text-xl text-primary-foreground/80 px-4"
@@ -94,7 +116,11 @@ export default function Contact() {
             </motion.p>
           </motion.div>
         </div>
-        <GoldDivider className="absolute bottom-0 left-0 right-0" />
+        
+        {/* Decorative bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
+          <GoldDivider className="absolute bottom-0" />
+        </div>
       </section>
 
       {/* Contact Form & Info */}
