@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AppointmentDialog } from "@/components/AppointmentDialog";
+import { GoldSparkles, GoldDivider, MetallicGoldText } from "@/components/ui/decorative-elements";
 
 const features = [
   {
@@ -146,8 +147,9 @@ export default function ForBusinesses() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="hero-gradient text-primary-foreground py-20 lg:py-28">
-        <div className="container">
+      <section className="relative py-20 lg:py-28 overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 50%, hsl(15 70% 30%) 100%)" }}>
+        <GoldSparkles count={8} />
+        <div className="container relative z-10">
           <motion.div 
             className="max-w-3xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -155,24 +157,24 @@ export default function ForBusinesses() {
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
           >
             <motion.div 
-              className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6"
+              className="inline-flex items-center gap-2 glass-dark rounded-full px-4 py-2 mb-6"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <Store className="w-4 h-4 text-accent" />
-              <span className="text-sm font-medium">Built for Local Businesses</span>
+              <Store className="w-4 h-4 text-accent animate-glow-pulse" />
+              <span className="text-sm font-medium text-primary-foreground">Built for Local Businesses</span>
             </motion.div>
             <motion.h1 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Loyalty & Automations for Your Business
+              Loyalty & <MetallicGoldText>Automations</MetallicGoldText> for Your Business
             </motion.h1>
             <motion.p 
-              className="text-lg md:text-xl text-primary-foreground/80 mb-8"
+              className="text-lg md:text-xl text-primary-foreground/80 mb-8 px-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -180,81 +182,85 @@ export default function ForBusinesses() {
               Turn first-time visitors into lifelong customers with loyalty programs and smart automations that save you time and grow your business.
             </motion.p>
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <AppointmentDialog>
-                <Button variant="accent" size="xl">
+                <Button variant="accent" size="xl" className="shadow-gold">
                   Schedule an Appointment
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </AppointmentDialog>
-              <Button variant="outline-light" size="xl">
+              <Button variant="outline" size="xl" className="glass-dark border-accent/30 text-primary-foreground hover:bg-white/10">
                 See How It Works
               </Button>
             </motion.div>
           </motion.div>
         </div>
+        <GoldDivider className="absolute bottom-0 left-0 right-0" />
       </section>
 
       {/* Time Savings Stats */}
-      <section className="py-16 lg:py-24 bg-card border-b border-border">
-        <div className="container">
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(15 70% 30%) 0%, hsl(10 50% 20%) 100%)" }}>
+        <div className="container px-4">
           <StaggerContainer className="grid md:grid-cols-3 gap-8 text-center">
             <StaggerItem>
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 rounded-2xl gold-metallic flex items-center justify-center mx-auto mb-4 shadow-gold">
+                <Clock className="w-8 h-8 text-accent-foreground" />
               </div>
-              <div className="font-display text-3xl font-bold text-foreground mb-2">10+ Hours</div>
-              <p className="text-muted-foreground">Saved per week on average</p>
+              <div className="font-display text-3xl font-bold text-primary-foreground mb-2">10+ Hours</div>
+              <p className="text-primary-foreground/70">Saved per week on average</p>
             </StaggerItem>
             <StaggerItem>
-              <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                <MessageSquare className="w-8 h-8 text-accent" />
+              <div className="w-16 h-16 rounded-2xl gold-metallic flex items-center justify-center mx-auto mb-4 shadow-gold">
+                <MessageSquare className="w-8 h-8 text-accent-foreground" />
               </div>
-              <div className="font-display text-3xl font-bold text-foreground mb-2">50,000+</div>
-              <p className="text-muted-foreground">Messages sent automatically monthly</p>
+              <div className="font-display text-3xl font-bold text-primary-foreground mb-2">50,000+</div>
+              <p className="text-primary-foreground/70">Messages sent automatically monthly</p>
             </StaggerItem>
             <StaggerItem>
-              <div className="w-16 h-16 rounded-2xl bg-success/10 flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="w-8 h-8 text-success" />
+              <div className="w-16 h-16 rounded-2xl gold-metallic flex items-center justify-center mx-auto mb-4 shadow-gold">
+                <BarChart3 className="w-8 h-8 text-accent-foreground" />
               </div>
-              <div className="font-display text-3xl font-bold text-foreground mb-2">3x</div>
-              <p className="text-muted-foreground">Average increase in engagement</p>
+              <div className="font-display text-3xl font-bold text-primary-foreground mb-2">3x</div>
+              <p className="text-primary-foreground/70">Average increase in engagement</p>
             </StaggerItem>
           </StaggerContainer>
         </div>
       </section>
 
       {/* Loyalty Features */}
-      <section className="py-16 lg:py-24">
-        <div className="container">
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 50% 20%) 0%, hsl(10 40% 15%) 100%)" }}>
+        <GoldSparkles count={4} />
+        <div className="container relative z-10 px-4">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Everything You Need to Build Loyalty
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
+              Everything You Need to Build <MetallicGoldText>Loyalty</MetallicGoldText>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto">
               Powerful features that work together to keep customers coming back.
             </p>
           </ScrollReveal>
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature) => (
               <StaggerItem key={feature.title}>
-                <div 
-                  className="bg-card rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 h-full"
+                <motion.div 
+                  className="glass-dark rounded-2xl p-6 h-full border border-accent/20"
+                  whileHover={{ y: -4, borderColor: "hsl(43 100% 50% / 0.4)" }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-accent" />
+                  <div className="w-12 h-12 rounded-xl gold-metallic flex items-center justify-center mb-4 shadow-gold">
+                    <feature.icon className="w-6 h-6 text-accent-foreground" />
                   </div>
-                  <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                  <h3 className="font-display text-lg font-bold text-primary-foreground mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-primary-foreground/70 text-sm leading-relaxed">
                     {feature.description}
                   </p>
-                </div>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -262,36 +268,39 @@ export default function ForBusinesses() {
       </section>
 
       {/* Automation Features */}
-      <section className="py-16 lg:py-24 subtle-gradient">
-        <div className="container">
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 40% 15%) 0%, hsl(10 35% 12%) 100%)" }}>
+        <GoldSparkles count={4} />
+        <div className="container relative z-10 px-4">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
-            <div className="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-2 mb-4">
-              <Zap className="w-4 h-4 text-accent" />
+            <div className="inline-flex items-center gap-2 glass-dark rounded-full px-4 py-2 mb-4">
+              <Zap className="w-4 h-4 text-accent animate-glow-pulse" />
               <span className="text-sm font-medium text-accent">Save 10+ Hours Every Week</span>
             </div>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Powerful Automation Tools
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
+              Powerful <MetallicGoldText>Automation</MetallicGoldText> Tools
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto">
               Put your marketing and customer communication on autopilot.
             </p>
           </ScrollReveal>
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {automations.map((automation) => (
               <StaggerItem key={automation.title}>
-                <div 
-                  className="bg-card rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 h-full"
+                <motion.div 
+                  className="glass-dark rounded-2xl p-6 h-full border border-accent/20"
+                  whileHover={{ y: -4, borderColor: "hsl(43 100% 50% / 0.4)" }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className="w-12 h-12 rounded-xl hero-gradient flex items-center justify-center mb-4">
-                    <automation.icon className="w-6 h-6 text-primary-foreground" />
+                  <div className="w-12 h-12 rounded-xl gold-metallic flex items-center justify-center mb-4 shadow-gold">
+                    <automation.icon className="w-6 h-6 text-accent-foreground" />
                   </div>
-                  <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                  <h3 className="font-display text-lg font-bold text-primary-foreground mb-2">
                     {automation.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-primary-foreground/70 text-sm leading-relaxed">
                     {automation.description}
                   </p>
-                </div>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -299,35 +308,38 @@ export default function ForBusinesses() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-16 lg:py-24">
-        <div className="container">
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 35% 12%) 0%, hsl(10 30% 10%) 100%)" }}>
+        <div className="container px-4">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Built for Every Industry
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
+              Built for <MetallicGoldText>Every Industry</MetallicGoldText>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto">
               Our solutions are tailored to the unique needs of your business type.
             </p>
           </ScrollReveal>
           <StaggerContainer className="grid md:grid-cols-2 gap-6">
             {useCases.map((useCase) => (
               <StaggerItem key={useCase.title}>
-                <div className="bg-card rounded-2xl p-8 shadow-soft h-full">
-                  <h3 className="font-display text-xl font-bold text-foreground mb-3">
+                <motion.div 
+                  className="glass-dark rounded-2xl p-8 h-full border border-accent/20"
+                  whileHover={{ borderColor: "hsl(43 100% 50% / 0.4)" }}
+                >
+                  <h3 className="font-display text-xl font-bold text-primary-foreground mb-3">
                     {useCase.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="text-primary-foreground/70 mb-4">
                     {useCase.description}
                   </p>
                   <ul className="space-y-2">
                     {useCase.benefits.map((benefit) => (
                       <li key={benefit} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-success shrink-0" />
-                        <span className="text-sm text-foreground">{benefit}</span>
+                        <CheckCircle2 className="w-4 h-4 text-accent shrink-0 animate-glow-pulse" />
+                        <span className="text-sm text-primary-foreground">{benefit}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -335,14 +347,15 @@ export default function ForBusinesses() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 lg:py-24 subtle-gradient">
-        <div className="container">
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 30% 10%) 0%, hsl(10 25% 8%) 100%)" }}>
+        <GoldSparkles count={4} />
+        <div className="container px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                Set It Up Once, Let It Run Forever
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-6">
+                Set It Up Once, Let It <MetallicGoldText>Run Forever</MetallicGoldText>
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-lg text-primary-foreground/70 mb-8">
                 Our platform is designed for busy business owners. No technical skills required.
               </p>
               <ul className="space-y-4">
@@ -354,55 +367,55 @@ export default function ForBusinesses() {
                   "Adjust and optimize based on real results",
                 ].map((item, index) => (
                   <li key={item} className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full hero-gradient flex items-center justify-center shrink-0">
-                      <span className="text-primary-foreground font-semibold text-sm">{index + 1}</span>
+                    <div className="w-8 h-8 rounded-full gold-metallic flex items-center justify-center shrink-0 shadow-gold">
+                      <span className="text-accent-foreground font-semibold text-sm">{index + 1}</span>
                     </div>
-                    <span className="text-foreground pt-1">{item}</span>
+                    <span className="text-primary-foreground pt-1">{item}</span>
                   </li>
                 ))}
               </ul>
             </ScrollReveal>
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl p-8">
-                <div className="bg-card rounded-2xl p-6 shadow-medium mb-4">
+              <div className="glass-dark rounded-3xl p-8 border border-accent/20">
+                <div className="glass-dark rounded-2xl p-6 mb-4 border border-accent/15">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-success" />
+                    <div className="w-10 h-10 rounded-xl gold-metallic flex items-center justify-center shadow-gold">
+                      <CheckCircle2 className="w-5 h-5 text-accent-foreground" />
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground">Birthday Campaign</div>
-                      <div className="text-sm text-success">Active • 127 sent this month</div>
+                      <div className="font-semibold text-primary-foreground">Birthday Campaign</div>
+                      <div className="text-sm text-accent">Active • 127 sent this month</div>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-primary-foreground/70">
                     Automatically sends birthday offers 3 days before customer birthdays
                   </p>
                 </div>
-                <div className="bg-card rounded-2xl p-6 shadow-medium mb-4">
+                <div className="glass-dark rounded-2xl p-6 mb-4 border border-accent/15">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-success" />
+                    <div className="w-10 h-10 rounded-xl gold-metallic flex items-center justify-center shadow-gold">
+                      <CheckCircle2 className="w-5 h-5 text-accent-foreground" />
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground">Win-Back Campaign</div>
-                      <div className="text-sm text-success">Active • 89 sent this month</div>
+                      <div className="font-semibold text-primary-foreground">Win-Back Campaign</div>
+                      <div className="text-sm text-accent">Active • 89 sent this month</div>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-primary-foreground/70">
                     Re-engages customers who haven't visited in 30+ days
                   </p>
                 </div>
-                <div className="bg-card rounded-2xl p-6 shadow-medium">
+                <div className="glass-dark rounded-2xl p-6 border border-accent/15">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center">
-                      <CheckCircle2 className="w-5 h-5 text-success" />
+                    <div className="w-10 h-10 rounded-xl gold-metallic flex items-center justify-center shadow-gold">
+                      <CheckCircle2 className="w-5 h-5 text-accent-foreground" />
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground">Review Request</div>
-                      <div className="text-sm text-success">Active • 234 sent this month</div>
+                      <div className="font-semibold text-primary-foreground">Review Request</div>
+                      <div className="text-sm text-accent">Active • 234 sent this month</div>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-primary-foreground/70">
                     Requests reviews 24 hours after a positive interaction
                   </p>
                 </div>
@@ -413,56 +426,56 @@ export default function ForBusinesses() {
       </section>
 
       {/* Results */}
-      <section className="py-16 lg:py-24">
-        <div className="container">
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 25% 8%) 0%, hsl(10 20% 6%) 100%)" }}>
+        <div className="container px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                Real Results for Real Businesses
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-6">
+                Real Results for <MetallicGoldText>Real Businesses</MetallicGoldText>
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-lg text-primary-foreground/70 mb-8">
                 Our clients see measurable improvements in customer retention, visit frequency, and average spend.
               </p>
               <StaggerContainer className="grid grid-cols-2 gap-6">
                 <StaggerItem>
-                  <div className="bg-card rounded-xl p-6 shadow-soft">
-                    <div className="font-display text-3xl font-bold text-primary">+35%</div>
-                    <div className="text-sm text-muted-foreground">Repeat Visits</div>
+                  <div className="glass-dark rounded-xl p-6 border border-accent/20">
+                    <div className="font-display text-3xl font-bold"><MetallicGoldText>+35%</MetallicGoldText></div>
+                    <div className="text-sm text-primary-foreground/70">Repeat Visits</div>
                   </div>
                 </StaggerItem>
                 <StaggerItem>
-                  <div className="bg-card rounded-xl p-6 shadow-soft">
-                    <div className="font-display text-3xl font-bold text-accent">+28%</div>
-                    <div className="text-sm text-muted-foreground">Avg. Order Value</div>
+                  <div className="glass-dark rounded-xl p-6 border border-accent/20">
+                    <div className="font-display text-3xl font-bold"><MetallicGoldText>+28%</MetallicGoldText></div>
+                    <div className="text-sm text-primary-foreground/70">Avg. Order Value</div>
                   </div>
                 </StaggerItem>
                 <StaggerItem>
-                  <div className="bg-card rounded-xl p-6 shadow-soft">
-                    <div className="font-display text-3xl font-bold text-success">92%</div>
-                    <div className="text-sm text-muted-foreground">Customer Satisfaction</div>
+                  <div className="glass-dark rounded-xl p-6 border border-accent/20">
+                    <div className="font-display text-3xl font-bold"><MetallicGoldText>92%</MetallicGoldText></div>
+                    <div className="text-sm text-primary-foreground/70">Customer Satisfaction</div>
                   </div>
                 </StaggerItem>
                 <StaggerItem>
-                  <div className="bg-card rounded-xl p-6 shadow-soft">
-                    <div className="font-display text-3xl font-bold text-primary">4.9x</div>
-                    <div className="text-sm text-muted-foreground">ROI Average</div>
+                  <div className="glass-dark rounded-xl p-6 border border-accent/20">
+                    <div className="font-display text-3xl font-bold"><MetallicGoldText>4.9x</MetallicGoldText></div>
+                    <div className="text-sm text-primary-foreground/70">ROI Average</div>
                   </div>
                 </StaggerItem>
               </StaggerContainer>
             </ScrollReveal>
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="bg-card rounded-2xl p-8 shadow-strong">
+              <div className="glass-dark rounded-2xl p-8 border border-accent/20">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
+                    <Star key={i} className="w-5 h-5 fill-accent text-accent animate-glow-pulse" style={{ animationDelay: `${i * 0.1}s` }} />
                   ))}
                 </div>
-                <blockquote className="text-lg mb-6 leading-relaxed text-foreground">
-                  "We implemented Smart Loyalty 6 months ago and our repeat customer rate went from 22% to 38%. The automated birthday campaigns alone bring in an extra $2,000/month."
+                <blockquote className="text-lg mb-6 leading-relaxed text-primary-foreground">
+                  "We implemented Aurex Agency 6 months ago and our repeat customer rate went from 22% to 38%. The automated birthday campaigns alone bring in an extra $2,000/month."
                 </blockquote>
                 <div>
-                  <div className="font-semibold text-foreground">Jennifer Martinez</div>
-                  <div className="text-muted-foreground text-sm">Owner, Bella's Boutique • Oxford, MS</div>
+                  <div className="font-semibold text-primary-foreground">Jennifer Martinez</div>
+                  <div className="text-primary-foreground/60 text-sm">Owner, Bella's Boutique • Oxford, MS</div>
                 </div>
               </div>
             </ScrollReveal>
@@ -471,42 +484,44 @@ export default function ForBusinesses() {
       </section>
 
       {/* Pricing */}
-      <section className="py-16 lg:py-24 subtle-gradient">
-        <div className="container">
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 20% 6%) 0%, hsl(10 15% 5%) 100%)" }}>
+        <GoldSparkles count={4} />
+        <div className="container relative z-10 px-4">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Simple, Transparent Pricing
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
+              Simple, <MetallicGoldText>Transparent</MetallicGoldText> Pricing
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto">
               No hidden fees. No long-term contracts. Cancel anytime.
             </p>
           </ScrollReveal>
           <StaggerContainer className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {pricing.map((plan) => (
               <StaggerItem key={plan.name}>
-                <div 
-                  className={`bg-card rounded-2xl p-8 shadow-soft relative h-full ${
-                    plan.popular ? 'ring-2 ring-accent shadow-medium' : ''
+                <motion.div 
+                  className={`glass-dark rounded-2xl p-8 relative h-full border ${
+                    plan.popular ? 'border-accent shadow-gold-intense' : 'border-accent/20'
                   }`}
+                  whileHover={{ borderColor: "hsl(43 100% 50% / 0.5)" }}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 gold-metallic text-accent-foreground px-4 py-1 rounded-full text-sm font-semibold shadow-gold">
                       Let's Talk
                     </div>
                   )}
                   <div className="mb-6">
-                    <h3 className="font-display text-xl font-bold text-foreground">{plan.name}</h3>
-                    <p className="text-muted-foreground text-sm mt-1">{plan.description}</p>
+                    <h3 className="font-display text-xl font-bold text-primary-foreground">{plan.name}</h3>
+                    <p className="text-primary-foreground/60 text-sm mt-1">{plan.description}</p>
                   </div>
                   <div className="mb-6">
                     {plan.price === "Custom" ? (
-                      <span className="font-display text-4xl font-bold text-foreground">Custom Pricing</span>
+                      <span className="font-display text-4xl font-bold text-primary-foreground">Custom Pricing</span>
                     ) : (
                       <>
-                        <span className="font-display text-4xl font-bold text-foreground">${plan.price}</span>
-                        <span className="text-muted-foreground">/month</span>
+                        <span className="font-display text-4xl font-bold"><MetallicGoldText>${plan.price}</MetallicGoldText></span>
+                        <span className="text-primary-foreground/60">/month</span>
                         {plan.setupFee && (
-                          <div className="text-sm text-muted-foreground mt-1">+ ${plan.setupFee} setup fee</div>
+                          <div className="text-sm text-primary-foreground/50 mt-1">+ ${plan.setupFee} setup fee</div>
                         )}
                       </>
                     )}
@@ -514,19 +529,19 @@ export default function ForBusinesses() {
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-success mt-0.5 shrink-0" />
-                        <span className="text-sm text-foreground">{feature}</span>
+                        <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0 animate-glow-pulse" />
+                        <span className="text-sm text-primary-foreground">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <Button 
                     variant={plan.popular ? "accent" : "outline"} 
-                    className="w-full"
+                    className={`w-full ${plan.popular ? 'shadow-gold' : 'glass-dark border-accent/30 text-primary-foreground hover:bg-white/10'}`}
                     asChild
                   >
                     <Link to="/contact">{plan.price === "Custom" ? "Contact Us" : "Get Started"}</Link>
                   </Button>
-                </div>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -534,17 +549,19 @@ export default function ForBusinesses() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
-        <div className="container text-center">
+      <section className="py-16 lg:py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(10 15% 5%) 0%, hsl(0 75% 45%) 100%)" }}>
+        <GoldDivider className="absolute top-0 left-0 right-0" />
+        <GoldSparkles count={6} />
+        <div className="container text-center relative z-10 px-4">
           <ScrollReveal>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4">
-              Ready to Grow Your Business?
+            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-primary-foreground">
+              Ready to <MetallicGoldText>Grow Your Business?</MetallicGoldText>
             </h2>
             <p className="text-primary-foreground/70 text-lg mb-8 max-w-2xl mx-auto">
               Schedule a free consultation with our team to discuss how we can help you build customer loyalty and scale your operations.
             </p>
             <AppointmentDialog>
-              <Button variant="accent" size="xl">
+              <Button variant="accent" size="xl" className="shadow-gold-intense animate-pulse-gold">
                 Schedule Your Appointment
                 <ArrowRight className="w-5 h-5" />
               </Button>
