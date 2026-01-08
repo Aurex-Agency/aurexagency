@@ -15,6 +15,20 @@ import {
 import { useState } from "react";
 import { AppointmentDialog } from "@/components/AppointmentDialog";
 import { GoldSparkles, GoldDivider, MetallicGoldText } from "@/components/ui/decorative-elements";
+import { z } from "zod";
+import { toast } from "sonner";
+
+// Schema validation for contact form
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().max(20, "Phone number must be less than 20 characters").optional().or(z.literal("")),
+  business: z.string().trim().max(200, "Business name must be less than 200 characters").optional().or(z.literal("")),
+  interest: z.string().min(1, "Please select an option"),
+  message: z.string().trim().max(1000, "Message must be less than 1000 characters").optional().or(z.literal("")),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const contactInfo = [
   {
@@ -50,11 +64,43 @@ export default function Contact() {
     interest: "",
     message: "",
   });
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thanks for reaching out! We'll be in touch soon.");
+    setErrors({});
+    
+    // Validate form data
+    const result = contactSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
+      result.error.errors.forEach((err) => {
+        const field = err.path[0] as keyof ContactFormData;
+        fieldErrors[field] = err.message;
+      });
+      setErrors(fieldErrors);
+      toast.error("Please fix the form errors");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    // Form is validated - currently just shows success message
+    // In production, this would send to a backend endpoint
+    setTimeout(() => {
+      toast.success("Thanks for reaching out! We'll be in touch soon.");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        business: "",
+        interest: "",
+        message: "",
+      });
+      setIsSubmitting(false);
+    }, 500);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -151,11 +197,13 @@ export default function Contact() {
                         name="name"
                         type="text"
                         required
+                        maxLength={100}
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="John Smith"
-                        className="h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40"
+                        className={`h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.name ? 'border-red-400' : ''}`}
                       />
+                      {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-primary-foreground mb-2">
@@ -166,11 +214,13 @@ export default function Contact() {
                         name="email"
                         type="email"
                         required
+                        maxLength={255}
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@business.com"
-                        className="h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40"
+                        className={`h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.email ? 'border-red-400' : ''}`}
                       />
+                      {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                     </div>
                   </div>
                   
@@ -183,11 +233,13 @@ export default function Contact() {
                         id="phone"
                         name="phone"
                         type="tel"
+                        maxLength={20}
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="(662) 555-1234"
-                        className="h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40"
+                        className={`h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.phone ? 'border-red-400' : ''}`}
                       />
+                      {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
                     </div>
                     <div>
                       <label htmlFor="business" className="block text-sm font-medium text-primary-foreground mb-2">
@@ -197,11 +249,13 @@ export default function Contact() {
                         id="business"
                         name="business"
                         type="text"
+                        maxLength={200}
                         value={formData.business}
                         onChange={handleChange}
                         placeholder="Your Business Name"
-                        className="h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40"
+                        className={`h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.business ? 'border-red-400' : ''}`}
                       />
+                      {errors.business && <p className="text-red-400 text-xs mt-1">{errors.business}</p>}
                     </div>
                   </div>
                   
@@ -215,7 +269,7 @@ export default function Contact() {
                       required
                       value={formData.interest}
                       onChange={handleChange}
-                      className="flex h-12 w-full rounded-lg border border-accent/20 bg-white/10 px-3 py-2 text-sm text-primary-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                      className={`flex h-12 w-full rounded-lg border border-accent/20 bg-white/10 px-3 py-2 text-sm text-primary-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${errors.interest ? 'border-red-400' : ''}`}
                     >
                       <option value="" className="bg-background text-foreground">Select an option...</option>
                       <option value="town-loyalty" className="bg-background text-foreground">Town-Wide Loyalty Program</option>
@@ -224,6 +278,7 @@ export default function Contact() {
                       <option value="both" className="bg-background text-foreground">Loyalty + Automations</option>
                       <option value="other" className="bg-background text-foreground">Other / General Inquiry</option>
                     </select>
+                    {errors.interest && <p className="text-red-400 text-xs mt-1">{errors.interest}</p>}
                   </div>
                   
                   <div>
@@ -234,15 +289,23 @@ export default function Contact() {
                       id="message"
                       name="message"
                       rows={4}
+                      maxLength={1000}
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your business and what you're looking to achieve..."
-                      className="resize-none bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40"
+                      className={`resize-none bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.message ? 'border-red-400' : ''}`}
                     />
+                    {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
                   </div>
                   
-                  <Button type="submit" variant="accent" size="lg" className="w-full sm:w-auto shadow-gold">
-                    Send Message
+                  <Button 
+                    type="submit" 
+                    variant="accent" 
+                    size="lg" 
+                    className="w-full sm:w-auto shadow-gold"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </div>
