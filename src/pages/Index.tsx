@@ -326,11 +326,11 @@ export default function Home() {
           </section>
 
           {/* Testimonials */}
-          <section className="py-12 sm:py-20 lg:py-28 relative overflow-hidden">
+          <section className="pt-16 sm:pt-24 lg:pt-32 pb-16 sm:pb-24 lg:pb-32 relative overflow-hidden">
             <GoldDivider className="absolute top-0 left-0 right-0" />
             <GoldSparkles count={6} className="hidden sm:block" />
             
-            <div className="container relative z-10 px-4 sm:px-6">
+            <div className="container relative z-10 px-4 sm:px-6 pt-8 sm:pt-10">
               <ScrollReveal className="text-center mb-10 sm:mb-14">
                 <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-primary-foreground mb-3 sm:mb-4">
                   Loved by <MetallicGoldText>Local Businesses</MetallicGoldText>
@@ -339,7 +339,7 @@ export default function Home() {
                   Hear from business owners who've transformed their customer relationships.
                 </p>
               </ScrollReveal>
-              <StaggerContainer className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
+              <StaggerContainer className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto pb-8 sm:pb-10">
                 {testimonials.map(testimonial => (
                   <StaggerItem key={testimonial.author}>
                     <motion.div 
