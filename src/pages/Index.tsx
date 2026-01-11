@@ -35,13 +35,13 @@ const testimonials = [{
 }];
 
 const stats = [{
-  value: "500+",
+  value: "50+",
   label: "Local Businesses"
 }, {
   value: "35%",
   label: "Avg. Sales Increase"
 }, {
-  value: "50K+",
+  value: "34K+",
   label: "Loyal Customers"
 }, {
   value: "98%",
