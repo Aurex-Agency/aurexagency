@@ -14,6 +14,7 @@ interface ContactOption {
   action: string;
   href?: string;
   isEmailForm?: boolean;
+  isCalendarBooking?: boolean;
   gradient: string;
 }
 
@@ -23,7 +24,7 @@ const contactOptions: ContactOption[] = [
     title: "Schedule Your Appointment",
     description: "Book a free 30-minute consultation call with our team",
     action: "Schedule Now",
-    href: "https://calendly.com", // Replace with actual scheduling link
+    isCalendarBooking: true,
     gradient: "from-primary to-primary/80",
   },
   {
@@ -84,11 +85,15 @@ const headerVariants = {
 export function AppointmentDialog({ children }: AppointmentDialogProps) {
   const [open, setOpen] = useState(false);
   const [emailFormOpen, setEmailFormOpen] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState(false);
 
   const handleOptionClick = (option: ContactOption, e: React.MouseEvent) => {
     if (option.isEmailForm) {
       e.preventDefault();
       setEmailFormOpen(true);
+    } else if (option.isCalendarBooking) {
+      e.preventDefault();
+      setCalendarOpen(true);
     }
   };
 
@@ -190,6 +195,26 @@ export function AppointmentDialog({ children }: AppointmentDialogProps) {
               data-layout-iframe-id="inline-pNS2YnsEyXrKhWKN1pC4"
               data-form-id="pNS2YnsEyXrKhWKN1pC4"
               title="Aurex Website"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
+      {/* Calendar Booking Modal */}
+      <Dialog open={calendarOpen} onOpenChange={setCalendarOpen}>
+        <DialogContent className="sm:max-w-2xl w-[95vw] h-[85vh] sm:h-[90vh] p-0 overflow-hidden overflow-x-hidden border-border/50 bg-background backdrop-blur-xl shadow-strong flex flex-col">
+          <DialogHeader className="p-4 sm:p-6 pb-2 flex-shrink-0">
+            <DialogTitle className="font-display text-xl sm:text-2xl font-bold text-center">
+              Schedule Your Appointment
+            </DialogTitle>
+          </DialogHeader>
+          <div className="flex-1 px-4 sm:px-6 pb-4 sm:pb-6 overflow-hidden overflow-x-hidden">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/booking/AlXstlmixEoeJ0nP8wuX"
+              className="w-full h-full rounded-lg"
+              scrolling="no"
+              style={{ border: "none", overflow: "hidden" }}
+              id="calendar-booking-AlXstlmixEoeJ0nP8wuX"
+              title="Schedule Appointment"
             />
           </div>
         </DialogContent>
