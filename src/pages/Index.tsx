@@ -68,19 +68,19 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="min-h-screen relative">
-      {/* Fixed gradient background that darkens on scroll */}
+      {/* Fixed gradient background - Deep Blue to Light Blue */}
       <motion.div 
         className="fixed inset-0 z-0"
         style={{
-          background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 25%, hsl(25 85% 35%) 50%, hsl(15 70% 25%) 75%, hsl(10 40% 12%) 100%)",
+          background: "linear-gradient(180deg, hsl(230 84% 42%) 0%, hsl(220 80% 45%) 25%, hsl(200 90% 45%) 50%, hsl(185 95% 45%) 75%, hsl(180 100% 45%) 100%)",
           filter: backgroundFilter,
           willChange: "filter"
         }}
       />
       
-      {/* Darkening overlay */}
+      {/* Subtle darkening overlay for text readability */}
       <motion.div 
-        className="fixed inset-0 bg-black pointer-events-none z-[1]"
+        className="fixed inset-0 bg-deep-blue-dark/20 pointer-events-none z-[1]"
         style={{ opacity: backgroundDarkness, willChange: "opacity" }}
       />
 
@@ -97,11 +97,12 @@ export default function Home() {
             <GoldSparkles count={10} className="hidden sm:block" />
             
             {/* Rotating ring decoration - smaller on mobile */}
+            {/* Rotating ring decoration with cyan accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] lg:w-[800px] h-[400px] md:h-[600px] lg:h-[800px] pointer-events-none">
               <motion.div
-                className="w-full h-full rounded-full border border-accent/20"
+                className="w-full h-full rounded-full border border-light-blue/30"
                 style={{
-                  background: "conic-gradient(from 0deg, transparent, hsl(43 100% 50% / 0.1), transparent, hsl(43 100% 50% / 0.1), transparent)"
+                  background: "conic-gradient(from 0deg, transparent, hsl(180 100% 50% / 0.15), transparent, hsl(43 100% 50% / 0.1), transparent)"
                 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
