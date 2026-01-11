@@ -55,6 +55,22 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Brand colors
+        "deep-blue": {
+          DEFAULT: "hsl(230 84% 42%)",
+          light: "hsl(230 75% 55%)",
+          dark: "hsl(230 90% 30%)",
+        },
+        "light-blue": {
+          DEFAULT: "hsl(180 100% 45%)",
+          light: "hsl(180 100% 55%)",
+          dark: "hsl(180 100% 35%)",
+        },
+        gold: {
+          DEFAULT: "hsl(43 100% 50%)",
+          light: "hsl(48 100% 65%)",
+          dark: "hsl(38 100% 45%)",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

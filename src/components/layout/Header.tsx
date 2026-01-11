@@ -4,7 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppointmentDialog } from "@/components/AppointmentDialog";
-import aurexLogo from "@/assets/aurex-logo.png";
+import aurexLogoMain from "@/assets/aurex-logo-main.png";
 
 const navigation = [{
   name: "Home",
@@ -74,9 +74,9 @@ export function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img 
-            src={aurexLogo} 
+            src={aurexLogoMain} 
             alt="Aurex Agency" 
-            width={120}
+            width={160}
             height={48}
             className="h-12 w-auto drop-shadow-lg"
           />
