@@ -211,8 +211,8 @@ export function AppointmentDialog({ children }: AppointmentDialogProps) {
             <iframe
               src="https://api.leadconnectorhq.com/widget/booking/AlXstlmixEoeJ0nP8wuX"
               className="w-full h-full rounded-lg"
-              scrolling="no"
-              style={{ border: "none", overflow: "hidden" }}
+              scrolling="yes"
+              style={{ border: "none" }}
               id="calendar-booking-AlXstlmixEoeJ0nP8wuX"
               title="Schedule Appointment"
             />
