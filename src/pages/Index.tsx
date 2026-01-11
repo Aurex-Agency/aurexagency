@@ -55,10 +55,16 @@ export default function Home() {
     offset: ["start start", "end end"]
   });
   
-  // Background darkening and hue shift on scroll
+  // Background darkening and hue shift on scroll - extracted transforms for better performance
   const backgroundDarkness = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0.2, 0.5, 0.8]);
   const hueRotate = useTransform(scrollYProgress, [0, 1], [0, 25]);
   const saturation = useTransform(scrollYProgress, [0, 0.5, 1], [100, 110, 90]);
+  
+  // Pre-compute the filter transform outside JSX to avoid forced reflow
+  const backgroundFilter = useTransform(
+    [hueRotate, saturation],
+    ([hue, sat]) => `hue-rotate(${hue}deg) saturate(${sat}%)`
+  );
 
   return (
     <div ref={containerRef} className="min-h-screen relative">
@@ -67,17 +73,15 @@ export default function Home() {
         className="fixed inset-0 z-0"
         style={{
           background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 25%, hsl(25 85% 35%) 50%, hsl(15 70% 25%) 75%, hsl(10 40% 12%) 100%)",
-          filter: useTransform(
-            [hueRotate, saturation],
-            ([hue, sat]) => `hue-rotate(${hue}deg) saturate(${sat}%)`
-          )
+          filter: backgroundFilter,
+          willChange: "filter"
         }}
       />
       
       {/* Darkening overlay */}
       <motion.div 
         className="fixed inset-0 bg-black pointer-events-none z-[1]"
-        style={{ opacity: backgroundDarkness }}
+        style={{ opacity: backgroundDarkness, willChange: "opacity" }}
       />
 
       {/* Content wrapper */}
