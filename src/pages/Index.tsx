@@ -180,7 +180,7 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   <AppointmentDialog>
-                    <Button variant="accent" size="lg" className="shadow-gold-intense animate-pulse-gold gold-border-glow w-full sm:w-auto text-sm sm:text-base">
+                    <Button variant="accent" size="lg" className="shadow-gold hover:shadow-gold-intense w-full sm:w-auto text-sm sm:text-base">
                       Schedule an Appointment
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </Button>
@@ -400,7 +400,7 @@ export default function Home() {
                   </p>
                   <div className="flex justify-center relative z-10">
                     <AppointmentDialog>
-                      <Button variant="accent" size="lg" className="shadow-gold-intense animate-pulse-gold gold-border-glow w-full sm:w-auto text-sm sm:text-base">
+                      <Button variant="accent" size="lg" className="shadow-gold hover:shadow-gold-intense w-full sm:w-auto text-sm sm:text-base">
                         Schedule an Appointment
                         <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                       </Button>
