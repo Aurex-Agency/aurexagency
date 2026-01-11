@@ -43,6 +43,8 @@ export function Footer() {
               <img 
                 src={aurexLogo} 
                 alt="Aurex Agency" 
+                width={120}
+                height={48}
                 className="h-12 w-auto drop-shadow-lg"
               />
             </Link>
