@@ -23,7 +23,7 @@ const features = [{
 }];
 
 const testimonials = [{
-  quote: "Smart Loyalty transformed how we connect with customers. Our repeat visits are up 40% since joining!",
+  quote: "Aurex Agency transformed how we connect with customers. Our repeat visits are up 40% since joining!",
   author: "Sarah Johnson",
   role: "Owner, Main Street Bakery",
   location: "Tupelo, MS"
