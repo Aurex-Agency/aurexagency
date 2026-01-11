@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { AppointmentDialog } from "@/components/AppointmentDialog";
-import { GoldSparkles, GoldDivider, MetallicGoldText } from "@/components/ui/decorative-elements";
+import { BlueDivider } from "@/components/ui/decorative-elements";
 import { z } from "zod";
 import { toast } from "sonner";
 
@@ -113,15 +113,13 @@ export default function Contact() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 50%, hsl(15 70% 30%) 100%)" }}>
-        <GoldSparkles count={10} />
-        
+      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(230 84% 42%) 0%, hsl(210 80% 35%) 50%, hsl(195 85% 35%) 100%)" }}>
         {/* Rotating ring decoration */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[450px] lg:w-[550px] h-[300px] md:h-[450px] lg:h-[550px] pointer-events-none">
           <motion.div
-            className="w-full h-full rounded-full border border-accent/20"
+            className="w-full h-full rounded-full border border-light-blue/20"
             style={{
-              background: "conic-gradient(from 0deg, transparent, hsl(43 100% 50% / 0.1), transparent, hsl(43 100% 50% / 0.1), transparent)"
+              background: "conic-gradient(from 0deg, transparent, hsl(180 100% 45% / 0.1), transparent, hsl(180 100% 45% / 0.1), transparent)"
             }}
             animate={{ rotate: 360 }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -136,24 +134,24 @@ export default function Contact() {
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
           >
             <motion.h1 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground leading-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight"
+              style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.3)" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Let's <MetallicGoldText>Talk</MetallicGoldText>
+              Let's <span className="text-light-blue">Talk</span>
               <motion.div 
-                className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-4"
+                className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-4 bg-light-blue"
                 style={{ width: "40%", maxWidth: "180px" }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <div className="w-full h-full gold-metallic" />
-              </motion.div>
+              />
             </motion.h1>
             <motion.p 
-              className="text-lg md:text-xl text-primary-foreground/80 px-4"
+              className="text-lg md:text-xl text-white/90 px-4 font-medium"
+              style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.3)" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -165,31 +163,31 @@ export default function Contact() {
         
         {/* Decorative bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
-          <GoldDivider className="absolute bottom-0" />
+          <BlueDivider className="absolute bottom-0" />
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(15 70% 30%) 0%, hsl(10 50% 20%) 100%)" }}>
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(195 85% 35%) 0%, hsl(200 75% 30%) 100%)" }}>
         <div className="container px-4">
           <div className="grid lg:grid-cols-5 gap-12">
             {/* Form */}
             <div className="lg:col-span-3">
-              <div className="glass-dark rounded-2xl p-6 sm:p-8 border border-accent/20">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-light-blue/20">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-xl gold-metallic flex items-center justify-center shadow-gold">
-                    <MessageSquare className="w-6 h-6 text-accent-foreground" />
+                  <div className="w-12 h-12 rounded-xl bg-deep-blue flex items-center justify-center shadow-lg">
+                    <MessageSquare className="w-6 h-6 text-light-blue" />
                   </div>
                   <div>
-                    <h2 className="font-display text-xl font-bold text-primary-foreground">Send Us a Message</h2>
-                    <p className="text-sm text-primary-foreground/60">We typically respond within 24 hours</p>
+                    <h2 className="font-display text-xl font-bold text-white">Send Us a Message</h2>
+                    <p className="text-sm text-white/60">We typically respond within 24 hours</p>
                   </div>
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-primary-foreground mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
                         Your Name *
                       </label>
                       <Input
@@ -201,12 +199,12 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="John Smith"
-                        className={`h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.name ? 'border-red-400' : ''}`}
+                        className={`h-12 bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.name ? 'border-red-400' : ''}`}
                       />
                       {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-primary-foreground mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
                         Email Address *
                       </label>
                       <Input
@@ -218,7 +216,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@business.com"
-                        className={`h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.email ? 'border-red-400' : ''}`}
+                        className={`h-12 bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.email ? 'border-red-400' : ''}`}
                       />
                       {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                     </div>
@@ -226,7 +224,7 @@ export default function Contact() {
                   
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-primary-foreground mb-2">
+                      <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
                         Phone Number
                       </label>
                       <Input
@@ -237,12 +235,12 @@ export default function Contact() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="(662) 555-1234"
-                        className={`h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.phone ? 'border-red-400' : ''}`}
+                        className={`h-12 bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.phone ? 'border-red-400' : ''}`}
                       />
                       {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
                     </div>
                     <div>
-                      <label htmlFor="business" className="block text-sm font-medium text-primary-foreground mb-2">
+                      <label htmlFor="business" className="block text-sm font-medium text-white mb-2">
                         Business Name
                       </label>
                       <Input
@@ -253,14 +251,14 @@ export default function Contact() {
                         value={formData.business}
                         onChange={handleChange}
                         placeholder="Your Business Name"
-                        className={`h-12 bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.business ? 'border-red-400' : ''}`}
+                        className={`h-12 bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.business ? 'border-red-400' : ''}`}
                       />
                       {errors.business && <p className="text-red-400 text-xs mt-1">{errors.business}</p>}
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="interest" className="block text-sm font-medium text-primary-foreground mb-2">
+                    <label htmlFor="interest" className="block text-sm font-medium text-white mb-2">
                       I'm Interested In *
                     </label>
                     <select
@@ -269,20 +267,20 @@ export default function Contact() {
                       required
                       value={formData.interest}
                       onChange={handleChange}
-                      className={`flex h-12 w-full rounded-lg border border-accent/20 bg-white/10 px-3 py-2 text-sm text-primary-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${errors.interest ? 'border-red-400' : ''}`}
+                      className={`flex h-12 w-full rounded-lg border border-light-blue/20 bg-white/10 px-3 py-2 text-sm text-white ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-blue focus-visible:ring-offset-2 ${errors.interest ? 'border-red-400' : ''}`}
                     >
-                      <option value="" className="bg-background text-foreground">Select an option...</option>
-                      <option value="town-loyalty" className="bg-background text-foreground">Town-Wide Loyalty Program</option>
-                      <option value="business-loyalty" className="bg-background text-foreground">Business Loyalty Program</option>
-                      <option value="automations" className="bg-background text-foreground">Business Automations</option>
-                      <option value="both" className="bg-background text-foreground">Loyalty + Automations</option>
-                      <option value="other" className="bg-background text-foreground">Other / General Inquiry</option>
+                      <option value="" className="bg-deep-blue text-white">Select an option...</option>
+                      <option value="town-loyalty" className="bg-deep-blue text-white">Town-Wide Loyalty Program</option>
+                      <option value="business-loyalty" className="bg-deep-blue text-white">Business Loyalty Program</option>
+                      <option value="automations" className="bg-deep-blue text-white">Business Automations</option>
+                      <option value="both" className="bg-deep-blue text-white">Loyalty + Automations</option>
+                      <option value="other" className="bg-deep-blue text-white">Other / General Inquiry</option>
                     </select>
                     {errors.interest && <p className="text-red-400 text-xs mt-1">{errors.interest}</p>}
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-primary-foreground mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
                       Message
                     </label>
                     <Textarea
@@ -293,7 +291,7 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your business and what you're looking to achieve..."
-                      className={`resize-none bg-white/10 border-accent/20 text-primary-foreground placeholder:text-primary-foreground/40 ${errors.message ? 'border-red-400' : ''}`}
+                      className={`resize-none bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.message ? 'border-red-400' : ''}`}
                     />
                     {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
                   </div>
@@ -302,7 +300,7 @@ export default function Contact() {
                     type="submit" 
                     variant="accent" 
                     size="lg" 
-                    className="w-full sm:w-auto shadow-gold"
+                    className="w-full sm:w-auto"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
@@ -314,18 +312,17 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="lg:col-span-2 space-y-6">
               {/* Schedule an Appointment Card */}
-              <div className="glass-dark rounded-2xl p-8 border border-accent/30 relative overflow-hidden">
-                <GoldSparkles count={3} />
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-light-blue/30 relative overflow-hidden">
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-4">
-                    <Calendar className="w-8 h-8 text-accent animate-glow-pulse" />
-                    <h3 className="font-display text-xl font-bold text-primary-foreground">Schedule an Appointment</h3>
+                    <Calendar className="w-8 h-8 text-light-blue" />
+                    <h3 className="font-display text-xl font-bold text-white">Schedule an Appointment</h3>
                   </div>
-                  <p className="text-primary-foreground/70 mb-6">
+                  <p className="text-white/70 mb-6">
                     See Aurex Agency in action. Schedule a free 30-minute call with our team.
                   </p>
                   <AppointmentDialog>
-                    <Button variant="accent" size="lg" className="w-full shadow-gold-intense animate-pulse-gold">
+                    <Button variant="accent" size="lg" className="w-full">
                       Schedule Now
                     </Button>
                   </AppointmentDialog>
@@ -333,27 +330,27 @@ export default function Contact() {
               </div>
               
               {/* Contact Details */}
-              <div className="glass-dark rounded-2xl p-8 border border-accent/20">
-                <h3 className="font-display text-xl font-bold text-primary-foreground mb-6">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-light-blue/20">
+                <h3 className="font-display text-xl font-bold text-white mb-6">
                   Contact Information
                 </h3>
                 <div className="space-y-6">
                   {contactInfo.map((info) => (
                     <div key={info.title} className="flex gap-4">
-                      <div className="w-10 h-10 rounded-lg gold-metallic flex items-center justify-center shrink-0 shadow-gold">
-                        <info.icon className="w-5 h-5 text-accent-foreground" />
+                      <div className="w-10 h-10 rounded-lg bg-deep-blue flex items-center justify-center shrink-0 shadow-lg">
+                        <info.icon className="w-5 h-5 text-light-blue" />
                       </div>
                       <div>
-                        <div className="font-medium text-primary-foreground mb-1">{info.title}</div>
+                        <div className="font-medium text-white mb-1">{info.title}</div>
                         {info.href ? (
                           <a 
                             href={info.href}
-                            className="text-primary-foreground/70 hover:text-accent transition-colors whitespace-pre-line"
+                            className="text-white/70 hover:text-light-blue transition-colors whitespace-pre-line"
                           >
                             {info.content}
                           </a>
                         ) : (
-                          <div className="text-primary-foreground/70 whitespace-pre-line">
+                          <div className="text-white/70 whitespace-pre-line">
                             {info.content}
                           </div>
                         )}
@@ -368,12 +365,11 @@ export default function Contact() {
       </section>
 
       {/* FAQ Preview */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 50% 20%) 0%, hsl(10 40% 15%) 100%)" }}>
-        <GoldSparkles count={4} />
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(200 75% 30%) 0%, hsl(210 70% 25%) 100%)" }}>
         <div className="container relative z-10 px-4">
           <div className="text-center mb-12">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-              Common <MetallicGoldText>Questions</MetallicGoldText>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-4">
+              Common <span className="text-light-blue">Questions</span>
             </h2>
           </div>
           <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
@@ -392,16 +388,16 @@ export default function Contact() {
               },
               {
                 q: "What support do you offer?",
-                a: "We provide phone, email, and chat support, plus personalized onboarding and training.",
+                a: "Local phone and email support. We're always here to help your business succeed.",
               },
             ].map((faq) => (
-              <motion.div 
-                key={faq.q} 
-                className="glass-dark rounded-xl p-6 border border-accent/20"
-                whileHover={{ borderColor: "hsl(43 100% 50% / 0.4)" }}
+              <motion.div
+                key={faq.q}
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-light-blue/20"
+                whileHover={{ borderColor: "hsl(180 100% 45% / 0.4)" }}
               >
-                <h4 className="font-display font-bold text-primary-foreground mb-2">{faq.q}</h4>
-                <p className="text-primary-foreground/70 text-sm">{faq.a}</p>
+                <h4 className="font-display font-bold text-white mb-2">{faq.q}</h4>
+                <p className="text-white/70 text-sm">{faq.a}</p>
               </motion.div>
             ))}
           </div>

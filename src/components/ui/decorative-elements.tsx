@@ -172,6 +172,33 @@ export function GoldDivider({ className = "" }: { className?: string }) {
   );
 }
 
+export function BlueDivider({ className = "" }: { className?: string }) {
+  return (
+    <div className={`relative h-px ${className}`}>
+      <div 
+        className="absolute inset-0" 
+        style={{
+          background: "linear-gradient(90deg, transparent 0%, hsl(180 100% 45% / 0.5) 50%, transparent 100%)"
+        }}
+      />
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.5, 1, 0.5]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        <Sparkles className="w-4 h-4 text-light-blue" />
+      </motion.div>
+    </div>
+  );
+}
+
 export function MetallicGoldText({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <span 

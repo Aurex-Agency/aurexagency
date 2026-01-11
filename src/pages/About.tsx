@@ -11,7 +11,7 @@ import {
   MapPin
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { GoldSparkles, GoldDivider, MetallicGoldText } from "@/components/ui/decorative-elements";
+import { BlueDivider } from "@/components/ui/decorative-elements";
 
 const values = [
   {
@@ -67,15 +67,13 @@ export default function About() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 50%, hsl(15 70% 30%) 100%)" }}>
-        <GoldSparkles count={10} />
-        
+      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(230 84% 42%) 0%, hsl(210 80% 35%) 50%, hsl(195 85% 35%) 100%)" }}>
         {/* Rotating ring decoration */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[450px] lg:w-[550px] h-[300px] md:h-[450px] lg:h-[550px] pointer-events-none">
           <motion.div
-            className="w-full h-full rounded-full border border-accent/20"
+            className="w-full h-full rounded-full border border-light-blue/20"
             style={{
-              background: "conic-gradient(from 0deg, transparent, hsl(43 100% 50% / 0.1), transparent, hsl(43 100% 50% / 0.1), transparent)"
+              background: "conic-gradient(from 0deg, transparent, hsl(180 100% 45% / 0.1), transparent, hsl(180 100% 45% / 0.1), transparent)"
             }}
             animate={{ rotate: 360 }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -90,48 +88,48 @@ export default function About() {
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
           >
             <motion.h1 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground leading-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight"
+              style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.3)" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              About <MetallicGoldText>Aurex Agency</MetallicGoldText>
+              About <span className="text-light-blue">Aurex Agency</span>
               <motion.div 
-                className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-4"
+                className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-4 bg-light-blue"
                 style={{ width: "50%", maxWidth: "240px" }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <div className="w-full h-full gold-metallic" />
-              </motion.div>
+              />
             </motion.h1>
             <motion.p 
-              className="text-lg md:text-xl text-primary-foreground/80 px-4"
+              className="text-lg md:text-xl text-white/90 px-4 font-medium"
+              style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.3)" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              We're on a mission to help North Mississippi businesses thrive through the power of customer loyalty and smart technology.
+              We're on a mission to help businesses thrive through the power of customer loyalty and smart technology.
             </motion.p>
           </motion.div>
         </div>
         
         {/* Decorative bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
-          <GoldDivider className="absolute bottom-0" />
+          <BlueDivider className="absolute bottom-0" />
         </div>
       </section>
 
       {/* Story */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(15 70% 30%) 0%, hsl(10 50% 20%) 100%)" }}>
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(195 85% 35%) 0%, hsl(200 75% 30%) 100%)" }}>
         <div className="container px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-6">
-                Our <MetallicGoldText>Story</MetallicGoldText>
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-6">
+                Our <span className="text-light-blue">Story</span>
               </h2>
-              <div className="space-y-4 text-primary-foreground/70 leading-relaxed">
+              <div className="space-y-4 text-white/80 leading-relaxed">
                 <p>
                   Aurex Agency was born out of a simple observation: local businesses are the heart of our communities, but they often lack the tools that big corporations use to build customer loyalty.
                 </p>
@@ -147,14 +145,13 @@ export default function About() {
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="glass-dark rounded-3xl p-8 lg:p-12 border border-accent/20">
-                <GoldSparkles count={3} />
+              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-light-blue/20">
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-6">
-                    <MapPin className="w-6 h-6 text-accent animate-glow-pulse" />
-                    <span className="font-display text-xl font-bold text-primary-foreground">Proudly Local</span>
+                    <MapPin className="w-6 h-6 text-light-blue" />
+                    <span className="font-display text-xl font-bold text-white">Proudly Local</span>
                   </div>
-                  <p className="text-primary-foreground/70 mb-6">
+                  <p className="text-white/70 mb-6">
                     Headquartered in Tupelo, MS, serving communities across North Mississippi.
                   </p>
                   <div className="space-y-3">
@@ -167,8 +164,8 @@ export default function About() {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1, duration: 0.4 }}
                       >
-                        <div className="font-display font-bold text-accent w-12">{milestone.year}</div>
-                        <div className="text-primary-foreground">{milestone.event}</div>
+                        <div className="font-display font-bold text-light-blue w-12">{milestone.year}</div>
+                        <div className="text-white">{milestone.event}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -180,14 +177,13 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 50% 20%) 0%, hsl(10 40% 15%) 100%)" }}>
-        <GoldSparkles count={4} />
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(200 75% 30%) 0%, hsl(210 70% 25%) 100%)" }}>
         <div className="container relative z-10 px-4">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-              What We <MetallicGoldText>Stand For</MetallicGoldText>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-4">
+              What We <span className="text-light-blue">Stand For</span>
             </h2>
-            <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto">
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
               Our values guide everything we do, from product development to customer support.
             </p>
           </ScrollReveal>
@@ -195,17 +191,17 @@ export default function About() {
             {values.map((value) => (
               <StaggerItem key={value.title}>
                 <motion.div 
-                  className="glass-dark rounded-2xl p-6 text-center h-full border border-accent/20"
-                  whileHover={{ y: -4, borderColor: "hsl(43 100% 50% / 0.4)" }}
+                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center h-full border border-light-blue/20"
+                  whileHover={{ y: -4, borderColor: "hsl(180 100% 45% / 0.4)" }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-14 h-14 rounded-xl gold-metallic flex items-center justify-center mx-auto mb-4 shadow-gold">
-                    <value.icon className="w-7 h-7 text-accent-foreground" />
+                  <div className="w-14 h-14 rounded-xl bg-deep-blue flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <value.icon className="w-7 h-7 text-light-blue" />
                   </div>
-                  <h3 className="font-display text-lg font-bold text-primary-foreground mb-2">
+                  <h3 className="font-display text-lg font-bold text-white mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-primary-foreground/70 text-sm leading-relaxed">
+                  <p className="text-white/70 text-sm leading-relaxed">
                     {value.description}
                   </p>
                 </motion.div>
@@ -216,13 +212,13 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 40% 15%) 0%, hsl(10 35% 12%) 100%)" }}>
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(210 70% 25%) 0%, hsl(220 65% 22%) 100%)" }}>
         <div className="container px-4">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-              Meet the <MetallicGoldText>Team</MetallicGoldText>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-4">
+              Meet the <span className="text-light-blue">Team</span>
             </h2>
-            <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto">
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
               A dedicated team of local professionals committed to your success.
             </p>
           </ScrollReveal>
@@ -230,16 +226,16 @@ export default function About() {
             {team.map((member) => (
               <StaggerItem key={member.name}>
                 <div className="text-center">
-                  <div className="w-32 h-32 rounded-full gold-metallic mx-auto mb-4 flex items-center justify-center shadow-gold">
-                    <span className="font-display text-3xl font-bold text-accent-foreground">
+                  <div className="w-32 h-32 rounded-full bg-deep-blue mx-auto mb-4 flex items-center justify-center shadow-lg border-2 border-light-blue/30">
+                    <span className="font-display text-3xl font-bold text-light-blue">
                       {member.name.split(' ').map(n => n[0]).join('')}
                     </span>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-primary-foreground mb-1">
+                  <h3 className="font-display text-xl font-bold text-white mb-1">
                     {member.name}
                   </h3>
-                  <div className="text-accent font-medium text-sm mb-3">{member.role}</div>
-                  <p className="text-primary-foreground/70 text-sm">{member.bio}</p>
+                  <div className="text-light-blue font-medium text-sm mb-3">{member.role}</div>
+                  <p className="text-white/70 text-sm">{member.bio}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -248,18 +244,17 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(10 35% 12%) 0%, hsl(0 75% 45%) 100%)" }}>
-        <GoldDivider className="absolute top-0 left-0 right-0" />
-        <GoldSparkles count={6} />
+      <section className="py-16 lg:py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(220 65% 22%) 0%, hsl(230 84% 42%) 100%)" }}>
+        <BlueDivider className="absolute top-0 left-0 right-0" />
         <div className="container text-center relative z-10 px-4">
           <ScrollReveal>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-primary-foreground">
-              Let's Build Something <MetallicGoldText>Together</MetallicGoldText>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-white">
+              Let's Build Something <span className="text-light-blue">Together</span>
             </h2>
-            <p className="text-primary-foreground/70 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
               Ready to see how Aurex Agency can help your business or community thrive?
             </p>
-            <Button variant="accent" size="xl" className="shadow-gold-intense animate-pulse-gold" asChild>
+            <Button variant="accent" size="xl" asChild>
               <Link to="/contact">
                 Get in Touch
                 <ArrowRight className="w-5 h-5" />
