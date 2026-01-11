@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/scroll-reveal";
-import { ArrowRight, Users, Zap, TrendingUp, Building2, Heart, CheckCircle2, Star, Sparkles } from "lucide-react";
+import { ArrowRight, Users, Zap, TrendingUp, Building2, CheckCircle2, Star, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { AppointmentDialog } from "@/components/AppointmentDialog";
 import { useRef } from "react";
-import { GoldSparkles, FloatingOrbs, RetroGridPattern, GoldDivider, MetallicGoldText } from "@/components/ui/decorative-elements";
+import { FloatingOrbs, RetroGridPattern } from "@/components/ui/decorative-elements";
 
 const features = [{
   icon: Users,
@@ -55,12 +55,11 @@ export default function Home() {
     offset: ["start start", "end end"]
   });
   
-  // Background darkening and hue shift on scroll - extracted transforms for better performance
-  const backgroundDarkness = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0.2, 0.5, 0.8]);
+  // Background darkening and hue shift on scroll
+  const backgroundDarkness = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0.1, 0.25, 0.4]);
   const hueRotate = useTransform(scrollYProgress, [0, 1], [0, 25]);
   const saturation = useTransform(scrollYProgress, [0, 0.5, 1], [100, 110, 90]);
   
-  // Pre-compute the filter transform outside JSX to avoid forced reflow
   const backgroundFilter = useTransform(
     [hueRotate, saturation],
     ([hue, sat]) => `hue-rotate(${hue}deg) saturate(${sat}%)`
@@ -89,20 +88,18 @@ export default function Home() {
         <Layout>
           {/* Hero Section */}
           <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden -mt-[73px] pt-[73px]">
-            {/* Animated decorative elements - hidden on mobile for cleaner look */}
+            {/* Animated decorative elements */}
             <div className="hidden md:block">
               <FloatingOrbs />
             </div>
             <RetroGridPattern />
-            <GoldSparkles count={10} className="hidden sm:block" />
             
-            {/* Rotating ring decoration - smaller on mobile */}
             {/* Rotating ring decoration with cyan accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] lg:w-[800px] h-[400px] md:h-[600px] lg:h-[800px] pointer-events-none">
               <motion.div
                 className="w-full h-full rounded-full border border-light-blue/30"
                 style={{
-                  background: "conic-gradient(from 0deg, transparent, hsl(180 100% 50% / 0.15), transparent, hsl(43 100% 50% / 0.1), transparent)"
+                  background: "conic-gradient(from 0deg, transparent, hsl(180 100% 50% / 0.15), transparent, hsl(180 100% 50% / 0.1), transparent)"
                 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -116,19 +113,19 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
               >
-                {/* Glass pill badge - more spacing on mobile */}
+                {/* Glass pill badge */}
                 <motion.div 
                   className="inline-flex items-center gap-2 glass-dark rounded-full px-4 sm:px-5 py-2 sm:py-2.5 mb-6 sm:mb-8 mt-4 sm:mt-0"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-accent animate-glow-pulse" />
-                  <span className="text-xs sm:text-sm font-medium text-primary-foreground">Trusted by businesses and local communities</span>
+                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-light-blue" />
+                  <span className="text-xs sm:text-sm font-medium text-white">Trusted by businesses and local communities</span>
                 </motion.div>
                 
                 <motion.h1 
-                  className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight text-primary-foreground px-2"
+                  className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight text-white px-2 drop-shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -136,36 +133,28 @@ export default function Home() {
                   Grow Your Business with{" "}
                   <span className="block mt-2 sm:mt-3">
                     <span 
-                      className="inline-block drop-shadow-lg"
+                      className="inline-block text-light-blue drop-shadow-lg"
                       style={{
                         fontFamily: "'Righteous', cursive",
                         fontSize: "1.25em",
                         letterSpacing: "0.06em",
-                        background: "linear-gradient(135deg, hsl(48 100% 85%) 0%, hsl(43 100% 65%) 20%, hsl(38 100% 50%) 40%, hsl(43 100% 60%) 60%, hsl(48 100% 80%) 80%, hsl(43 100% 65%) 100%)",
-                        backgroundSize: "300% 300%",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                        animation: "metallicShift 4s ease-in-out infinite",
-                        filter: "drop-shadow(0 4px 20px hsl(43 100% 50% / 0.5))"
+                        textShadow: "0 4px 20px hsl(180 100% 50% / 0.4)"
                       }}
                     >
                       AUREX AGENCY
                     </span>
                     <motion.div 
-                      className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-2 sm:mt-3"
+                      className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-2 sm:mt-3 bg-gradient-to-r from-light-blue/20 via-light-blue to-light-blue/20"
                       style={{ width: "80%", maxWidth: "320px" }}
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
                       transition={{ duration: 0.8, delay: 0.7 }}
-                    >
-                      <div className="w-full h-full gold-metallic" />
-                    </motion.div>
+                    />
                   </span>
                 </motion.h1>
                 
                 <motion.p 
-                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/80 mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto px-2"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto px-2 drop-shadow-md"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
@@ -180,29 +169,27 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   <AppointmentDialog>
-                    <Button variant="accent" size="lg" className="shadow-gold hover:shadow-gold-intense w-full sm:w-auto text-sm sm:text-base">
+                    <Button variant="accent" size="lg" className="w-full sm:w-auto text-sm sm:text-base">
                       Schedule an Appointment
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </Button>
                   </AppointmentDialog>
-                  <Button variant="outline" size="lg" className="glass-dark border-accent/30 text-primary-foreground hover:bg-white/10 hover:border-accent/50 w-full sm:w-auto text-sm sm:text-base" asChild>
+                  <Button variant="outline" size="lg" className="glass-dark border-white/30 text-white hover:bg-white/10 hover:border-white/50 w-full sm:w-auto text-sm sm:text-base" asChild>
                     <Link to="/town-loyalty">Town Loyalty</Link>
                   </Button>
                 </motion.div>
               </motion.div>
             </div>
             
-            {/* Decorative bottom sparkles */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
-              <GoldDivider className="absolute top-1/2" />
-            </div>
+            {/* Decorative bottom divider */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-blue/40 to-transparent" />
           </section>
 
           {/* Stats Bar with Glass Effect */}
           <section className="py-8 sm:py-12 relative">
             <div className="container px-4 sm:px-6">
               <motion.div 
-                className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-accent/20"
+                className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-light-blue/20"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -210,10 +197,10 @@ export default function Home() {
                 <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
                   {stats.map(stat => (
                     <StaggerItem key={stat.label} className="text-center">
-                      <div className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-0.5 sm:mb-1">
-                        <MetallicGoldText>{stat.value}</MetallicGoldText>
+                      <div className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-0.5 sm:mb-1 text-white">
+                        {stat.value}
                       </div>
-                      <div className="text-xs sm:text-sm text-primary-foreground/70">{stat.label}</div>
+                      <div className="text-xs sm:text-sm text-white/70">{stat.label}</div>
                     </StaggerItem>
                   ))}
                 </StaggerContainer>
@@ -223,13 +210,12 @@ export default function Home() {
 
           {/* Features Section */}
           <section className="py-12 sm:py-20 lg:py-28 relative overflow-hidden">
-            <GoldSparkles count={6} className="hidden sm:block" />
             <div className="container relative z-10 px-4 sm:px-6">
               <ScrollReveal className="text-center mb-10 sm:mb-14 lg:mb-18">
-                <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-primary-foreground mb-3 sm:mb-4">
-                  Everything You Need to <MetallicGoldText>Thrive</MetallicGoldText>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 drop-shadow-lg">
+                  Everything You Need to <span className="text-light-blue">Thrive</span>
                 </h2>
-                <p className="text-sm sm:text-base lg:text-lg text-primary-foreground/70 max-w-2xl mx-auto px-2">
+                <p className="text-sm sm:text-base lg:text-lg text-white/80 max-w-2xl mx-auto px-2">
                   From loyalty rewards to automated marketing, we provide the tools to grow your business and keep customers coming back.
                 </p>
               </ScrollReveal>
@@ -237,20 +223,20 @@ export default function Home() {
                 {features.map((feature, index) => (
                   <StaggerItem key={feature.title}>
                     <motion.div 
-                      className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 h-full border border-accent/20 group"
+                      className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 h-full border border-light-blue/20 group"
                       whileHover={{ 
                         y: -8,
-                        borderColor: "hsl(43 100% 50% / 0.4)"
+                        borderColor: "hsl(180 100% 50% / 0.4)"
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl gold-metallic flex items-center justify-center mb-4 sm:mb-6 shadow-gold group-hover:shadow-gold-intense transition-shadow">
-                        <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-accent-foreground" />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl bg-light-blue/20 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-light-blue/30 transition-colors">
+                        <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-light-blue" />
                       </div>
-                      <h3 className="font-display text-lg sm:text-xl font-bold text-primary-foreground mb-2 sm:mb-3">
+                      <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
                         {feature.title}
                       </h3>
-                      <p className="text-sm sm:text-base text-primary-foreground/70 leading-relaxed">
+                      <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                         {feature.description}
                       </p>
                     </motion.div>
@@ -265,10 +251,10 @@ export default function Home() {
             <div className="container px-4 sm:px-6">
               <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
                 <ScrollReveal direction="left">
-                  <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-primary-foreground mb-4 sm:mb-6">
-                    Solutions Built for <MetallicGoldText>Local Success</MetallicGoldText>
+                  <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
+                    Solutions Built for <span className="text-light-blue">Local Success</span>
                   </h2>
-                  <p className="text-sm sm:text-base lg:text-lg text-primary-foreground/70 mb-6 sm:mb-8">
+                  <p className="text-sm sm:text-base lg:text-lg text-white/80 mb-6 sm:mb-8">
                     Whether you're a single business or an entire downtown district, we have the perfect solution to boost customer loyalty and streamline your operations.
                   </p>
                   <ul className="space-y-3 sm:space-y-4">
@@ -281,47 +267,46 @@ export default function Home() {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1, duration: 0.4 }}
                       >
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-accent mt-0.5 shrink-0 animate-glow-pulse" />
-                        <span className="text-sm sm:text-base text-primary-foreground">{item}</span>
+                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-light-blue mt-0.5 shrink-0" />
+                        <span className="text-sm sm:text-base text-white">{item}</span>
                       </motion.li>
                     ))}
                   </ul>
                   <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <Button variant="accent" size="default" className="shadow-gold w-full sm:w-auto" asChild>
+                    <Button variant="accent" size="default" className="w-full sm:w-auto" asChild>
                       <Link to="/town-loyalty">Town Programs</Link>
                     </Button>
-                    <Button variant="outline" size="default" className="glass-dark border-accent/30 text-primary-foreground hover:bg-white/10 w-full sm:w-auto" asChild>
+                    <Button variant="outline" size="default" className="glass-dark border-white/30 text-white hover:bg-white/10 w-full sm:w-auto" asChild>
                       <Link to="/for-businesses">For Businesses</Link>
                     </Button>
                   </div>
                 </ScrollReveal>
                 <ScrollReveal direction="right" delay={0.2}>
-                  <div className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 border border-accent/20 relative">
-                    <GoldSparkles count={4} className="hidden sm:block" />
+                  <div className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 border border-light-blue/20 relative">
                     <div className="grid grid-cols-2 gap-3 sm:gap-4 relative z-10">
                       <motion.div 
-                        className="glass-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-accent/15"
-                        whileHover={{ scale: 1.02, borderColor: "hsl(43 100% 50% / 0.3)" }}
+                        className="glass-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-light-blue/15"
+                        whileHover={{ scale: 1.02, borderColor: "hsl(180 100% 50% / 0.3)" }}
                       >
-                        <Building2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent mb-3 sm:mb-4 animate-glow-pulse" />
-                        <div className="font-display text-xl sm:text-2xl font-bold text-primary-foreground">250+</div>
-                        <div className="text-xs sm:text-sm text-primary-foreground/60">Partner Businesses</div>
+                        <Building2 className="w-8 h-8 sm:w-10 sm:h-10 text-light-blue mb-3 sm:mb-4" />
+                        <div className="font-display text-xl sm:text-2xl font-bold text-white">250+</div>
+                        <div className="text-xs sm:text-sm text-white/60">Partner Businesses</div>
                       </motion.div>
                       <motion.div 
-                        className="glass-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-accent/15"
-                        whileHover={{ scale: 1.02, borderColor: "hsl(43 100% 50% / 0.3)" }}
+                        className="glass-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-light-blue/15"
+                        whileHover={{ scale: 1.02, borderColor: "hsl(180 100% 50% / 0.3)" }}
                       >
-                        <Users className="w-8 h-8 sm:w-10 sm:h-10 text-accent mb-3 sm:mb-4 animate-glow-pulse" />
-                        <div className="font-display text-xl sm:text-2xl font-bold text-primary-foreground">50K+</div>
-                        <div className="text-xs sm:text-sm text-primary-foreground/60">Active Members</div>
+                        <Users className="w-8 h-8 sm:w-10 sm:h-10 text-light-blue mb-3 sm:mb-4" />
+                        <div className="font-display text-xl sm:text-2xl font-bold text-white">50K+</div>
+                        <div className="text-xs sm:text-sm text-white/60">Active Members</div>
                       </motion.div>
                       <motion.div 
-                        className="col-span-2 glass-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-accent/15"
-                        whileHover={{ scale: 1.02, borderColor: "hsl(43 100% 50% / 0.3)" }}
+                        className="col-span-2 glass-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-light-blue/15"
+                        whileHover={{ scale: 1.02, borderColor: "hsl(180 100% 50% / 0.3)" }}
                       >
-                        <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-accent mb-3 sm:mb-4 animate-glow-pulse" />
-                        <div className="font-display text-xl sm:text-2xl font-bold text-primary-foreground">$2.5M+</div>
-                        <div className="text-xs sm:text-sm text-primary-foreground/60">Local Revenue Generated</div>
+                        <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-light-blue mb-3 sm:mb-4" />
+                        <div className="font-display text-xl sm:text-2xl font-bold text-white">$2.5M+</div>
+                        <div className="text-xs sm:text-sm text-white/60">Local Revenue Generated</div>
                       </motion.div>
                     </div>
                   </div>
@@ -332,15 +317,14 @@ export default function Home() {
 
           {/* Testimonials */}
           <section className="pt-16 sm:pt-24 lg:pt-32 pb-16 sm:pb-24 lg:pb-32 relative overflow-hidden">
-            <GoldDivider className="absolute top-0 left-0 right-0" />
-            <GoldSparkles count={6} className="hidden sm:block" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-blue/40 to-transparent" />
             
             <div className="container relative z-10 px-4 sm:px-6 pt-8 sm:pt-10">
               <ScrollReveal className="text-center mb-10 sm:mb-14">
-                <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-primary-foreground mb-3 sm:mb-4">
-                  Loved by <MetallicGoldText>Local Businesses</MetallicGoldText>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 drop-shadow-lg">
+                  Loved by <span className="text-light-blue">Local Businesses</span>
                 </h2>
-                <p className="text-sm sm:text-base lg:text-lg text-primary-foreground/70 px-2">
+                <p className="text-sm sm:text-base lg:text-lg text-white/80 px-2">
                   Hear from business owners who've transformed their customer relationships.
                 </p>
               </ScrollReveal>
@@ -348,24 +332,23 @@ export default function Home() {
                 {testimonials.map(testimonial => (
                   <StaggerItem key={testimonial.author}>
                     <motion.div 
-                      className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 h-full border border-accent/20"
-                      whileHover={{ borderColor: "hsl(43 100% 50% / 0.4)" }}
+                      className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 h-full border border-light-blue/20"
+                      whileHover={{ borderColor: "hsl(180 100% 50% / 0.4)" }}
                     >
                       <div className="flex gap-0.5 sm:gap-1 mb-3 sm:mb-4">
                         {[...Array(5)].map((_, i) => (
                           <Star 
                             key={i} 
-                            className="w-4 h-4 sm:w-5 sm:h-5 fill-accent text-accent animate-glow-pulse" 
-                            style={{ animationDelay: `${i * 0.1}s` }}
+                            className="w-4 h-4 sm:w-5 sm:h-5 fill-light-blue text-light-blue" 
                           />
                         ))}
                       </div>
-                      <blockquote className="text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 leading-relaxed text-primary-foreground">
+                      <blockquote className="text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 leading-relaxed text-white">
                         "{testimonial.quote}"
                       </blockquote>
                       <div>
-                        <div className="font-semibold text-sm sm:text-base text-primary-foreground">{testimonial.author}</div>
-                        <div className="text-primary-foreground/60 text-xs sm:text-sm">
+                        <div className="font-semibold text-sm sm:text-base text-white">{testimonial.author}</div>
+                        <div className="text-white/60 text-xs sm:text-sm">
                           {testimonial.role} • {testimonial.location}
                         </div>
                       </div>
@@ -375,7 +358,7 @@ export default function Home() {
               </StaggerContainer>
             </div>
             
-            <GoldDivider className="absolute bottom-0 left-0 right-0" />
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-blue/40 to-transparent" />
           </section>
 
           {/* CTA Section */}
@@ -383,24 +366,22 @@ export default function Home() {
             <div className="container px-4 sm:px-6">
               <ScrollReveal>
                 <motion.div 
-                  className="glass-dark rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-20 text-center border border-accent/30 relative overflow-hidden"
-                  whileHover={{ borderColor: "hsl(43 100% 50% / 0.5)" }}
+                  className="glass-dark rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-20 text-center border border-light-blue/30 relative overflow-hidden"
+                  whileHover={{ borderColor: "hsl(180 100% 50% / 0.5)" }}
                 >
-                  <GoldSparkles count={8} className="hidden sm:block" />
-                  
                   {/* Decorative corner accents */}
-                  <div className="absolute top-0 left-0 w-20 h-20 sm:w-40 sm:h-40 bg-gradient-to-br from-accent/30 to-transparent rounded-br-full" />
-                  <div className="absolute bottom-0 right-0 w-20 h-20 sm:w-40 sm:h-40 bg-gradient-to-tl from-accent/30 to-transparent rounded-tl-full" />
+                  <div className="absolute top-0 left-0 w-20 h-20 sm:w-40 sm:h-40 bg-gradient-to-br from-light-blue/20 to-transparent rounded-br-full" />
+                  <div className="absolute bottom-0 right-0 w-20 h-20 sm:w-40 sm:h-40 bg-gradient-to-tl from-light-blue/20 to-transparent rounded-tl-full" />
                   
-                  <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-primary-foreground mb-3 sm:mb-4 relative z-10">
-                    Ready to <MetallicGoldText>Grow Your Business</MetallicGoldText>?
+                  <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 relative z-10 drop-shadow-lg">
+                    Ready to <span className="text-light-blue">Grow Your Business</span>?
                   </h2>
-                  <p className="text-sm sm:text-base lg:text-lg text-primary-foreground/70 mb-6 sm:mb-10 max-w-2xl mx-auto relative z-10 px-2">
+                  <p className="text-sm sm:text-base lg:text-lg text-white/80 mb-6 sm:mb-10 max-w-2xl mx-auto relative z-10 px-2">
                     Schedule a free consultation call and see how Aurex Agency can help you build stronger scalable systems, increase customer lifetime value, and allow you to focus on working on your business.
                   </p>
                   <div className="flex justify-center relative z-10">
                     <AppointmentDialog>
-                      <Button variant="accent" size="lg" className="shadow-gold hover:shadow-gold-intense w-full sm:w-auto text-sm sm:text-base">
+                      <Button variant="accent" size="lg" className="w-full sm:w-auto text-sm sm:text-base">
                         Schedule an Appointment
                         <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                       </Button>
