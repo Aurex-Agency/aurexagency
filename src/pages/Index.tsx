@@ -154,12 +154,15 @@ export default function Home() {
                 </motion.h1>
                 
                 <motion.p 
-                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto px-2 drop-shadow-md"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto px-2 font-medium"
+                  style={{
+                    textShadow: "0 2px 10px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(0, 0, 0, 0.2)"
+                  }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                 >
-                  We help North Mississippi businesses build lasting customer relationships through powerful loyalty programs and smart automation solutions.
+                  We help businesses create systems and loyalty programs to boost ROI and scale your business.
                 </motion.p>
                 
                 <motion.div 
