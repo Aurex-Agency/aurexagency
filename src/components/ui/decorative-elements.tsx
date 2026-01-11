@@ -81,11 +81,11 @@ export function GoldSparkles({ count = 12, className = "" }: GoldSparklesProps) 
 export function FloatingOrbs() {
   return (
     <>
-      {/* Large background orbs */}
+      {/* Large background orbs - using blue colors */}
       <motion.div 
-        className="absolute top-20 left-[10%] w-72 h-72 rounded-full opacity-30"
+        className="absolute top-20 left-[10%] w-72 h-72 rounded-full opacity-20 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, hsl(43 100% 50%) 0%, transparent 70%)"
+          background: "radial-gradient(circle, hsl(180 100% 50%) 0%, transparent 70%)"
         }}
         animate={{
           y: [-20, 20, -20],
@@ -99,9 +99,9 @@ export function FloatingOrbs() {
         }}
       />
       <motion.div 
-        className="absolute bottom-40 right-[10%] w-96 h-96 rounded-full opacity-20"
+        className="absolute bottom-40 right-[10%] w-96 h-96 rounded-full opacity-15 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, hsl(0 75% 50%) 0%, transparent 70%)"
+          background: "radial-gradient(circle, hsl(200 90% 50%) 0%, transparent 70%)"
         }}
         animate={{
           y: [20, -20, 20],
@@ -115,18 +115,18 @@ export function FloatingOrbs() {
         }}
       />
       <motion.div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-15"
+        className="absolute top-1/2 left-1/2 w-[500px] h-[500px] rounded-full opacity-10 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, hsl(43 100% 55%) 0%, transparent 60%)"
+          background: "radial-gradient(circle, hsl(180 100% 55%) 0%, transparent 60%)",
+          transform: "translate(-50%, -50%)"
         }}
         animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 180, 360],
+          scale: [1, 1.15, 1],
         }}
         transition={{
           duration: 15,
           repeat: Infinity,
-          ease: "linear"
+          ease: "easeInOut"
         }}
       />
     </>
@@ -135,13 +135,13 @@ export function FloatingOrbs() {
 
 export function RetroGridPattern() {
   return (
-    <div className="absolute inset-0 overflow-hidden opacity-10">
+    <div className="absolute inset-0 overflow-hidden opacity-5 pointer-events-none">
       <div 
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(hsl(43 100% 50% / 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(43 100% 50% / 0.3) 1px, transparent 1px)
+            linear-gradient(hsl(180 100% 50% / 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(180 100% 50% / 0.3) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
         }}
