@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AppointmentDialog } from "@/components/AppointmentDialog";
-import { GoldSparkles, GoldDivider, MetallicGoldText } from "@/components/ui/decorative-elements";
+import { BlueDivider } from "@/components/ui/decorative-elements";
 
 const benefits = [
   {
@@ -67,15 +67,13 @@ export default function TownLoyalty() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-[70vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(0 75% 45%) 0%, hsl(10 80% 40%) 50%, hsl(15 70% 30%) 100%)" }}>
-        <GoldSparkles count={10} />
-        
+      <section className="relative min-h-[70vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(230 84% 42%) 0%, hsl(210 80% 35%) 50%, hsl(195 85% 35%) 100%)" }}>
         {/* Rotating ring decoration */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[500px] lg:w-[650px] h-[350px] md:h-[500px] lg:h-[650px] pointer-events-none">
           <motion.div
-            className="w-full h-full rounded-full border border-accent/20"
+            className="w-full h-full rounded-full border border-light-blue/20"
             style={{
-              background: "conic-gradient(from 0deg, transparent, hsl(43 100% 50% / 0.1), transparent, hsl(43 100% 50% / 0.1), transparent)"
+              background: "conic-gradient(from 0deg, transparent, hsl(180 100% 45% / 0.1), transparent, hsl(180 100% 45% / 0.1), transparent)"
             }}
             animate={{ rotate: 360 }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -90,33 +88,33 @@ export default function TownLoyalty() {
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
           >
             <motion.div 
-              className="inline-flex items-center gap-2 glass-dark rounded-full px-5 py-2.5 mb-8"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <MapPin className="w-4 h-4 text-accent animate-glow-pulse" />
-              <span className="text-sm font-medium text-primary-foreground">Serving North Mississippi Communities</span>
+              <MapPin className="w-4 h-4 text-light-blue" />
+              <span className="text-sm font-medium text-white">Serving North Mississippi Communities</span>
             </motion.div>
             <motion.h1 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground leading-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight"
+              style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.3)" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Town-Wide <MetallicGoldText>Loyalty Programs</MetallicGoldText>
+              Town-Wide <span className="text-light-blue">Loyalty Programs</span>
               <motion.div 
-                className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-4"
+                className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-4 bg-light-blue"
                 style={{ width: "60%", maxWidth: "280px" }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
-              >
-                <div className="w-full h-full gold-metallic" />
-              </motion.div>
+              />
             </motion.h1>
             <motion.p 
-              className="text-lg md:text-xl text-primary-foreground/80 mb-10 px-4"
+              className="text-lg md:text-xl text-white/90 mb-10 px-4 font-medium"
+              style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.3)" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -129,38 +127,38 @@ export default function TownLoyalty() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Button variant="accent" size="xl" className="shadow-gold-intense animate-pulse-gold gold-border-glow" asChild>
+              <Button variant="accent" size="xl" asChild>
                 <Link to="/contact">
                   Get Started
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="xl" className="glass-dark border-accent/30 text-primary-foreground hover:bg-white/10 hover:border-accent/50" asChild>
+              <Button variant="outline" size="xl" className="bg-white/10 backdrop-blur-sm border-light-blue/30 text-white hover:bg-white/20 hover:border-light-blue/50" asChild>
                 <Link to="/about">Learn More</Link>
               </Button>
             </motion.div>
           </motion.div>
         </div>
         
-        {/* Decorative bottom sparkles with more spacing */}
+        {/* Decorative bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
-          <GoldDivider className="absolute bottom-0" />
+          <BlueDivider className="absolute bottom-0" />
         </div>
       </section>
 
       {/* Video Section */}
-      <section className="py-12 lg:py-20 relative" style={{ background: "linear-gradient(180deg, hsl(15 70% 30%) 0%, hsl(15 70% 30%) 100%)" }}>
+      <section className="py-12 lg:py-20 relative" style={{ background: "linear-gradient(180deg, hsl(195 85% 35%) 0%, hsl(195 85% 35%) 100%)" }}>
         <div className="container relative z-10 px-4">
           <ScrollReveal className="text-center mb-8">
-            <h2 className="font-display text-2xl lg:text-3xl font-bold text-primary-foreground mb-3">
-              See Our <MetallicGoldText>Program in Action</MetallicGoldText>
+            <h2 className="font-display text-2xl lg:text-3xl font-bold text-white mb-3">
+              See Our <span className="text-light-blue">Program in Action</span>
             </h2>
-            <p className="text-primary-foreground/70 max-w-xl mx-auto">
+            <p className="text-white/70 max-w-xl mx-auto">
               Watch how town-wide loyalty programs are transforming local communities.
             </p>
           </ScrollReveal>
           <motion.div 
-            className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-gold border border-accent/20"
+            className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg border border-light-blue/20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -176,21 +174,20 @@ export default function TownLoyalty() {
               />
             </div>
           </motion.div>
-          <p className="text-center text-primary-foreground/50 text-sm mt-4">
+          <p className="text-center text-white/50 text-sm mt-4">
             Click video to pause/play
           </p>
         </div>
       </section>
 
       {/* Benefits */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(15 70% 30%) 0%, hsl(10 50% 20%) 100%)" }}>
-        <GoldSparkles count={4} />
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(195 85% 35%) 0%, hsl(200 75% 30%) 100%)" }}>
         <div className="container relative z-10">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-              Why Towns Choose <MetallicGoldText>Aurex Agency</MetallicGoldText>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-4">
+              Why Towns Choose <span className="text-light-blue">Aurex Agency</span>
             </h2>
-            <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto px-4">
+            <p className="text-lg text-white/70 max-w-2xl mx-auto px-4">
               A unified loyalty program creates a rising tide that lifts all local businesses.
             </p>
           </ScrollReveal>
@@ -198,17 +195,17 @@ export default function TownLoyalty() {
             {benefits.map((benefit) => (
               <StaggerItem key={benefit.title}>
                 <motion.div 
-                  className="glass-dark rounded-2xl p-6 h-full border border-accent/20"
-                  whileHover={{ y: -4, borderColor: "hsl(43 100% 50% / 0.4)" }}
+                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 h-full border border-light-blue/20"
+                  whileHover={{ y: -4, borderColor: "hsl(180 100% 45% / 0.4)" }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-12 h-12 rounded-xl gold-metallic flex items-center justify-center mb-4 shadow-gold">
-                    <benefit.icon className="w-6 h-6 text-accent-foreground" />
+                  <div className="w-12 h-12 rounded-xl bg-deep-blue flex items-center justify-center mb-4 shadow-lg">
+                    <benefit.icon className="w-6 h-6 text-light-blue" />
                   </div>
-                  <h3 className="font-display text-lg font-bold text-primary-foreground mb-2">
+                  <h3 className="font-display text-lg font-bold text-white mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-primary-foreground/70 text-sm leading-relaxed">
+                  <p className="text-white/70 text-sm leading-relaxed">
                     {benefit.description}
                   </p>
                 </motion.div>
@@ -219,13 +216,13 @@ export default function TownLoyalty() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 50% 20%) 0%, hsl(10 40% 15%) 100%)" }}>
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(200 75% 30%) 0%, hsl(210 70% 25%) 100%)" }}>
         <div className="container relative z-10">
           <ScrollReveal className="text-center mb-12 lg:mb-16">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-              How It <MetallicGoldText>Works</MetallicGoldText>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-4">
+              How It <span className="text-light-blue">Works</span>
             </h2>
-            <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto px-4">
+            <p className="text-lg text-white/70 max-w-2xl mx-auto px-4">
               Getting started is simple. We guide you through every step.
             </p>
           </ScrollReveal>
@@ -234,16 +231,16 @@ export default function TownLoyalty() {
               {howItWorks.map((step) => (
                 <StaggerItem key={step.title}>
                   <motion.div 
-                    className="glass-dark rounded-2xl p-6 relative overflow-hidden h-full border border-accent/20"
-                    whileHover={{ borderColor: "hsl(43 100% 50% / 0.4)" }}
+                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 relative overflow-hidden h-full border border-light-blue/20"
+                    whileHover={{ borderColor: "hsl(180 100% 45% / 0.4)" }}
                   >
-                    <div className="absolute top-4 right-4 w-12 h-12 rounded-full gold-metallic flex items-center justify-center shadow-gold">
-                      <span className="font-display text-xl font-bold text-accent-foreground">{step.step}</span>
+                    <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-deep-blue flex items-center justify-center shadow-lg">
+                      <span className="font-display text-xl font-bold text-light-blue">{step.step}</span>
                     </div>
-                    <h3 className="font-display text-xl font-bold text-primary-foreground mb-2 pr-16">
+                    <h3 className="font-display text-xl font-bold text-white mb-2 pr-16">
                       {step.title}
                     </h3>
-                    <p className="text-primary-foreground/70 leading-relaxed">
+                    <p className="text-white/70 leading-relaxed">
                       {step.description}
                     </p>
                   </motion.div>
@@ -255,17 +252,16 @@ export default function TownLoyalty() {
       </section>
 
       {/* Features List */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(10 40% 15%) 0%, hsl(10 35% 12%) 100%)" }}>
-        <GoldSparkles count={6} />
+      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(210 70% 25%) 0%, hsl(220 65% 22%) 100%)" }}>
         <div className="container relative z-10 px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
-              <div className="inline-flex items-center gap-2 text-accent text-sm font-semibold mb-4">
-                <Sparkles className="w-4 h-4 animate-glow-pulse" />
+              <div className="inline-flex items-center gap-2 text-light-blue text-sm font-semibold mb-4">
+                <Sparkles className="w-4 h-4" />
                 EVERYTHING INCLUDED
               </div>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground mb-6">
-                A Complete Solution for Your <MetallicGoldText>Community</MetallicGoldText>
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-6">
+                A Complete Solution for Your <span className="text-light-blue">Community</span>
               </h2>
               <ul className="space-y-4">
                 {[
@@ -286,33 +282,32 @@ export default function TownLoyalty() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                   >
-                    <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0 animate-glow-pulse" />
-                    <span className="text-primary-foreground">{item}</span>
+                    <CheckCircle2 className="w-5 h-5 text-light-blue mt-0.5 shrink-0" />
+                    <span className="text-white">{item}</span>
                   </motion.li>
                 ))}
               </ul>
             </ScrollReveal>
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="glass-dark rounded-3xl p-8 lg:p-12 border border-accent/20">
-                <GoldSparkles count={3} />
+              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-light-blue/20">
                 <div className="relative z-10">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 rounded-2xl gold-metallic flex items-center justify-center shadow-gold">
-                      <Users className="w-8 h-8 text-accent-foreground" />
+                    <div className="w-16 h-16 rounded-2xl bg-deep-blue flex items-center justify-center shadow-lg">
+                      <Users className="w-8 h-8 text-light-blue" />
                     </div>
                     <div>
-                      <div className="font-display text-2xl font-bold text-primary-foreground">12 Towns</div>
-                      <div className="text-primary-foreground/60">Already thriving</div>
+                      <div className="font-display text-2xl font-bold text-white">12 Towns</div>
+                      <div className="text-white/60">Already thriving</div>
                     </div>
                   </div>
                   <div className="space-y-3">
                     {["Tupelo", "Oxford", "Corinth", "Starkville"].map((town) => (
-                      <div key={town} className="flex items-center gap-2 text-primary-foreground/70">
-                        <MapPin className="w-4 h-4 text-accent" />
+                      <div key={town} className="flex items-center gap-2 text-white/70">
+                        <MapPin className="w-4 h-4 text-light-blue" />
                         {town}, MS
                       </div>
                     ))}
-                    <div className="text-sm text-primary-foreground/50 pt-2">
+                    <div className="text-sm text-white/50 pt-2">
                       + 8 more communities across North MS
                     </div>
                   </div>
@@ -324,19 +319,18 @@ export default function TownLoyalty() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(10 35% 12%) 0%, hsl(0 75% 45%) 100%)" }}>
-        <GoldDivider className="absolute top-0 left-0 right-0" />
-        <GoldSparkles count={6} />
+      <section className="py-16 lg:py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(220 65% 22%) 0%, hsl(230 84% 42%) 100%)" }}>
+        <BlueDivider className="absolute top-0 left-0 right-0" />
         <div className="container text-center relative z-10 px-4">
           <ScrollReveal>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-primary-foreground">
-              Ready to <MetallicGoldText>Unite Your Town?</MetallicGoldText>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-white">
+              Ready to <span className="text-light-blue">Unite Your Town?</span>
             </h2>
-            <p className="text-primary-foreground/70 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
               Schedule a call with our team to learn how a town-wide loyalty program can transform your local economy.
             </p>
             <AppointmentDialog>
-              <Button variant="accent" size="xl" className="shadow-gold-intense animate-pulse-gold">
+              <Button variant="accent" size="xl">
                 Schedule a Call
                 <ArrowRight className="w-5 h-5" />
               </Button>
