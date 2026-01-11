@@ -185,7 +185,7 @@ export default function Home() {
                     </Button>
                   </AppointmentDialog>
                   <Button variant="outline" size="lg" className="glass-dark border-accent/30 text-primary-foreground hover:bg-white/10 hover:border-accent/50 w-full sm:w-auto text-sm sm:text-base" asChild>
-                    <Link to="/town-loyalty">Learn More</Link>
+                    <Link to="/town-loyalty">Town Loyalty</Link>
                   </Button>
                 </motion.div>
               </motion.div>
