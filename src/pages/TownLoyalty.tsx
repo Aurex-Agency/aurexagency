@@ -148,6 +148,40 @@ export default function TownLoyalty() {
         </div>
       </section>
 
+      {/* Video Section */}
+      <section className="py-12 lg:py-20 relative" style={{ background: "linear-gradient(180deg, hsl(15 70% 30%) 0%, hsl(15 70% 30%) 100%)" }}>
+        <div className="container relative z-10 px-4">
+          <ScrollReveal className="text-center mb-8">
+            <h2 className="font-display text-2xl lg:text-3xl font-bold text-primary-foreground mb-3">
+              See Our <MetallicGoldText>Program in Action</MetallicGoldText>
+            </h2>
+            <p className="text-primary-foreground/70 max-w-xl mx-auto">
+              Watch how town-wide loyalty programs are transforming local communities.
+            </p>
+          </ScrollReveal>
+          <motion.div 
+            className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-gold border border-accent/20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+              <iframe
+                src="https://player.vimeo.com/video/1153263936?h=d982db0d51&autoplay=1&loop=1&muted=1&background=0&badge=0&autopause=0&player_id=0&app_id=58479"
+                className="absolute top-0 left-0 w-full h-full"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="Aurex Agency Town Loyalty Program"
+              />
+            </div>
+          </motion.div>
+          <p className="text-center text-primary-foreground/50 text-sm mt-4">
+            Click video to pause/play
+          </p>
+        </div>
+      </section>
+
       {/* Benefits */}
       <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(15 70% 30%) 0%, hsl(10 50% 20%) 100%)" }}>
         <GoldSparkles count={4} />
