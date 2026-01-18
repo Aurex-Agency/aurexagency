@@ -11,6 +11,13 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+// Solution Pages
+import AILeadReactivation from "./pages/solutions/AILeadReactivation";
+import TradeProAutomation from "./pages/solutions/TradeProAutomation";
+import PatientLifecycleSystems from "./pages/solutions/PatientLifecycleSystems";
+import LegalIntakeVelocity from "./pages/solutions/LegalIntakeVelocity";
+import TownLoyaltyRewards from "./pages/solutions/TownLoyaltyRewards";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -26,6 +33,14 @@ const App = () => (
           <Route path="/for-businesses" element={<ForBusinesses />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          
+          {/* Solution Routes */}
+          <Route path="/solutions/ai-lead-reactivation" element={<AILeadReactivation />} />
+          <Route path="/solutions/trade-pro-automation" element={<TradeProAutomation />} />
+          <Route path="/solutions/patient-lifecycle-systems" element={<PatientLifecycleSystems />} />
+          <Route path="/solutions/legal-intake-velocity" element={<LegalIntakeVelocity />} />
+          <Route path="/solutions/town-loyalty-rewards" element={<TownLoyaltyRewards />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
