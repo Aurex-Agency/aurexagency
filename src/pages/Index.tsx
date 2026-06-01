@@ -1,401 +1,524 @@
-import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/scroll-reveal";
-import { ArrowRight, Users, Zap, TrendingUp, Building2, CheckCircle2, Star, Sparkles } from "lucide-react";
+import { BookCallDialog } from "@/components/BookCallDialog";
+import { Reveal } from "@/components/Reveal";
+import {
+  ArrowRight, PhoneCall, Clock, DatabaseZap, Cog, Check, Phone,
+  ShieldCheck, Sparkles, MapPin, ChevronDown, Bot, Workflow,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { AppointmentDialog } from "@/components/AppointmentDialog";
-import { useRef } from "react";
-import { FloatingOrbs, RetroGridPattern } from "@/components/ui/decorative-elements";
+import { useRef, useState } from "react";
 
-const features = [{
-  icon: Users,
-  title: "Town-Wide Loyalty",
-  description: "Unite your community with a shared rewards program that keeps dollars local."
-}, {
-  icon: Zap,
-  title: "Smart Automations",
-  description: "Save hours weekly with automated follow-ups, reminders, and marketing campaigns."
-}, {
-  icon: TrendingUp,
-  title: "Proven Results",
-  description: "Our clients see an average 35% increase in repeat customer visits."
-}];
+const pains = [
+  { icon: PhoneCall, title: "Missed calls become lost revenue", body: "Voicemails sit. Prospects book with whoever picks up the phone." },
+  { icon: Clock, title: "Slow follow-up kills conversion", body: "Leads that wait two hours convert seven times less than leads answered in five minutes." },
+  { icon: Cog, title: "Your front desk is buried", body: "Manual texting, calling, and rebooking eats every clean hour of the day." },
+  { icon: DatabaseZap, title: "Your database is a goldmine sitting idle", body: "Past patients and customers represent six-figure revenue you have already paid to acquire." },
+];
 
-const testimonials = [{
-  quote: "Aurex Agency transformed how we connect with customers. Our repeat visits are up 40% since joining!",
-  author: "Sarah Johnson",
-  role: "Owner, Main Street Bakery",
-  location: "Tupelo, MS"
-}, {
-  quote: "The automation features alone save me 10+ hours a week. Game changer for small business.",
-  author: "Marcus Williams",
-  role: "Owner, Williams Auto Care",
-  location: "Oxford, MS"
-}];
+const features = [
+  { icon: PhoneCall, title: "Answers every call, 24/7", body: "An AI voice agent that handles inbound calls, qualifies the lead, and books the appointment around the clock." },
+  { icon: Clock, title: "Responds in 60 seconds", body: "Instant lead follow-up by text and chat. Every form, every ad, every DM gets a human-quality reply in under a minute." },
+  { icon: DatabaseZap, title: "Reactivates your database", body: "We turn your existing customer list into booked revenue with AI-driven outreach campaigns." },
+  { icon: Cog, title: "Runs itself", body: "A fully managed system that keeps producing whether or not you are running ads this month." },
+];
 
-const stats = [{
-  value: "50+",
-  label: "Local Businesses"
-}, {
-  value: "35%",
-  label: "Avg. Sales Increase"
-}, {
-  value: "34K+",
-  label: "Loyal Customers"
-}, {
-  value: "98%",
-  label: "Client Satisfaction"
-}];
+const steps = [
+  { n: "01", t: "Audit", b: "We map exactly where you are losing leads, calls, and bookings today." },
+  { n: "02", t: "Build", b: "We install your custom AI infrastructure: voice, chat, automation, and CRM." },
+  { n: "03", t: "Launch", b: "We go live and start capturing every inbound opportunity on day one." },
+  { n: "04", t: "Optimize", b: "We manage, measure, and improve the system every month, forever." },
+];
 
-export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-  
-  // Background darkening and hue shift on scroll
-  const backgroundDarkness = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0.1, 0.25, 0.4]);
-  const hueRotate = useTransform(scrollYProgress, [0, 1], [0, 25]);
-  const saturation = useTransform(scrollYProgress, [0, 0.5, 1], [100, 110, 90]);
-  
-  const backgroundFilter = useTransform(
-    [hueRotate, saturation],
-    ([hue, sat]) => `hue-rotate(${hue}deg) saturate(${sat}%)`
-  );
+const tiers = [
+  {
+    name: "Launchpad",
+    price: "Starting at $3,000",
+    sub: "plus monthly",
+    desc: "Core setup to stop the leaks.",
+    features: ["Missed-call text-back", "Booking automation", "AI website chat", "Reputation + reviews engine", "Single CRM pipeline"],
+    highlight: false,
+  },
+  {
+    name: "Growth Engine",
+    price: "Starting at $7,500",
+    sub: "plus monthly",
+    desc: "Our flagship. The full lead-to-booking engine.",
+    features: ["Everything in Launchpad", "AI voice agent (24/7)", "Database reactivation campaigns", "Paid ad funnel", "Conversion-optimized site"],
+    highlight: true,
+  },
+  {
+    name: "Command Center",
+    price: "Starting at $12,000",
+    sub: "plus monthly",
+    desc: "Full done-for-you AI infrastructure.",
+    features: ["Everything in Growth Engine", "Advanced multi-pipeline automation", "Smart call routing + lead scoring", "Custom dashboards", "Performance guarantee"],
+    highlight: false,
+  },
+];
+
+const faqs = [
+  { q: "How fast can you launch?", a: "Most clients are fully live inside 21 to 30 days from kickoff. Launchpad clients can be live in under two weeks." },
+  { q: "What does it actually cost?", a: "Builds start at $3,000 with a monthly management fee. Flagship Growth Engine builds start at $7,500. Pricing depends on the size and complexity of your operation, and we quote on the call." },
+  { q: "Do I own the system?", a: "Yes. You own your CRM, your data, your phone numbers, and your customer list. If you ever leave, the engine goes with you." },
+  { q: "Is it compliant (HIPAA, texting rules)?", a: "Yes. We build clinic stacks on HIPAA-aligned infrastructure, with BAA-covered tools, A2P 10DLC registered numbers, and full opt-in handling." },
+  { q: "What if I already have a CRM?", a: "We integrate. We have built on top of existing CRMs, EMRs, and job-management systems like AcuLynx. We do not force a rebuild if you have something that works." },
+  { q: "Do you work outside Mississippi?", a: "Yes. We are based in North Mississippi and run client systems remotely across the country." },
+];
+
+export default function Index() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
 
   return (
-    <div ref={containerRef} className="min-h-screen relative">
-      {/* Fixed gradient background - Deep Blue to Light Blue */}
-      <motion.div 
-        className="fixed inset-0 z-0"
-        style={{
-          background: "linear-gradient(180deg, hsl(230 84% 42%) 0%, hsl(220 80% 45%) 25%, hsl(200 90% 45%) 50%, hsl(185 95% 45%) 75%, hsl(180 100% 45%) 100%)",
-          filter: backgroundFilter,
-          willChange: "filter"
-        }}
-      />
-      
-      {/* Subtle darkening overlay for text readability */}
-      <motion.div 
-        className="fixed inset-0 bg-deep-blue-dark/20 pointer-events-none z-[1]"
-        style={{ opacity: backgroundDarkness, willChange: "opacity" }}
-      />
+    <Layout>
+      {/* HERO */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center surface-ink overflow-hidden grain">
+        <motion.div style={{ y: yBg, opacity }} className="absolute inset-0 surface-ink-grad" />
+        <motion.div
+          aria-hidden
+          className="absolute -top-32 -left-32 w-[40rem] h-[40rem] rounded-full blur-3xl opacity-30 animate-drift"
+          style={{ background: "radial-gradient(circle, hsl(38 92% 52% / 0.6), transparent 70%)" }}
+        />
+        <motion.div
+          aria-hidden
+          className="absolute -bottom-32 -right-32 w-[44rem] h-[44rem] rounded-full blur-3xl opacity-25 animate-drift"
+          style={{ background: "radial-gradient(circle, hsl(217 80% 55% / 0.7), transparent 70%)", animationDelay: "-8s" }}
+        />
 
-      {/* Content wrapper */}
-      <div className="relative z-10">
-        <Layout>
-          {/* Hero Section */}
-          <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden -mt-[73px] pt-[73px]">
-            {/* Animated decorative elements */}
-            <div className="hidden md:block">
-              <FloatingOrbs />
+        <div className="container relative z-10 pt-32 pb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-4xl"
+          >
+            <div className="eyebrow eyebrow-amber mb-6">
+              <Sparkles className="w-3.5 h-3.5" />
+              AI Growth Infrastructure for Clinics and Home-Services Brands
             </div>
-            <RetroGridPattern />
-            
-            {/* Rotating ring decoration with cyan accent */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] lg:w-[800px] h-[400px] md:h-[600px] lg:h-[800px] pointer-events-none">
-              <motion.div
-                className="w-full h-full rounded-full border border-light-blue/30"
-                style={{
-                  background: "conic-gradient(from 0deg, transparent, hsl(180 100% 50% / 0.15), transparent, hsl(180 100% 50% / 0.1), transparent)"
-                }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              />
-            </div>
-            
-            <div className="container relative z-10 px-5 sm:px-6">
-              <motion.div 
-                className="max-w-4xl mx-auto text-center" 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-              >
-                {/* Glass pill badge */}
-                <motion.div 
-                  className="inline-flex items-center gap-2 glass-dark rounded-full px-4 sm:px-5 py-2 sm:py-2.5 mb-6 sm:mb-8 mt-4 sm:mt-0"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-light-blue" />
-                  <span className="text-xs sm:text-sm font-medium text-white">Trusted by businesses and local communities</span>
-                </motion.div>
-                
-                <motion.h1 
-                  className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight text-white px-2 drop-shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  Grow Your Business with{" "}
-                  <span className="block mt-2 sm:mt-3">
-                    <span 
-                      className="inline-block text-light-blue drop-shadow-lg"
-                      style={{
-                        fontFamily: "'Righteous', cursive",
-                        fontSize: "1.25em",
-                        letterSpacing: "0.06em",
-                        textShadow: "0 4px 20px hsl(180 100% 50% / 0.4)"
-                      }}
-                    >
-                      AUREX AGENCY
-                    </span>
-                    <motion.div 
-                      className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-2 sm:mt-3 bg-gradient-to-r from-light-blue/20 via-light-blue to-light-blue/20"
-                      style={{ width: "80%", maxWidth: "320px" }}
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.8, delay: 0.7 }}
-                    />
-                  </span>
-                </motion.h1>
-                
-                <motion.p 
-                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto px-2 font-medium"
-                  style={{
-                    textShadow: "0 2px 10px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(0, 0, 0, 0.2)"
-                  }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                >
-                  We help businesses create systems and loyalty programs to boost ROI and scale your business.
-                </motion.p>
-                
-                <motion.div 
-                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                >
-                  <AppointmentDialog>
-                    <Button variant="accent" size="lg" className="w-full sm:w-auto text-sm sm:text-base">
-                      Schedule an Appointment
-                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </Button>
-                  </AppointmentDialog>
-                  <Button variant="outline" size="lg" className="glass-dark border-white/30 text-white hover:bg-white/10 hover:border-white/50 w-full sm:w-auto text-sm sm:text-base" asChild>
-                    <Link to="/town-loyalty">Town Loyalty</Link>
-                  </Button>
-                </motion.div>
-              </motion.div>
-            </div>
-            
-            {/* Decorative bottom divider */}
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-blue/40 to-transparent" />
-          </section>
+            <h1 className="font-display text-cream text-[2.75rem] sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.02] font-medium text-balance">
+              We build the system that books your calendar <span className="italic text-amber">while you sleep.</span>
+            </h1>
+            <p className="mt-8 text-lg lg:text-xl text-cream/70 max-w-2xl leading-relaxed text-pretty">
+              Aurex installs the AI-powered engine that captures every lead, answers every call, and fills your schedule automatically. Built for med spas, hormone clinics, roofers, and HVAC companies.
+            </p>
 
-          {/* Stats Bar with Glass Effect */}
-          <section className="py-8 sm:py-12 relative">
-            <div className="container px-4 sm:px-6">
-              <motion.div 
-                className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-light-blue/20"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-                  {stats.map(stat => (
-                    <StaggerItem key={stat.label} className="text-center">
-                      <div className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-0.5 sm:mb-1 text-white">
-                        {stat.value}
-                      </div>
-                      <div className="text-xs sm:text-sm text-white/70">{stat.label}</div>
-                    </StaggerItem>
-                  ))}
-                </StaggerContainer>
-              </motion.div>
+            <div className="mt-10 flex flex-wrap items-center gap-5">
+              <BookCallDialog>
+                <button className="btn-amber h-14 px-8 text-base">
+                  Book a Strategy Call <ArrowRight className="w-4 h-4" />
+                </button>
+              </BookCallDialog>
+              <Link to="/results" className="text-cream/80 hover:text-amber text-sm font-medium inline-flex items-center gap-2 group">
+                See the results
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
             </div>
-          </section>
 
-          {/* Features Section */}
-          <section className="py-12 sm:py-20 lg:py-28 relative overflow-hidden">
-            <div className="container relative z-10 px-4 sm:px-6">
-              <ScrollReveal className="text-center mb-10 sm:mb-14 lg:mb-18">
-                <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 drop-shadow-lg">
-                  Everything You Need to <span className="text-light-blue">Thrive</span>
-                </h2>
-                <p className="text-sm sm:text-base lg:text-lg text-white/80 max-w-2xl mx-auto px-2">
-                  From loyalty rewards to automated marketing, we provide the tools to grow your business and keep customers coming back.
-                </p>
-              </ScrollReveal>
-              <StaggerContainer className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                {features.map((feature, index) => (
-                  <StaggerItem key={feature.title}>
-                    <motion.div 
-                      className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 h-full border border-light-blue/20 group"
-                      whileHover={{ 
-                        y: -8,
-                        borderColor: "hsl(180 100% 50% / 0.4)"
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl bg-light-blue/20 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-light-blue/30 transition-colors">
-                        <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-light-blue" />
-                      </div>
-                      <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-white/70 leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </motion.div>
-                  </StaggerItem>
-                ))}
-              </StaggerContainer>
+            <p className="mt-10 text-sm text-cream/50 tracking-wide">
+              Trusted by multi-location clinics and growing home-services brands.
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          aria-hidden initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/40"
+        >
+          <ChevronDown className="w-5 h-5 animate-bounce" />
+        </motion.div>
+      </section>
+
+      {/* SOCIAL PROOF */}
+      <section className="surface-cream border-y hairline">
+        <div className="container py-10 lg:py-14 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
+          {[
+            { name: "Uplift Medical", metric: "24+ automated workflows across multiple locations" },
+            { name: "Shurden Roofing", metric: "Fully automated lead-to-job pipeline" },
+          ].map((c) => (
+            <Reveal key={c.name}>
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-3 sm:gap-6">
+                <p className="font-display text-2xl lg:text-3xl text-ink font-medium">{c.name}</p>
+                <p className="text-ink/60 text-sm lg:text-base">{c.metric}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* PROBLEM */}
+      <section className="surface-cream py-24 lg:py-32">
+        <div className="container">
+          <Reveal>
+            <div className="max-w-3xl mb-16">
+              <div className="eyebrow mb-5">The problem</div>
+              <h2 className="font-display text-4xl lg:text-6xl text-ink font-medium leading-[1.05] text-balance">
+                Your next customer already reached out. Did anyone answer?
+              </h2>
+              <p className="mt-6 text-ink/60 text-lg max-w-2xl text-pretty">
+                Missed calls go to voicemail and never call back. Leads sit for hours before anyone responds. The front desk is buried. Good prospects quietly book with the competitor who answered first.
+              </p>
             </div>
-          </section>
+          </Reveal>
 
-          {/* Services Overview */}
-          <section className="py-12 sm:py-20 lg:py-28 relative overflow-hidden">
-            <div className="container px-4 sm:px-6">
-              <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
-                <ScrollReveal direction="left">
-                  <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg">
-                    Solutions Built for <span className="text-light-blue">Local Success</span>
-                  </h2>
-                  <p className="text-sm sm:text-base lg:text-lg text-white/80 mb-6 sm:mb-8">
-                    Whether you're a single business or an entire downtown district, we have the perfect solution to boost customer loyalty and streamline your operations.
-                  </p>
-                  <ul className="space-y-3 sm:space-y-4">
-                    {["Town-wide loyalty programs that benefit every local business", "Individual business loyalty & rewards systems", "Automated marketing and customer follow-ups", "Easy-to-use dashboards and analytics"].map((item, index) => (
-                      <motion.li 
-                        key={item} 
-                        className="flex items-start gap-2 sm:gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1, duration: 0.4 }}
-                      >
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-light-blue mt-0.5 shrink-0" />
-                        <span className="text-sm sm:text-base text-white">{item}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <Button variant="accent" size="default" className="w-full sm:w-auto" asChild>
-                      <Link to="/town-loyalty">Town Programs</Link>
-                    </Button>
-                    <Button variant="outline" size="default" className="glass-dark border-white/30 text-white hover:bg-white/10 w-full sm:w-auto" asChild>
-                      <Link to="/for-businesses">For Businesses</Link>
-                    </Button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {pains.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.08}>
+                <div className="card-premium p-7 h-full">
+                  <div className="w-11 h-11 rounded-lg bg-ink/5 text-ink flex items-center justify-center mb-5">
+                    <p.icon className="w-5 h-5" />
                   </div>
-                </ScrollReveal>
-                <ScrollReveal direction="right" delay={0.2}>
-                  <div className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 border border-light-blue/20 relative">
-                    <div className="grid grid-cols-2 gap-3 sm:gap-4 relative z-10">
-                      <motion.div 
-                        className="glass-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-light-blue/15"
-                        whileHover={{ scale: 1.02, borderColor: "hsl(180 100% 50% / 0.3)" }}
-                      >
-                        <Building2 className="w-8 h-8 sm:w-10 sm:h-10 text-light-blue mb-3 sm:mb-4" />
-                        <div className="font-display text-xl sm:text-2xl font-bold text-white">250+</div>
-                        <div className="text-xs sm:text-sm text-white/60">Partner Businesses</div>
-                      </motion.div>
-                      <motion.div 
-                        className="glass-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-light-blue/15"
-                        whileHover={{ scale: 1.02, borderColor: "hsl(180 100% 50% / 0.3)" }}
-                      >
-                        <Users className="w-8 h-8 sm:w-10 sm:h-10 text-light-blue mb-3 sm:mb-4" />
-                        <div className="font-display text-xl sm:text-2xl font-bold text-white">50K+</div>
-                        <div className="text-xs sm:text-sm text-white/60">Active Members</div>
-                      </motion.div>
-                      <motion.div 
-                        className="col-span-2 glass-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-light-blue/15"
-                        whileHover={{ scale: 1.02, borderColor: "hsl(180 100% 50% / 0.3)" }}
-                      >
-                        <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-light-blue mb-3 sm:mb-4" />
-                        <div className="font-display text-xl sm:text-2xl font-bold text-white">$2.5M+</div>
-                        <div className="text-xs sm:text-sm text-white/60">Local Revenue Generated</div>
-                      </motion.div>
+                  <h3 className="font-display text-xl text-ink mb-2 font-medium">{p.title}</h3>
+                  <p className="text-ink/60 text-sm leading-relaxed">{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SOLUTION */}
+      <section className="surface-cream-warm py-24 lg:py-32 border-y hairline">
+        <div className="container">
+          <Reveal>
+            <div className="max-w-3xl mb-16">
+              <div className="eyebrow eyebrow-amber mb-5">What we do</div>
+              <h2 className="font-display text-4xl lg:text-6xl text-ink font-medium leading-[1.05] text-balance">
+                We do not run your ads and disappear. <span className="italic">We build the engine.</span>
+              </h2>
+              <p className="mt-6 text-ink/60 text-lg max-w-2xl text-pretty">
+                Aurex is an AI infrastructure partner, not a marketing agency. We install the owned system that captures, qualifies, books, and reactivates your leads, then we run and optimize it.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {features.map((f, i) => (
+              <Reveal key={f.title} delay={i * 0.08}>
+                <div className="card-premium p-8 h-full group">
+                  <div className="flex items-start gap-5">
+                    <div className="w-12 h-12 rounded-xl bg-amber/15 text-amber-deep flex items-center justify-center shrink-0 group-hover:bg-amber group-hover:text-ink transition-colors">
+                      <f.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-2xl text-ink mb-2 font-medium">{f.title}</h3>
+                      <p className="text-ink/60 leading-relaxed">{f.body}</p>
                     </div>
                   </div>
-                </ScrollReveal>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CASE STUDIES */}
+      <section className="surface-cream py-24 lg:py-36">
+        <div className="container">
+          <Reveal>
+            <div className="max-w-3xl mb-16">
+              <div className="eyebrow mb-5">Case studies</div>
+              <h2 className="font-display text-4xl lg:text-6xl text-ink font-medium leading-[1.05]">
+                Real systems. <span className="italic">Real results.</span>
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="space-y-8 lg:space-y-12">
+            {[
+              {
+                client: "Uplift Medical",
+                industry: "Multi-location hormone therapy clinic",
+                problem: "Manual scheduling across multiple locations created bottlenecks, dropped leads, and inconsistent patient experience.",
+                built: "A full GoHighLevel system with 24+ workflows, three pipelines, an AI conversation bot, smart call routing, and a custom n8n AI orchestration layer.",
+                outcome: "24+ automated workflows live. Patient response time reduced from hours to seconds. Front desk freed to focus on in-clinic experience.",
+                tag: "Healthcare",
+              },
+              {
+                client: "Shurden Roofing",
+                industry: "Roofing and home services",
+                problem: "Leads from ads, social, and word-of-mouth were scattered across inboxes, DMs, and voicemail with no single source of truth.",
+                built: "An integrated automation stack connecting GoHighLevel, the AcuLynx job system, comment-to-DM automation, and interactive video. One pipeline from first touch to closed job.",
+                outcome: "Fully automated lead-to-job pipeline. Every inbound is captured, qualified, routed, and tracked through to invoice.",
+                tag: "Home Services",
+              },
+            ].map((cs, i) => (
+              <Reveal key={cs.client} delay={i * 0.1}>
+                <article className="card-premium p-8 lg:p-12 grid lg:grid-cols-12 gap-8 lg:gap-12">
+                  <div className="lg:col-span-4">
+                    <span className="inline-block text-[11px] uppercase tracking-[0.22em] font-semibold text-amber-deep mb-3">
+                      {cs.tag}
+                    </span>
+                    <h3 className="font-display text-3xl lg:text-4xl text-ink font-medium leading-tight mb-2">
+                      {cs.client}
+                    </h3>
+                    <p className="text-ink/50 text-sm">{cs.industry}</p>
+                  </div>
+                  <div className="lg:col-span-8 grid sm:grid-cols-3 gap-6">
+                    {[
+                      { label: "Problem", body: cs.problem },
+                      { label: "Built", body: cs.built },
+                      { label: "Outcome", body: cs.outcome },
+                    ].map((b) => (
+                      <div key={b.label}>
+                        <p className="text-[11px] uppercase tracking-[0.22em] font-semibold text-ink/40 mb-2">{b.label}</p>
+                        <p className="text-ink/80 text-sm leading-relaxed">{b.body}</p>
+                      </div>
+                    ))}
+                    <div className="sm:col-span-3 pt-2">
+                      <Link to="/results" className="inline-flex items-center gap-2 text-ink font-medium text-sm group hover:text-amber-deep">
+                        Read the full story <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LIVE AI VOICE DEMO */}
+      <section className="surface-ink relative overflow-hidden grain py-24 lg:py-32">
+        <div className="absolute inset-0 mesh-amber opacity-40 pointer-events-none" />
+        <div className="container relative z-10">
+          <Reveal>
+            <div className="max-w-3xl mb-12">
+              <div className="eyebrow eyebrow-amber mb-5">Live demo</div>
+              <h2 className="font-display text-cream text-4xl lg:text-6xl font-medium leading-[1.05] text-balance">
+                Do not take our word for it. <span className="italic text-amber">Talk to it.</span>
+              </h2>
+              <p className="mt-6 text-cream/70 text-lg max-w-2xl">
+                Call our live AI receptionist right now. It will answer in two rings, qualify you like a trained front-desk lead, and book you on the calendar.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="card-premium bg-ink/40 backdrop-blur border-cream/10 p-8 lg:p-12 max-w-3xl">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-amber text-ink flex items-center justify-center shrink-0">
+                  <Bot className="w-7 h-7" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-cream/60 text-sm mb-1">Live AI receptionist</p>
+                  {/* Retell AI agent — replace with live number */}
+                  <p className="font-display text-3xl text-cream font-medium">(XXX) XXX-XXXX</p>
+                </div>
+                <a href="tel:+10000000000" className="btn-amber h-14 px-8 text-base">
+                  <Phone className="w-4 h-4" /> Call now
+                </a>
+              </div>
+              <p className="text-cream/40 text-xs mt-6">
+                Powered by Retell AI. Live agent. Connected to our calendar in real time.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="surface-cream py-24 lg:py-32">
+        <div className="container">
+          <Reveal>
+            <div className="max-w-3xl mb-16">
+              <div className="eyebrow mb-5">How it works</div>
+              <h2 className="font-display text-4xl lg:text-6xl text-ink font-medium leading-[1.05]">
+                From first call to fully booked in <span className="italic">30 days.</span>
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 rounded-2xl overflow-hidden border hairline">
+            {steps.map((s, i) => (
+              <Reveal key={s.n} delay={i * 0.08}>
+                <div className="bg-cream p-8 lg:p-10 h-full">
+                  <p className="font-display text-amber-deep text-2xl mb-6">{s.n}</p>
+                  <h3 className="font-display text-2xl text-ink mb-3 font-medium">{s.t}</h3>
+                  <p className="text-ink/60 text-sm leading-relaxed">{s.b}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TIERS */}
+      <section className="surface-cream-warm py-24 lg:py-32 border-y hairline">
+        <div className="container">
+          <Reveal>
+            <div className="max-w-3xl mb-16">
+              <div className="eyebrow mb-5">Services</div>
+              <h2 className="font-display text-4xl lg:text-6xl text-ink font-medium leading-[1.05]">
+                Choose your level of <span className="italic">growth.</span>
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {tiers.map((t, i) => (
+              <Reveal key={t.name} delay={i * 0.08}>
+                <div className={`card-premium p-8 lg:p-10 h-full flex flex-col relative ${t.highlight ? "ring-2 ring-amber bg-ink text-cream" : ""}`}>
+                  {t.highlight && (
+                    <span className="absolute -top-3 left-8 bg-amber text-ink text-[11px] font-semibold uppercase tracking-[0.18em] px-3 py-1 rounded-full">
+                      Most popular
+                    </span>
+                  )}
+                  <h3 className={`font-display text-3xl font-medium mb-2 ${t.highlight ? "text-cream" : "text-ink"}`}>{t.name}</h3>
+                  <p className={`text-sm mb-6 ${t.highlight ? "text-cream/70" : "text-ink/60"}`}>{t.desc}</p>
+                  <div className="mb-6">
+                    <p className={`font-display text-3xl font-medium ${t.highlight ? "text-amber" : "text-ink"}`}>{t.price}</p>
+                    <p className={`text-xs ${t.highlight ? "text-cream/50" : "text-ink/50"}`}>{t.sub}</p>
+                  </div>
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {t.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm">
+                        <Check className={`w-4 h-4 mt-0.5 shrink-0 ${t.highlight ? "text-amber" : "text-amber-deep"}`} />
+                        <span className={t.highlight ? "text-cream/85" : "text-ink/75"}>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <BookCallDialog>
+                    <button className={t.highlight ? "btn-amber w-full h-12" : "btn-ghost-ink w-full h-12"}>
+                      Book a call
+                    </button>
+                  </BookCallDialog>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GUARANTEE */}
+      <section className="surface-ink py-20 lg:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 mesh-amber opacity-25 pointer-events-none" />
+        <div className="container relative z-10">
+          <Reveal>
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-12">
+              <div className="w-16 h-16 rounded-2xl bg-amber text-ink flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-7 h-7" />
+              </div>
+              <div className="flex-1">
+                <div className="eyebrow eyebrow-amber mb-3">The guarantee</div>
+                <p className="font-display text-cream text-3xl lg:text-5xl font-medium leading-[1.1] text-balance">
+                  If we do not deliver the booked appointments we promise in your first 90 days, <span className="italic text-amber">we keep working for free until we do.</span>
+                </p>
               </div>
             </div>
-          </section>
+          </Reveal>
+        </div>
+      </section>
 
-          {/* Testimonials */}
-          <section className="pt-16 sm:pt-24 lg:pt-32 pb-16 sm:pb-24 lg:pb-32 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-blue/40 to-transparent" />
-            
-            <div className="container relative z-10 px-4 sm:px-6 pt-8 sm:pt-10">
-              <ScrollReveal className="text-center mb-10 sm:mb-14">
-                <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 drop-shadow-lg">
-                  Loved by <span className="text-light-blue">Local Businesses</span>
-                </h2>
-                <p className="text-sm sm:text-base lg:text-lg text-white/80 px-2">
-                  Hear from business owners who've transformed their customer relationships.
-                </p>
-              </ScrollReveal>
-              <StaggerContainer className="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto pb-8 sm:pb-10">
-                {testimonials.map(testimonial => (
-                  <StaggerItem key={testimonial.author}>
-                    <motion.div 
-                      className="glass-dark rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 h-full border border-light-blue/20"
-                      whileHover={{ borderColor: "hsl(180 100% 50% / 0.4)" }}
-                    >
-                      <div className="flex gap-0.5 sm:gap-1 mb-3 sm:mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            className="w-4 h-4 sm:w-5 sm:h-5 fill-light-blue text-light-blue" 
-                          />
-                        ))}
-                      </div>
-                      <blockquote className="text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 leading-relaxed text-white">
-                        "{testimonial.quote}"
-                      </blockquote>
-                      <div>
-                        <div className="font-semibold text-sm sm:text-base text-white">{testimonial.author}</div>
-                        <div className="text-white/60 text-xs sm:text-sm">
-                          {testimonial.role} • {testimonial.location}
-                        </div>
-                      </div>
-                    </motion.div>
-                  </StaggerItem>
-                ))}
-              </StaggerContainer>
+      {/* FOUNDER */}
+      <section className="surface-cream py-24 lg:py-32">
+        <div className="container grid lg:grid-cols-12 gap-12 items-center">
+          <Reveal className="lg:col-span-7">
+            <div className="eyebrow mb-5">About</div>
+            <h2 className="font-display text-4xl lg:text-5xl text-ink font-medium leading-[1.1] text-balance">
+              Built by an operator, <span className="italic">not an agency middleman.</span>
+            </h2>
+            <p className="mt-6 text-ink/70 text-lg leading-relaxed">
+              Aurex was founded by Kalob Adair, who left a career in local media and advertising to build growth systems hands-on for real businesses. Every system we ship has been built, tested, and run by an operator who has actually owned the outcome.
+            </p>
+            <p className="mt-4 text-ink/60 leading-relaxed">
+              We are based in North Mississippi and run client engines remotely nationwide. Personal, accountable, and built to last.
+            </p>
+            <Link to="/about" className="mt-8 inline-flex items-center gap-2 text-ink font-medium group">
+              Read the full story <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Reveal>
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <div className="aspect-[4/5] rounded-3xl bg-ink/5 border hairline overflow-hidden relative">
+              <img src="/src/assets/aurex-profile.png" alt="Kalob Adair, founder of Aurex Agency" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-ink/10 rounded-3xl pointer-events-none" />
             </div>
-            
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-blue/40 to-transparent" />
-          </section>
+          </Reveal>
+        </div>
+      </section>
 
-          {/* CTA Section */}
-          <section className="py-12 sm:py-20 lg:py-28 relative overflow-hidden">
-            <div className="container px-4 sm:px-6">
-              <ScrollReveal>
-                <motion.div 
-                  className="glass-dark rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-20 text-center border border-light-blue/30 relative overflow-hidden"
-                  whileHover={{ borderColor: "hsl(180 100% 50% / 0.5)" }}
-                >
-                  {/* Decorative corner accents */}
-                  <div className="absolute top-0 left-0 w-20 h-20 sm:w-40 sm:h-40 bg-gradient-to-br from-light-blue/20 to-transparent rounded-br-full" />
-                  <div className="absolute bottom-0 right-0 w-20 h-20 sm:w-40 sm:h-40 bg-gradient-to-tl from-light-blue/20 to-transparent rounded-tl-full" />
-                  
-                  <h2 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 relative z-10 drop-shadow-lg">
-                    Ready to <span className="text-light-blue">Grow Your Business</span>?
-                  </h2>
-                  <p className="text-sm sm:text-base lg:text-lg text-white/80 mb-6 sm:mb-10 max-w-2xl mx-auto relative z-10 px-2">
-                    Schedule a free consultation call and see how Aurex Agency can help you build stronger scalable systems, increase customer lifetime value, and allow you to focus on working on your business.
-                  </p>
-                  <div className="flex justify-center relative z-10">
-                    <AppointmentDialog>
-                      <Button variant="accent" size="lg" className="w-full sm:w-auto text-sm sm:text-base">
-                        Schedule an Appointment
-                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                      </Button>
-                    </AppointmentDialog>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
+      {/* FAQ */}
+      <section className="surface-cream-warm py-24 lg:py-32 border-y hairline">
+        <div className="container grid lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="lg:col-span-4">
+            <div className="eyebrow mb-5">FAQ</div>
+            <h2 className="font-display text-4xl lg:text-5xl text-ink font-medium leading-[1.05]">
+              Answers, before <span className="italic">you ask.</span>
+            </h2>
+          </div>
+          <div className="lg:col-span-8">
+            <FAQList />
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="surface-ink relative overflow-hidden py-24 lg:py-32 grain">
+        <div className="absolute inset-0 surface-ink-grad opacity-90" />
+        <div className="container relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <Reveal>
+            <div className="eyebrow eyebrow-amber mb-5">
+              <MapPin className="w-3.5 h-3.5" /> Limited spots each quarter
             </div>
-          </section>
-        </Layout>
-      </div>
-    </div>
+            <h2 className="font-display text-cream text-5xl lg:text-7xl font-medium leading-[1.02] text-balance">
+              Your competitors are answering. <span className="italic text-amber">Are you?</span>
+            </h2>
+            <p className="mt-6 text-cream/70 text-lg max-w-xl">
+              Book a strategy call. We will map your leak points, sketch the system, and quote it on the call.
+            </p>
+            <div className="mt-8">
+              <BookCallDialog>
+                <button className="btn-amber h-14 px-8 text-base">
+                  Book a Strategy Call <ArrowRight className="w-4 h-4" />
+                </button>
+              </BookCallDialog>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="card-premium bg-cream/5 border-cream/15 backdrop-blur p-2 h-[480px]">
+              {/* GoHighLevel calendar embed slot */}
+              <div className="w-full h-full rounded-xl bg-ink/40 border border-cream/10 flex items-center justify-center text-cream/40 text-sm">
+                GoHighLevel calendar embed
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </Layout>
+  );
+}
+
+function FAQList() {
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  return (
+    <ul className="divide-y hairline border-y hairline">
+      {faqs.map((f, i) => {
+        const open = openIdx === i;
+        return (
+          <li key={f.q}>
+            <button
+              onClick={() => setOpenIdx(open ? null : i)}
+              className="w-full flex items-center justify-between gap-6 py-6 text-left group"
+            >
+              <span className="font-display text-xl lg:text-2xl text-ink font-medium pr-4">{f.q}</span>
+              <span className={`w-9 h-9 rounded-full border hairline flex items-center justify-center shrink-0 transition-all ${open ? "bg-ink text-cream rotate-180" : "text-ink"}`}>
+                <ChevronDown className="w-4 h-4" />
+              </span>
+            </button>
+            <motion.div
+              initial={false}
+              animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <p className="pb-6 text-ink/65 leading-relaxed max-w-2xl">{f.a}</p>
+            </motion.div>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

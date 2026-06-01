@@ -1,406 +1,66 @@
 import { Layout } from "@/components/layout/Layout";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { motion } from "framer-motion";
-import { 
-  Phone, 
-  Mail, 
-  MapPin,
-  Clock,
-  MessageSquare,
-  Calendar
-} from "lucide-react";
-import { useState } from "react";
-import { AppointmentDialog } from "@/components/AppointmentDialog";
-import { BlueDivider } from "@/components/ui/decorative-elements";
-import { z } from "zod";
-import { toast } from "sonner";
-
-// Schema validation for contact form
-const contactSchema = z.object({
-  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
-  phone: z.string().trim().max(20, "Phone number must be less than 20 characters").optional().or(z.literal("")),
-  business: z.string().trim().max(200, "Business name must be less than 200 characters").optional().or(z.literal("")),
-  interest: z.string().min(1, "Please select an option"),
-  message: z.string().trim().max(1000, "Message must be less than 1000 characters").optional().or(z.literal("")),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
-
-const contactInfo = [
-  {
-    icon: Phone,
-    title: "Phone",
-    content: "(662) 555-1234",
-    href: "tel:+16625551234",
-  },
-  {
-    icon: Mail,
-    title: "Email",
-    content: "hello@aurexagency.com",
-    href: "mailto:hello@aurexagency.com",
-  },
-  {
-    icon: MapPin,
-    title: "Service Area",
-    content: "North Mississippi\nTupelo • Oxford • Corinth",
-  },
-  {
-    icon: Clock,
-    title: "Business Hours",
-    content: "Mon–Fri: 8am–6pm\nSat: 9am–1pm",
-  },
-];
+import { Reveal } from "@/components/Reveal";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    business: "",
-    interest: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrors({});
-    
-    // Validate form data
-    const result = contactSchema.safeParse(formData);
-    
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
-      result.error.errors.forEach((err) => {
-        const field = err.path[0] as keyof ContactFormData;
-        fieldErrors[field] = err.message;
-      });
-      setErrors(fieldErrors);
-      toast.error("Please fix the form errors");
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
-    // Form is validated - currently just shows success message
-    // In production, this would send to a backend endpoint
-    setTimeout(() => {
-      toast.success("Thanks for reaching out! We'll be in touch soon.");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        business: "",
-        interest: "",
-        message: "",
-      });
-      setIsSubmitting(false);
-    }, 500);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(230 84% 42%) 0%, hsl(210 80% 35%) 50%, hsl(195 85% 35%) 100%)" }}>
-        {/* Rotating ring decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[450px] lg:w-[550px] h-[300px] md:h-[450px] lg:h-[550px] pointer-events-none">
-          <motion.div
-            className="w-full h-full rounded-full border border-light-blue/20"
-            style={{
-              background: "conic-gradient(from 0deg, transparent, hsl(180 100% 45% / 0.1), transparent, hsl(180 100% 45% / 0.1), transparent)"
-            }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          />
+      <section className="surface-ink grain pt-32 pb-20 lg:pt-40 lg:pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 surface-ink-grad" />
+        <div className="container relative z-10 max-w-4xl">
+          <Reveal>
+            <div className="eyebrow eyebrow-amber mb-5">Contact</div>
+            <h1 className="font-display text-cream text-5xl lg:text-7xl font-medium leading-[1.02] text-balance">
+              Book a strategy call. <span className="italic text-amber">Skip the back-and-forth.</span>
+            </h1>
+            <p className="mt-6 text-cream/70 text-lg max-w-2xl">
+              Pick a time on the calendar. We will map your leak points and sketch the build on the call.
+            </p>
+          </Reveal>
         </div>
-        
-        <div className="container relative z-10 py-20 lg:py-28">
-          <motion.div 
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-          >
-            <motion.h1 
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight"
-              style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.3)" }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Let's <span className="text-light-blue">Talk</span>
-              <motion.div 
-                className="h-1 sm:h-1.5 rounded-full overflow-hidden mx-auto mt-4 bg-light-blue"
-                style={{ width: "40%", maxWidth: "180px" }}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+      </section>
+
+      <section className="surface-cream py-16 lg:py-24">
+        <div className="container grid lg:grid-cols-12 gap-10">
+          <Reveal className="lg:col-span-8">
+            <div className="card-premium p-2 h-[720px] overflow-hidden">
+              {/* GoHighLevel calendar embed */}
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/AlXstlmixEoeJ0nP8wuX"
+                className="w-full h-full rounded-xl"
+                scrolling="yes"
+                style={{ border: "none" }}
+                title="Book a Strategy Call"
               />
-            </motion.h1>
-            <motion.p 
-              className="text-lg md:text-xl text-white/90 px-4 font-medium"
-              style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.3)" }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              Ready to grow your business? Schedule a free demo or reach out with any questions. We're here to help.
-            </motion.p>
-          </motion.div>
-        </div>
-        
-        {/* Decorative bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
-          <BlueDivider className="absolute bottom-0" />
-        </div>
-      </section>
+            </div>
+          </Reveal>
 
-      {/* Contact Form & Info */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(195 85% 35%) 0%, hsl(200 75% 30%) 100%)" }}>
-        <div className="container px-4">
-          <div className="grid lg:grid-cols-5 gap-12">
-            {/* Form */}
-            <div className="lg:col-span-3">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-light-blue/20">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-deep-blue flex items-center justify-center shadow-lg">
-                    <MessageSquare className="w-6 h-6 text-light-blue" />
-                  </div>
-                  <div>
-                    <h2 className="font-display text-xl font-bold text-white">Send Us a Message</h2>
-                    <p className="text-sm text-white/60">We typically respond within 24 hours</p>
-                  </div>
+          <Reveal delay={0.1} className="lg:col-span-4">
+            <div className="space-y-6">
+              <div className="card-premium p-6">
+                <div className="flex items-center gap-3 mb-2 text-ink">
+                  <Mail className="w-4 h-4 text-amber-deep" />
+                  <p className="text-xs uppercase tracking-[0.18em] font-semibold">Email</p>
                 </div>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
-                        Your Name *
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        maxLength={100}
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Smith"
-                        className={`h-12 bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.name ? 'border-red-400' : ''}`}
-                      />
-                      {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                        Email Address *
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        maxLength={255}
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@business.com"
-                        className={`h-12 bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.email ? 'border-red-400' : ''}`}
-                      />
-                      {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
-                    </div>
-                  </div>
-                  
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
-                        Phone Number
-                      </label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        maxLength={20}
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="(662) 555-1234"
-                        className={`h-12 bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.phone ? 'border-red-400' : ''}`}
-                      />
-                      {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
-                    </div>
-                    <div>
-                      <label htmlFor="business" className="block text-sm font-medium text-white mb-2">
-                        Business Name
-                      </label>
-                      <Input
-                        id="business"
-                        name="business"
-                        type="text"
-                        maxLength={200}
-                        value={formData.business}
-                        onChange={handleChange}
-                        placeholder="Your Business Name"
-                        className={`h-12 bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.business ? 'border-red-400' : ''}`}
-                      />
-                      {errors.business && <p className="text-red-400 text-xs mt-1">{errors.business}</p>}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="interest" className="block text-sm font-medium text-white mb-2">
-                      I'm Interested In *
-                    </label>
-                    <select
-                      id="interest"
-                      name="interest"
-                      required
-                      value={formData.interest}
-                      onChange={handleChange}
-                      className={`flex h-12 w-full rounded-lg border border-light-blue/20 bg-white/10 px-3 py-2 text-sm text-white ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-blue focus-visible:ring-offset-2 ${errors.interest ? 'border-red-400' : ''}`}
-                    >
-                      <option value="" className="bg-deep-blue text-white">Select an option...</option>
-                      <option value="town-loyalty" className="bg-deep-blue text-white">Town-Wide Loyalty Program</option>
-                      <option value="business-loyalty" className="bg-deep-blue text-white">Business Loyalty Program</option>
-                      <option value="automations" className="bg-deep-blue text-white">Business Automations</option>
-                      <option value="both" className="bg-deep-blue text-white">Loyalty + Automations</option>
-                      <option value="other" className="bg-deep-blue text-white">Other / General Inquiry</option>
-                    </select>
-                    {errors.interest && <p className="text-red-400 text-xs mt-1">{errors.interest}</p>}
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
-                      Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      maxLength={1000}
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your business and what you're looking to achieve..."
-                      className={`resize-none bg-white/10 border-light-blue/20 text-white placeholder:text-white/40 ${errors.message ? 'border-red-400' : ''}`}
-                    />
-                    {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    variant="accent" 
-                    size="lg" 
-                    className="w-full sm:w-auto"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
-                </form>
+                <a href="mailto:hello@aurexagency.com" className="font-display text-xl text-ink hover:text-amber-deep">hello@aurexagency.com</a>
+              </div>
+              <div className="card-premium p-6">
+                <div className="flex items-center gap-3 mb-2 text-ink">
+                  <Phone className="w-4 h-4 text-amber-deep" />
+                  <p className="text-xs uppercase tracking-[0.18em] font-semibold">Phone</p>
+                </div>
+                <p className="font-display text-xl text-ink">By appointment</p>
+              </div>
+              <div className="card-premium p-6">
+                <div className="flex items-center gap-3 mb-2 text-ink">
+                  <MapPin className="w-4 h-4 text-amber-deep" />
+                  <p className="text-xs uppercase tracking-[0.18em] font-semibold">Based in</p>
+                </div>
+                <p className="font-display text-xl text-ink">North Mississippi</p>
+                <p className="text-ink/60 text-sm mt-1">Serving clients nationwide.</p>
               </div>
             </div>
-            
-            {/* Contact Info */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Schedule an Appointment Card */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-light-blue/30 relative overflow-hidden">
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Calendar className="w-8 h-8 text-light-blue" />
-                    <h3 className="font-display text-xl font-bold text-white">Schedule an Appointment</h3>
-                  </div>
-                  <p className="text-white/70 mb-6">
-                    See Aurex Agency in action. Schedule a free 30-minute call with our team.
-                  </p>
-                  <AppointmentDialog>
-                    <Button variant="accent" size="lg" className="w-full">
-                      Schedule Now
-                    </Button>
-                  </AppointmentDialog>
-                </div>
-              </div>
-              
-              {/* Contact Details */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-light-blue/20">
-                <h3 className="font-display text-xl font-bold text-white mb-6">
-                  Contact Information
-                </h3>
-                <div className="space-y-6">
-                  {contactInfo.map((info) => (
-                    <div key={info.title} className="flex gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-deep-blue flex items-center justify-center shrink-0 shadow-lg">
-                        <info.icon className="w-5 h-5 text-light-blue" />
-                      </div>
-                      <div>
-                        <div className="font-medium text-white mb-1">{info.title}</div>
-                        {info.href ? (
-                          <a 
-                            href={info.href}
-                            className="text-white/70 hover:text-light-blue transition-colors whitespace-pre-line"
-                          >
-                            {info.content}
-                          </a>
-                        ) : (
-                          <div className="text-white/70 whitespace-pre-line">
-                            {info.content}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Preview */}
-      <section className="py-16 lg:py-24 relative" style={{ background: "linear-gradient(180deg, hsl(200 75% 30%) 0%, hsl(210 70% 25%) 100%)" }}>
-        <div className="container relative z-10 px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-4">
-              Common <span className="text-light-blue">Questions</span>
-            </h2>
-          </div>
-          <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
-            {[
-              {
-                q: "How long does setup take?",
-                a: "Most businesses are up and running within 24-48 hours. Town-wide programs typically take 2-4 weeks.",
-              },
-              {
-                q: "Is there a long-term contract?",
-                a: "No! All our plans are month-to-month. You can cancel anytime with no penalties.",
-              },
-              {
-                q: "Do I need special equipment?",
-                a: "No special hardware required. Our system works with your existing devices and POS.",
-              },
-              {
-                q: "What support do you offer?",
-                a: "Local phone and email support. We're always here to help your business succeed.",
-              },
-            ].map((faq) => (
-              <motion.div
-                key={faq.q}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-light-blue/20"
-                whileHover={{ borderColor: "hsl(180 100% 45% / 0.4)" }}
-              >
-                <h4 className="font-display font-bold text-white mb-2">{faq.q}</h4>
-                <p className="text-white/70 text-sm">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
+          </Reveal>
         </div>
       </section>
     </Layout>
