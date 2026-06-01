@@ -433,7 +433,7 @@ export default function Index() {
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-5">
             <div className="aspect-[4/5] rounded-3xl bg-ink/5 border hairline overflow-hidden relative">
-              <img src="/src/assets/aurex-profile.png" alt="Kalob Adair, founder of Aurex Agency" className="w-full h-full object-cover" />
+              <img src={aurexProfile} alt="Kalob Adair, founder of Aurex Agency" className="w-full h-full object-cover" />
               <div className="absolute inset-0 ring-1 ring-inset ring-ink/10 rounded-3xl pointer-events-none" />
             </div>
           </Reveal>
