@@ -8,6 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
+import aurexProfile from "@/assets/aurex-profile.png";
 
 const pains = [
   { icon: PhoneCall, title: "Missed calls become lost revenue", body: "Voicemails sit. Prospects book with whoever picks up the phone." },
