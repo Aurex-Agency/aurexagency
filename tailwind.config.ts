@@ -8,14 +8,13 @@ export default {
     container: {
       center: true,
       padding: "1.5rem",
-      screens: {
-        "2xl": "1280px",
-      },
+      screens: { "2xl": "1280px" },
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Outfit', 'system-ui', 'sans-serif'],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Fraunces", "Georgia", "serif"],
+        serif: ["Fraunces", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -55,21 +54,19 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Brand colors
-        "deep-blue": {
-          DEFAULT: "hsl(230 84% 42%)",
-          light: "hsl(230 75% 55%)",
-          dark: "hsl(230 90% 30%)",
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          soft: "hsl(var(--ink-soft))",
+          muted: "hsl(var(--ink-muted))",
         },
-        "light-blue": {
-          DEFAULT: "hsl(180 100% 45%)",
-          light: "hsl(180 100% 55%)",
-          dark: "hsl(180 100% 35%)",
+        cream: {
+          DEFAULT: "hsl(var(--cream))",
+          warm: "hsl(var(--cream-warm))",
         },
-        gold: {
-          DEFAULT: "hsl(43 100% 50%)",
-          light: "hsl(48 100% 65%)",
-          dark: "hsl(38 100% 45%)",
+        amber: {
+          DEFAULT: "hsl(var(--amber))",
+          soft: "hsl(var(--amber-soft))",
+          deep: "hsl(var(--amber-deep))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
