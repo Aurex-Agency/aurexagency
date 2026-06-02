@@ -1,0 +1,14 @@
+# Aurex
+
+> ROI-first growth partner for local service businesses — med spas, home services, and health practices. Based in North Mississippi, serving clients nationwide.
+
+Aurex helps local service businesses grow predictable revenue through paid acquisition, lead nurture, and retention systems. We work on retainer ($500–$2,500/mo) and offer a loyalty program ($300/mo + $300 setup).
+
+## Pages
+
+- [Home](/): Overview of Aurex, our approach, and proof of results.
+- [Med Spas](/med-spas): Growth solutions tailored for med spas and aesthetic clinics.
+- [Home Services](/home-services): Lead generation and retention for home service businesses.
+- [Health Practices](/health-practices): Patient acquisition systems for health practices.
+- [Results](/results): Client case studies and reviews from businesses in Nashville, Tupelo, Oxford, and Atlanta.
+- [Contact](/contact): Book a free strategy call with the Aurex team.
