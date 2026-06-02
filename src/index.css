@@ -124,9 +124,9 @@ html, body {
   }
   .surface-ink-grad {
     background:
-      radial-gradient(1200px 600px at 20% 0%, hsl(var(--amber) / 0.08), transparent 60%),
-      radial-gradient(900px 500px at 80% 100%, hsl(217 80% 50% / 0.10), transparent 60%),
-      linear-gradient(180deg, hsl(222 50% 7%) 0%, hsl(var(--ink)) 100%);
+      radial-gradient(1200px 600px at 20% 0%, hsl(var(--brand-cyan) / 0.14), transparent 60%),
+      radial-gradient(900px 500px at 80% 100%, hsl(var(--brand-blue) / 0.22), transparent 60%),
+      linear-gradient(180deg, hsl(224 60% 7%) 0%, hsl(var(--ink)) 100%);
   }
   .surface-cream { background: hsl(var(--cream)); }
   .surface-cream-warm { background: hsl(var(--cream-warm)); }
@@ -141,27 +141,29 @@ html, body {
     mix-blend-mode: overlay;
   }
 
-  /* Subtle mesh */
+  /* Brand mesh: deep blue + cyan glow from the logo */
   .mesh-amber {
     background:
-      radial-gradient(40rem 25rem at 15% 10%, hsl(var(--amber) / 0.18), transparent 60%),
-      radial-gradient(35rem 22rem at 90% 0%, hsl(217 80% 50% / 0.12), transparent 60%),
-      radial-gradient(50rem 30rem at 50% 100%, hsl(var(--amber) / 0.10), transparent 70%);
+      radial-gradient(40rem 25rem at 15% 10%, hsl(var(--brand-blue) / 0.18), transparent 60%),
+      radial-gradient(35rem 22rem at 90% 0%, hsl(var(--brand-cyan) / 0.20), transparent 60%),
+      radial-gradient(50rem 30rem at 50% 100%, hsl(var(--brand-blue) / 0.10), transparent 70%);
   }
 
   .hairline { border-color: hsl(var(--hairline)); }
 
+  /* Primary CTA: brand blue to cyan gradient lifted from the logo */
   .btn-amber {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300;
-    background: hsl(var(--amber));
-    color: hsl(var(--ink));
-    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 10px 30px -10px hsl(var(--amber) / 0.55);
+    background: linear-gradient(135deg, hsl(var(--brand-blue)) 0%, hsl(var(--brand-cyan)) 100%);
+    color: hsl(var(--cream));
+    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 12px 32px -10px hsl(var(--brand-blue) / 0.55);
   }
   .btn-amber:hover {
-    background: hsl(var(--amber-soft));
+    background: linear-gradient(135deg, hsl(var(--brand-blue-soft)) 0%, hsl(var(--brand-cyan-soft)) 100%);
     transform: translateY(-1px);
-    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 18px 40px -12px hsl(var(--amber) / 0.7);
+    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 20px 44px -12px hsl(var(--brand-cyan) / 0.65);
   }
+
   .btn-ink {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300;
     background: hsl(var(--ink));
