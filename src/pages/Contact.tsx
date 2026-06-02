@@ -16,8 +16,11 @@ export default function Contact() {
           <Reveal>
             <p className="eyebrow eyebrow-amber mb-5">Contact</p>
             <h1 className="font-display text-5xl lg:text-6xl text-ink text-balance">
-              Tell us where it hurts. We will tell you exactly what to fix.
+              Contact Aurex — Tell us where it hurts.
             </h1>
+            <p className="mt-4 text-xl text-ink/70 max-w-2xl">
+              We will tell you exactly what to fix.
+            </p>
             <p className="mt-6 text-lg text-ink/70 max-w-2xl">
               Real operator on the other end. No SDR pitch, no agency theater.
             </p>

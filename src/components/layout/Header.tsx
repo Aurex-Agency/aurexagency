@@ -43,7 +43,7 @@ export function Header() {
     >
       <nav className="container flex items-center justify-between h-16 lg:h-20">
         <Link to="/" className="flex items-center">
-          <img src={aurexLogoMain} alt="Aurex" className="h-9 lg:h-10 w-auto" />
+          <img src={aurexLogoMain} alt="Aurex — ROI-First Growth Partner" className="h-9 lg:h-10 w-auto" />
         </Link>
 
 
