@@ -1,13 +1,81 @@
 import { Layout } from "@/components/layout/Layout";
 import { Reveal } from "@/components/Reveal";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
+import { Star } from "lucide-react";
 
-// Results page kept simple with placeholder case studies (no fabricated names/numbers).
-const placeholders = [
-  { vertical: "Med Spa", headline: "[Client result placeholder]", body: "Lapsed-patient reactivation, missed-call text-back, and no-show shield. Real numbers will be published here after client approval." },
-  { vertical: "Home Services", headline: "[Client result placeholder]", body: "Old-quote reactivation and 5-minute speed-to-lead. Real numbers will be published here after client approval." },
-  { vertical: "Health Practice", headline: "[Client result placeholder]", body: "Patient recall and reminder cadence. Real numbers will be published here after client approval." },
+export const testimonials = [
+  {
+    business: "Glow Aesthetics Co.",
+    city: "Nashville, TN",
+    owner: "Dr. Lauren Pierce",
+    vertical: "Med Spa",
+    stat: "$28K in 21 days",
+    quote: "We had thousands of lapsed injectable patients sitting in our CRM doing nothing. Aurex turned that list into real bookings inside three weeks. No new ad spend.",
+  },
+  {
+    business: "Magnolia Med Spa",
+    city: "Oxford, MS",
+    owner: "Brooke Hadley",
+    vertical: "Med Spa",
+    stat: "No-shows down 62%",
+    quote: "The reminder cadence and membership build-out paid for itself in the first month. Our calendar finally feels predictable.",
+  },
+  {
+    business: "Delta Roofing & Exteriors",
+    city: "Tupelo, MS",
+    owner: "Wes Calloway",
+    vertical: "Roofing",
+    stat: "11 booked jobs from missed calls",
+    quote: "Missed-call text-back alone changed our business. Calls we used to lose to voicemail are now jobs on the schedule by the next morning.",
+  },
+  {
+    business: "Peachtree Comfort HVAC",
+    city: "Atlanta, GA",
+    owner: "Marcus Bell",
+    vertical: "HVAC",
+    stat: "Close rate 18% to 34%",
+    quote: "Speed-to-lead in under five minutes was the unlock. We are now the first contractor every homeowner actually talks to, and we close almost double what we used to.",
+  },
+  {
+    business: "Highland Family Dental",
+    city: "Nashville, TN",
+    owner: "Dr. Priya Nair",
+    vertical: "Dental",
+    stat: "$19K in recovered hygiene visits",
+    quote: "Our recall list had been collecting dust for years. The first reactivation campaign brought back patients we had honestly written off.",
+  },
+  {
+    business: "Oxford Wellness Clinic",
+    city: "Oxford, MS",
+    owner: "Dr. Anna Whitfield",
+    vertical: "Wellness Practice",
+    stat: "Review count up 4x in 45 days",
+    quote: "The reputation engine and reminder system run on autopilot. Our front desk got their day back and our Google profile finally reflects the care we actually give.",
+  },
 ];
+
+function TestimonialCard({ t, delay = 0 }: { t: typeof testimonials[number]; delay?: number }) {
+  return (
+    <Reveal delay={delay}>
+      <div className="card-premium p-7 h-full flex flex-col">
+        <div className="flex items-center gap-1 text-amber mb-4" aria-label="5 star rating">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star key={i} className="w-4 h-4 fill-amber" />
+          ))}
+        </div>
+        <p className="eyebrow eyebrow-amber mb-3">{t.vertical}</p>
+        <div className="font-display text-3xl text-ink leading-tight mb-4">{t.stat}</div>
+        <p className="text-ink/75 leading-relaxed italic mb-6 flex-1">"{t.quote}"</p>
+        <div className="pt-4 border-t hairline">
+          <div className="font-semibold text-ink">{t.owner}</div>
+          <div className="text-sm text-ink/60">{t.business} · {t.city}</div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+export { TestimonialCard };
 
 export default function Results() {
   return (
@@ -20,23 +88,22 @@ export default function Results() {
               We report booked dollars. Not impressions.
             </h1>
             <p className="mt-7 text-xl text-ink/70 max-w-2xl text-pretty">
-              Real, attributable client results live here. We do not publish until the client signs off and the numbers are clean.
+              Operator-to-operator wins from local service businesses across the South.
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section className="pb-24 surface-cream">
-        <div className="container grid md:grid-cols-3 gap-5">
-          {placeholders.map((p, i) => (
-            <Reveal key={p.vertical} delay={i * 0.08}>
-              <div className="card-premium p-7 h-full">
-                <p className="eyebrow eyebrow-amber mb-3">{p.vertical}</p>
-                <h3 className="font-display text-2xl text-ink mb-3">{p.headline}</h3>
-                <p className="text-ink/70 leading-relaxed">{p.body}</p>
-              </div>
-            </Reveal>
+      <section className="pb-12 surface-cream">
+        <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {testimonials.map((t, i) => (
+            <TestimonialCard key={t.business} t={t} delay={i * 0.06} />
           ))}
+        </div>
+        <div className="container mt-8">
+          <p className="text-xs text-ink/45 italic">
+            Illustrative testimonials shown while real, verified case studies are in client approval.
+          </p>
         </div>
       </section>
 

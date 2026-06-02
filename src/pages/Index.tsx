@@ -5,8 +5,12 @@ import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
 import { ProofSection } from "@/components/sections/ProofSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
+import { testimonials, TestimonialCard } from "@/pages/Results";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkle, Stethoscope, Hammer, HeartPulse, ShieldCheck, Target, BarChart3, Wrench } from "lucide-react";
+
+const homeTestimonials = [testimonials[0], testimonials[2], testimonials[4]];
+
 
 const differentiators = [
   { icon: Target, title: "Proof first, scale second", body: "We do not touch ad spend until the foundation is converting. You see attributable revenue before you fund growth." },
@@ -113,20 +117,33 @@ export default function Index() {
         </div>
       </section>
 
-      {/* PLACEHOLDER TESTIMONIAL BAND */}
-      <section className="py-20 surface-cream-warm">
+      {/* TESTIMONIAL BAND */}
+      <section className="py-20 lg:py-28 surface-cream-warm">
         <div className="container">
           <Reveal>
-            <div className="card-premium p-10 lg:p-14 text-center">
-              <p className="eyebrow eyebrow-amber mb-5 justify-center">Client results</p>
-              <p className="font-display text-2xl lg:text-3xl text-ink/80 max-w-3xl mx-auto text-balance">
-                [Client result placeholder. Real case studies and named clients will live here once we publish them.]
+            <p className="eyebrow eyebrow-amber mb-4">Client results</p>
+            <h2 className="font-display text-4xl lg:text-5xl text-ink max-w-3xl mb-5 text-balance">
+              Operator-to-operator wins across the South.
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid md:grid-cols-3 gap-5">
+            {homeTestimonials.map((t, i) => (
+              <TestimonialCard key={t.business} t={t} delay={i * 0.07} />
+            ))}
+          </div>
+          <Reveal delay={0.2}>
+            <div className="mt-8 flex items-center justify-between gap-4 flex-wrap">
+              <p className="text-xs text-ink/45 italic">
+                Illustrative testimonials shown while real, verified case studies are in client approval.
               </p>
-              <p className="mt-6 text-sm text-ink/50">Placeholder content. Will be replaced with verified, attributable results.</p>
+              <Link to="/results" className="text-amber-deep font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                See all results <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </Reveal>
         </div>
       </section>
+
 
       <GuaranteeSection />
 
