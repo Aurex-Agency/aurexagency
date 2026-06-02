@@ -28,7 +28,7 @@ export default function HomeServices() {
           "@type": "Service",
           name: "Home Services Lead Systems",
           serviceType: "Lead generation and follow-up for home service businesses",
-          provider: { "@type": "Organization", name: "Aurex", url: "https://aurexagency.lovable.app/" },
+          provider: { "@type": "Organization", name: "Aurex", url: "https://aurexagency.com/" },
           areaServed: "US",
           audience: { "@type": "BusinessAudience", audienceType: "Roofers, HVAC, and plumbing contractors" },
           description: "Missed-call text-back, 5-minute lead response, quote follow-up, and review generation for trades.",
