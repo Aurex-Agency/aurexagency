@@ -28,7 +28,7 @@ export default function HealthPractices() {
           "@type": "Service",
           name: "Patient Recall and Acquisition Systems",
           serviceType: "Patient communication and acquisition for health practices",
-          provider: { "@type": "Organization", name: "Aurex", url: "https://aurexagency.com/" },
+          provider: { "@type": "Organization", name: "Aurex", url: "https://www.aurexagency.com/" },
           areaServed: "US",
           audience: { "@type": "BusinessAudience", audienceType: "Clinics, dental practices, and wellness practices" },
           description: "Patient recall, new-patient inquiry response, automated reminders, and reputation systems for health practices.",

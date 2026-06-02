@@ -104,16 +104,16 @@ export default function MedSpasFacebookAds() {
             description:
               "A practical guide to running Facebook and Instagram ads for med spas, including offers, audiences, benchmarks, and the follow-up system behind profitable ad spend.",
             author: { "@type": "Organization", name: "Aurex" },
-            publisher: { "@type": "Organization", name: "Aurex", url: "https://aurexagency.com/" },
-            mainEntityOfPage: "https://aurexagency.com/med-spas/facebook-ads",
+            publisher: { "@type": "Organization", name: "Aurex", url: "https://www.aurexagency.com/" },
+            mainEntityOfPage: "https://www.aurexagency.com/med-spas/facebook-ads",
           },
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://aurexagency.com/" },
-              { "@type": "ListItem", position: 2, name: "Med Spas", item: "https://aurexagency.com/med-spas" },
-              { "@type": "ListItem", position: 3, name: "Facebook Ads for Med Spas", item: "https://aurexagency.com/med-spas/facebook-ads" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.aurexagency.com/" },
+              { "@type": "ListItem", position: 2, name: "Med Spas", item: "https://www.aurexagency.com/med-spas" },
+              { "@type": "ListItem", position: 3, name: "Facebook Ads for Med Spas", item: "https://www.aurexagency.com/med-spas/facebook-ads" },
             ],
           },
         ]}

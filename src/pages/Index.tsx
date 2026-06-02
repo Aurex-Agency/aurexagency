@@ -37,7 +37,7 @@ export default function Index() {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Aurex",
-          url: "https://aurexagency.com/",
+          url: "https://www.aurexagency.com/",
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "5",
