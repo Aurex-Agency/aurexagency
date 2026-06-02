@@ -5,16 +5,15 @@ const cols = {
   Site: [
     { name: "Home", href: "/" },
     { name: "Results", href: "/results" },
-    { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ],
-  Verticals: [
-    { name: "Med Spas & Hormone Clinics", href: "/services" },
-    { name: "Roofing & HVAC", href: "/services" },
+  Industries: [
+    { name: "Med Spas", href: "/med-spas" },
+    { name: "Home Services", href: "/home-services" },
+    { name: "Health Practices", href: "/health-practices" },
   ],
-  Flagship: [
-    { name: "Growth Engine", href: "/growth-engine" },
-    { name: "Book a Strategy Call", href: "/contact" },
+  Start: [
+    { name: "Free Revenue Audit", href: "/contact#audit" },
   ],
 };
 
@@ -26,11 +25,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           <div>
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <img src={aurexLogoMain} alt="Aurex Agency" className="h-10 w-auto" />
+              <img src={aurexLogoMain} alt="Aurex" className="h-10 w-auto" />
               <span className="font-display text-2xl text-cream">Aurex</span>
             </Link>
             <p className="text-cream/60 text-sm leading-relaxed max-w-xs">
-              AI growth infrastructure for med spas, hormone clinics, roofers, and HVAC companies.
+              The ROI-first growth partner. We prove revenue from the assets you already own before you scale your spend.
             </p>
           </div>
 
@@ -55,11 +54,11 @@ export function Footer() {
         <div className="divider-thin mt-14 mb-6 opacity-30" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-cream/40 text-sm">
-            © {new Date().getFullYear()} Aurex Agency. All rights reserved.
+            © {new Date().getFullYear()} Aurex. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-cream/40 text-sm">
             <a href="mailto:hello@aurexagency.com" className="hover:text-amber">hello@aurexagency.com</a>
-            <span>North Mississippi. Serving nationwide.</span>
+            <span>North Mississippi. Serving local service businesses nationwide.</span>
           </div>
         </div>
       </div>

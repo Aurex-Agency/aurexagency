@@ -2,15 +2,15 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookCallDialog } from "@/components/BookCallDialog";
 import aurexLogoMain from "@/assets/aurex-logo-main.png";
 
 const nav = [
   { name: "Home", href: "/" },
+  { name: "Med Spas", href: "/med-spas" },
+  { name: "Home Services", href: "/home-services" },
+  { name: "Health Practices", href: "/health-practices" },
   { name: "Results", href: "/results" },
-  { name: "Services", href: "/services" },
-  { name: "About", href: "/about" },
-  { name: "Growth Engine", href: "/growth-engine" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Header() {
@@ -27,17 +27,23 @@ export function Header() {
 
   useEffect(() => { setOpen(false); }, [location.pathname]);
 
+  const goAudit = () => {
+    if (location.pathname === "/contact") {
+      document.getElementById("audit")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = "/contact#audit";
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-cream/85 backdrop-blur-xl border-b hairline"
-          : "bg-transparent"
+        scrolled ? "bg-cream/85 backdrop-blur-xl border-b hairline" : "bg-transparent"
       }`}
     >
       <nav className="container flex items-center justify-between h-16 lg:h-20">
         <Link to="/" className="flex items-center gap-2">
-          <img src={aurexLogoMain} alt="Aurex Agency" className="h-9 lg:h-10 w-auto" />
+          <img src={aurexLogoMain} alt="Aurex" className="h-9 lg:h-10 w-auto" />
           <span className="font-display text-xl font-medium text-ink hidden sm:inline">Aurex</span>
         </Link>
 
@@ -48,7 +54,7 @@ export function Header() {
               <Link
                 key={n.name}
                 to={n.href}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-full text-sm font-medium transition-colors ${
                   active ? "text-ink" : "text-ink/60 hover:text-ink"
                 }`}
               >
@@ -59,9 +65,7 @@ export function Header() {
         </div>
 
         <div className="hidden lg:block">
-          <BookCallDialog>
-            <button className="btn-amber px-5 h-11 text-sm">Book a Strategy Call</button>
-          </BookCallDialog>
+          <button onClick={goAudit} className="btn-amber px-5 h-11 text-sm">Book a Call</button>
         </div>
 
         <button
@@ -93,9 +97,7 @@ export function Header() {
                 </Link>
               ))}
               <div className="pt-3">
-                <BookCallDialog>
-                  <button className="btn-amber w-full h-12">Book a Strategy Call</button>
-                </BookCallDialog>
+                <button onClick={goAudit} className="btn-amber w-full h-12">Book a Call</button>
               </div>
             </div>
           </motion.div>
