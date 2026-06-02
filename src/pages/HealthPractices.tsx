@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { IndustryHero } from "@/components/sections/IndustryHero";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
@@ -18,6 +19,11 @@ const gaps = [
 export default function HealthPractices() {
   return (
     <Layout>
+      <Seo
+        title="Patient Recall & Acquisition Systems | Aurex"
+        description="Recall the patients you have already earned and stop losing them to no-shows. Aurex builds patient communication systems for clinics, dental, and wellness practices."
+        path="/health-practices"
+      />
       <IndustryHero
         eyebrow="For Clinics, Dental, and Wellness Practices"
         headline="Recall the patients you have already earned, and stop losing them to no-shows."

@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { IndustryHero } from "@/components/sections/IndustryHero";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
@@ -18,6 +19,11 @@ const gaps = [
 export default function HomeServices() {
   return (
     <Layout>
+      <Seo
+        title="Lead Systems for Roofers, HVAC & Plumbers | Aurex"
+        description="Stop letting jobs go to voicemail. Aurex turns missed calls and cold quotes into booked jobs for home service businesses, with 5-minute lead response built in."
+        path="/home-services"
+      />
       <IndustryHero
         eyebrow="For Roofers, HVAC, and Plumbers"
         headline="Stop letting jobs go to voicemail. Turn missed calls and old quotes into booked jobs."
