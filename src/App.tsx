@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import MedSpas from "./pages/MedSpas";
+import MedSpasFacebookAds from "./pages/MedSpasFacebookAds";
 import HomeServices from "./pages/HomeServices";
 import HealthPractices from "./pages/HealthPractices";
 import Results from "./pages/Results";
@@ -24,6 +25,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/med-spas" element={<MedSpas />} />
+          <Route path="/med-spas/facebook-ads" element={<MedSpasFacebookAds />} />
           <Route path="/home-services" element={<HomeServices />} />
           <Route path="/health-practices" element={<HealthPractices />} />
           <Route path="/results" element={<Results />} />
