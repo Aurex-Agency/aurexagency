@@ -30,7 +30,7 @@ export default function Index() {
   return (
     <Layout>
       <Seo
-        title="Aurex | The ROI-First Growth Partner for Local Service Businesses"
+        title="Aurex | ROI-First Growth for Local Service Businesses"
         description="Aurex turns dormant customers, missed calls, and slow follow-up into booked revenue in 30 days, before you spend a dollar on ads."
         path="/"
         jsonLd={{
