@@ -23,6 +23,16 @@ export default function HealthPractices() {
         title="Patient Recall & Acquisition Systems | Aurex"
         description="Recall the patients you have already earned and stop losing them to no-shows. Aurex builds patient communication systems for clinics, dental, and wellness practices."
         path="/health-practices"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Patient Recall and Acquisition Systems",
+          serviceType: "Patient communication and acquisition for health practices",
+          provider: { "@type": "Organization", name: "Aurex", url: "https://aurexagency.lovable.app/" },
+          areaServed: "US",
+          audience: { "@type": "BusinessAudience", audienceType: "Clinics, dental practices, and wellness practices" },
+          description: "Patient recall, new-patient inquiry response, automated reminders, and reputation systems for health practices.",
+        }}
       />
       <IndustryHero
         eyebrow="For Clinics, Dental, and Wellness Practices"

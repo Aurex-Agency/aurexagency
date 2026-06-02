@@ -85,6 +85,26 @@ export default function Results() {
         title="Client Results & Reviews | Aurex"
         description="Real revenue from real clients. See how med spas, roofers, and practices in Nashville, Tupelo, Oxford, and Atlanta book more revenue with Aurex."
         path="/results"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Aurex",
+          url: "https://aurexagency.lovable.app/",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "5",
+            reviewCount: String(testimonials.length),
+            bestRating: "5",
+            worstRating: "1",
+          },
+          review: testimonials.map((t) => ({
+            "@type": "Review",
+            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+            author: { "@type": "Person", name: t.owner },
+            itemReviewed: { "@type": "LocalBusiness", name: t.business, address: t.city },
+            reviewBody: t.quote,
+          })),
+        }}
       />
       <section className="pt-32 lg:pt-44 pb-16 surface-cream">
         <div className="container">
