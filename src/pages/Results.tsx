@@ -89,7 +89,7 @@ export default function Results() {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Aurex",
-          url: "https://aurexagency.lovable.app/",
+          url: "https://aurexagency.com/",
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "5",
