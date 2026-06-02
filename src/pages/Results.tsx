@@ -111,7 +111,7 @@ export default function Results() {
           <Reveal>
             <p className="eyebrow eyebrow-amber mb-5">Results</p>
             <h1 className="font-display text-5xl lg:text-7xl text-ink max-w-4xl text-balance">
-              We report booked dollars. Not impressions.
+              Aurex Results — We report booked dollars.
             </h1>
             <p className="mt-7 text-xl text-ink/70 max-w-2xl text-pretty">
               Operator-to-operator wins from local service businesses across the South.
