@@ -26,8 +26,8 @@ export function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-2 mb-4">
               <img src={aurexLogoMain} alt="Aurex" className="h-10 w-auto" />
-              <span className="font-display text-2xl text-cream">Aurex</span>
             </Link>
+
             <p className="text-cream/60 text-sm leading-relaxed max-w-xs">
               The ROI-first growth partner. We prove revenue from the assets you already own before you scale your spend.
             </p>
