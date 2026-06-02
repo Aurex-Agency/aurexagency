@@ -5,7 +5,7 @@ import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
 import { ProofSection } from "@/components/sections/ProofSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
-import Results, { testimonials, TestimonialCard } from "@/pages/Results";
+import { testimonials, TestimonialCard } from "@/pages/Results";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkle, Stethoscope, Hammer, HeartPulse, ShieldCheck, Target, BarChart3, Wrench } from "lucide-react";
 
