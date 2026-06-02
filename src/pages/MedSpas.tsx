@@ -23,6 +23,16 @@ export default function MedSpas() {
         title="Med Spa Growth Systems | Aurex"
         description="Fill your med spa calendar with $500+ visits. Aurex reactivates lapsed patients, captures missed calls, and cuts no-shows, before you scale ad spend."
         path="/med-spas"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Med Spa Growth Systems",
+          serviceType: "Marketing and patient acquisition for med spas",
+          provider: { "@type": "Organization", name: "Aurex", url: "https://aurexagency.lovable.app/" },
+          areaServed: "US",
+          audience: { "@type": "BusinessAudience", audienceType: "Med spas and aesthetic clinics" },
+          description: "Lead capture, lapsed patient reactivation, no-show reduction, and membership growth for med spas.",
+        }}
       />
       <IndustryHero
         eyebrow="For Med Spas and Aesthetics"

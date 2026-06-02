@@ -33,6 +33,19 @@ export default function Index() {
         title="Aurex | The ROI-First Growth Partner for Local Service Businesses"
         description="Aurex turns dormant customers, missed calls, and slow follow-up into booked revenue in 30 days, before you spend a dollar on ads."
         path="/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Aurex",
+          url: "https://aurexagency.lovable.app/",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "5",
+            reviewCount: String(testimonials.length),
+            bestRating: "5",
+            worstRating: "1",
+          },
+        }}
       />
       {/* HERO */}
       <section className="relative pt-32 lg:pt-44 pb-24 lg:pb-32 surface-cream overflow-hidden">
