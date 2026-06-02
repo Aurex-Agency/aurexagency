@@ -42,10 +42,10 @@ export function Header() {
       }`}
     >
       <nav className="container flex items-center justify-between h-16 lg:h-20">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center">
           <img src={aurexLogoMain} alt="Aurex" className="h-9 lg:h-10 w-auto" />
-          <span className="font-display text-xl font-medium text-ink hidden sm:inline">Aurex</span>
         </Link>
+
 
         <div className="hidden lg:flex items-center gap-1">
           {nav.map((n) => {
