@@ -31,7 +31,7 @@ export function Header() {
     if (location.pathname === "/contact") {
       document.getElementById("audit")?.scrollIntoView({ behavior: "smooth" });
     } else {
-      window.location.href = "/contact#audit";
+      window.location.href = "/contact";
     }
   };
 
