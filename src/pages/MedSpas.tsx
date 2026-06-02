@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { IndustryHero } from "@/components/sections/IndustryHero";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
@@ -18,6 +19,11 @@ const gaps = [
 export default function MedSpas() {
   return (
     <Layout>
+      <Seo
+        title="Med Spa Growth Systems | Aurex"
+        description="Fill your med spa calendar with $500+ visits. Aurex reactivates lapsed patients, captures missed calls, and cuts no-shows, before you scale ad spend."
+        path="/med-spas"
+      />
       <IndustryHero
         eyebrow="For Med Spas and Aesthetics"
         headline="Fill your calendar with $500+ visits, starting with the patients already in your system."

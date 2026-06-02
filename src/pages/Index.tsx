@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
@@ -28,6 +29,11 @@ const industries = [
 export default function Index() {
   return (
     <Layout>
+      <Seo
+        title="Aurex | The ROI-First Growth Partner for Local Service Businesses"
+        description="Aurex turns dormant customers, missed calls, and slow follow-up into booked revenue in 30 days, before you spend a dollar on ads."
+        path="/"
+      />
       {/* HERO */}
       <section className="relative pt-32 lg:pt-44 pb-24 lg:pb-32 surface-cream overflow-hidden">
         <div className="absolute inset-0 mesh-amber opacity-50 pointer-events-none" />

@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { Star } from "lucide-react";
@@ -80,6 +81,11 @@ export { TestimonialCard };
 export default function Results() {
   return (
     <Layout>
+      <Seo
+        title="Client Results & Reviews | Aurex"
+        description="Real revenue from real clients. See how med spas, roofers, and practices in Nashville, Tupelo, Oxford, and Atlanta book more revenue with Aurex."
+        path="/results"
+      />
       <section className="pt-32 lg:pt-44 pb-16 surface-cream">
         <div className="container">
           <Reveal>

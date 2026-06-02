@@ -1,10 +1,16 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { Reveal } from "@/components/Reveal";
 
 export default function Contact() {
   return (
     <Layout>
+      <Seo
+        title="Book a Free Strategy Call | Aurex"
+        description="Tell us about your business and we will map the fastest path to booked revenue. Free 30-minute strategy call with the Aurex team."
+        path="/contact"
+      />
       <section className="pt-32 lg:pt-44 pb-12 surface-cream">
         <div className="container max-w-3xl">
           <Reveal>
