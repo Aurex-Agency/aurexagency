@@ -5,8 +5,12 @@ import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
 import { ProofSection } from "@/components/sections/ProofSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
+import Results, { testimonials, TestimonialCard } from "@/pages/Results";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkle, Stethoscope, Hammer, HeartPulse, ShieldCheck, Target, BarChart3, Wrench } from "lucide-react";
+
+const homeTestimonials = [testimonials[0], testimonials[2], testimonials[4]];
+
 
 const differentiators = [
   { icon: Target, title: "Proof first, scale second", body: "We do not touch ad spend until the foundation is converting. You see attributable revenue before you fund growth." },
