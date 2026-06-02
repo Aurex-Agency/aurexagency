@@ -10,82 +10,92 @@ html, body {
 
 @layer base {
   :root {
-    /* Aurex premium palette: deep navy + warm amber */
-    --background: 40 30% 98%;
-    --foreground: 222 47% 8%;
+    /* Aurex brand palette pulled from logo: deep electric blue to cyan, near-black ink */
+    --background: 210 40% 98%;
+    --foreground: 224 71% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 8%;
+    --card-foreground: 224 71% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 8%;
+    --popover-foreground: 224 71% 8%;
 
     /* Deep navy primary */
-    --primary: 222 47% 10%;
-    --primary-foreground: 40 30% 98%;
+    --primary: 224 71% 10%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 222 47% 10%;
+    --secondary: 210 30% 96%;
+    --secondary-foreground: 224 71% 10%;
 
-    --muted: 220 14% 95%;
-    --muted-foreground: 220 10% 40%;
+    --muted: 210 25% 95%;
+    --muted-foreground: 220 12% 40%;
 
-    /* Warm amber accent */
-    --accent: 38 92% 52%;
-    --accent-foreground: 222 47% 8%;
+    /* Brand cyan accent */
+    --accent: 184 100% 44%;
+    --accent-foreground: 224 71% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 90%;
-    --input: 220 13% 90%;
-    --ring: 38 92% 52%;
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 184 100% 44%;
 
     --radius: 0.75rem;
 
-    /* Brand tokens */
-    --ink: 222 47% 8%;          /* near-black navy */
-    --ink-soft: 222 40% 14%;
-    --ink-muted: 222 20% 30%;
-    --cream: 40 30% 98%;
-    --cream-warm: 38 35% 96%;
-    --amber: 38 92% 52%;
-    --amber-soft: 38 95% 60%;
-    --amber-deep: 32 90% 45%;
-    --hairline: 220 14% 88%;
+    /* Brand tokens. Token names kept (amber/cream) so components do not break, values now map to logo brand. */
+    --ink: 224 71% 8%;          /* near-black navy */
+    --ink-soft: 224 60% 14%;
+    --ink-muted: 220 25% 30%;
+    --cream: 210 40% 98%;
+    --cream-warm: 210 35% 96%;
+
+    /* Brand blues — primary accent system */
+    --amber: 184 100% 44%;        /* electric cyan (#00d0e0-ish) */
+    --amber-soft: 180 100% 55%;   /* brighter cyan for hovers */
+    --amber-deep: 229 84% 41%;    /* deep brand blue (#1130c3) for text accents on cream */
+
+    --brand-blue: 229 84% 41%;
+    --brand-blue-soft: 217 90% 50%;
+    --brand-cyan: 184 100% 44%;
+    --brand-cyan-soft: 180 100% 55%;
+
+    --hairline: 215 20% 88%;
 
     --success: 152 60% 38%;
     --success-foreground: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 222 47% 15%;
-    --sidebar-primary: 222 47% 10%;
+    --sidebar-foreground: 224 71% 15%;
+    --sidebar-primary: 224 71% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 222 47% 10%;
-    --sidebar-border: 220 14% 90%;
-    --sidebar-ring: 38 92% 52%;
+    --sidebar-accent: 210 30% 96%;
+    --sidebar-accent-foreground: 224 71% 10%;
+    --sidebar-border: 215 20% 90%;
+    --sidebar-ring: 184 100% 44%;
   }
 
+
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 40 30% 96%;
-    --card: 222 45% 9%;
-    --card-foreground: 40 30% 96%;
-    --popover: 222 45% 9%;
-    --popover-foreground: 40 30% 96%;
-    --primary: 38 92% 52%;
-    --primary-foreground: 222 47% 8%;
-    --secondary: 222 30% 14%;
-    --secondary-foreground: 40 30% 96%;
-    --muted: 222 25% 14%;
-    --muted-foreground: 220 15% 65%;
-    --accent: 38 92% 52%;
-    --accent-foreground: 222 47% 8%;
-    --border: 222 25% 18%;
-    --input: 222 25% 18%;
-    --ring: 38 92% 52%;
+    --background: 224 60% 6%;
+    --foreground: 210 40% 96%;
+    --card: 224 55% 9%;
+    --card-foreground: 210 40% 96%;
+    --popover: 224 55% 9%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 184 100% 44%;
+    --primary-foreground: 224 71% 8%;
+    --secondary: 224 40% 14%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 224 30% 14%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 184 100% 44%;
+    --accent-foreground: 224 71% 8%;
+    --border: 224 30% 18%;
+    --input: 224 30% 18%;
+    --ring: 184 100% 44%;
   }
+
 }
 
 @layer base {
@@ -115,9 +125,9 @@ html, body {
   }
   .surface-ink-grad {
     background:
-      radial-gradient(1200px 600px at 20% 0%, hsl(var(--amber) / 0.08), transparent 60%),
-      radial-gradient(900px 500px at 80% 100%, hsl(217 80% 50% / 0.10), transparent 60%),
-      linear-gradient(180deg, hsl(222 50% 7%) 0%, hsl(var(--ink)) 100%);
+      radial-gradient(1200px 600px at 20% 0%, hsl(var(--brand-cyan) / 0.14), transparent 60%),
+      radial-gradient(900px 500px at 80% 100%, hsl(var(--brand-blue) / 0.22), transparent 60%),
+      linear-gradient(180deg, hsl(224 60% 7%) 0%, hsl(var(--ink)) 100%);
   }
   .surface-cream { background: hsl(var(--cream)); }
   .surface-cream-warm { background: hsl(var(--cream-warm)); }
@@ -132,27 +142,29 @@ html, body {
     mix-blend-mode: overlay;
   }
 
-  /* Subtle mesh */
+  /* Brand mesh: deep blue + cyan glow from the logo */
   .mesh-amber {
     background:
-      radial-gradient(40rem 25rem at 15% 10%, hsl(var(--amber) / 0.18), transparent 60%),
-      radial-gradient(35rem 22rem at 90% 0%, hsl(217 80% 50% / 0.12), transparent 60%),
-      radial-gradient(50rem 30rem at 50% 100%, hsl(var(--amber) / 0.10), transparent 70%);
+      radial-gradient(40rem 25rem at 15% 10%, hsl(var(--brand-blue) / 0.18), transparent 60%),
+      radial-gradient(35rem 22rem at 90% 0%, hsl(var(--brand-cyan) / 0.20), transparent 60%),
+      radial-gradient(50rem 30rem at 50% 100%, hsl(var(--brand-blue) / 0.10), transparent 70%);
   }
 
   .hairline { border-color: hsl(var(--hairline)); }
 
+  /* Primary CTA: brand blue to cyan gradient lifted from the logo */
   .btn-amber {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300;
-    background: hsl(var(--amber));
-    color: hsl(var(--ink));
-    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 10px 30px -10px hsl(var(--amber) / 0.55);
+    background: linear-gradient(135deg, hsl(var(--brand-blue)) 0%, hsl(var(--brand-cyan)) 100%);
+    color: hsl(var(--cream));
+    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 12px 32px -10px hsl(var(--brand-blue) / 0.55);
   }
   .btn-amber:hover {
-    background: hsl(var(--amber-soft));
+    background: linear-gradient(135deg, hsl(var(--brand-blue-soft)) 0%, hsl(var(--brand-cyan-soft)) 100%);
     transform: translateY(-1px);
-    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 18px 40px -12px hsl(var(--amber) / 0.7);
+    box-shadow: 0 1px 0 hsl(var(--ink) / 0.04), 0 20px 44px -12px hsl(var(--brand-cyan) / 0.65);
   }
+
   .btn-ink {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300;
     background: hsl(var(--ink));
