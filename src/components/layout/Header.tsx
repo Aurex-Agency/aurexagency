@@ -27,14 +27,6 @@ export function Header() {
 
   useEffect(() => { setOpen(false); }, [location.pathname]);
 
-  const goAudit = () => {
-    if (location.pathname === "/contact") {
-      document.getElementById("audit")?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.location.href = "/contact";
-    }
-  };
-
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
@@ -67,7 +59,7 @@ export function Header() {
         </div>
 
         <div className="hidden lg:block">
-          <button onClick={goAudit} className="btn-amber px-5 h-10 text-[13px]">Book a Call</button>
+          <Link to="/book" className="btn-amber px-5 h-10 text-[13px] cursor-pointer">Book a Call</Link>
         </div>
 
         <button
@@ -99,7 +91,7 @@ export function Header() {
                 </Link>
               ))}
               <div className="pt-3">
-                <button onClick={goAudit} className="btn-amber w-full h-12">Book a Call</button>
+                <Link to="/book" className="btn-amber w-full h-12 cursor-pointer">Book a Call</Link>
               </div>
             </div>
           </motion.div>
