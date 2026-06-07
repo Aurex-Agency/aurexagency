@@ -82,8 +82,8 @@ export default function Results() {
   return (
     <Layout>
       <Seo
-        title="Client Results & Reviews | Aurex"
-        description="Real revenue from real clients. See how med spas, roofers, and practices in Nashville, Tupelo, Oxford, and Atlanta book more revenue with Aurex."
+        title="Client Results & Reviews | North Mississippi Marketing Agency | Aurex"
+        description="Real revenue from real clients. See how med spas, roofers, and practices across North Mississippi, the Memphis area, and the South book more revenue with Aurex."
         path="/results"
         jsonLd={{
           "@context": "https://schema.org",
@@ -111,7 +111,7 @@ export default function Results() {
           <Reveal>
             <p className="eyebrow eyebrow-amber mb-5">Results</p>
             <h1 className="font-display text-5xl lg:text-7xl text-ink max-w-4xl text-balance">
-              Aurex Results — We report booked dollars.
+              Aurex Results: We report booked dollars.
             </h1>
             <p className="mt-7 text-xl text-ink/70 max-w-2xl text-pretty">
               Operator-to-operator wins from local service businesses across the South.

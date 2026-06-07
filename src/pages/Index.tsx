@@ -32,18 +32,36 @@ const heroStats = [
   { value: "$0", unit: "", label: "ad spend until the system converts" },
 ];
 
+const serviceAreas = [
+  "Oxford", "Tupelo", "Southaven", "Olive Branch", "Hernando", "Horn Lake",
+  "Batesville", "New Albany", "Pontotoc", "Corinth", "Holly Springs",
+  "Starkville", "Columbus", "Memphis area",
+];
+
 export default function Index() {
   return (
     <Layout>
       <Seo
-        title="Aurex | ROI-First Growth for Local Service Businesses"
-        description="Aurex turns dormant customers, missed calls, and slow follow-up into booked revenue in 30 days, before you spend a dollar on ads."
+        title="North Mississippi Marketing Agency for Local Businesses | Aurex"
+        description="Aurex is a North Mississippi marketing agency serving Oxford, Tupelo, Southaven and the Memphis area. We help local service businesses book more revenue from missed calls, slow follow-up, and dormant customers, with proof in 30 days before you spend on ads."
         path="/"
         jsonLd={{
           "@context": "https://schema.org",
-          "@type": "Organization",
+          "@type": "ProfessionalService",
           name: "Aurex",
+          alternateName: "Aurex Agency",
           url: "https://www.aurexagency.com/",
+          description:
+            "North Mississippi marketing agency helping local service businesses book more revenue with lead capture, fast follow-up, and customer reactivation systems.",
+          address: { "@type": "PostalAddress", addressRegion: "MS", addressCountry: "US" },
+          areaServed: [
+            "North Mississippi",
+            "Oxford, MS",
+            "Tupelo, MS",
+            "Southaven, MS",
+            "Olive Branch, MS",
+            "Memphis, TN",
+          ],
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "5",
@@ -78,7 +96,7 @@ export default function Index() {
             <div className="lg:col-span-3">
               <Reveal delay={0.12}>
                 <p className="text-base lg:text-lg text-foreground/65 text-pretty lg:border-l hairline lg:pl-6">
-                  We install the systems that turn assets you already own — dormant customers, missed calls, slow follow-up, no-shows, weak reviews — into booked revenue. Before you spend another dollar on ads.
+                  We install the systems that turn the assets you already own, like dormant customers, missed calls, slow follow-up, no-shows, and weak reviews, into booked revenue. Before you spend another dollar on ads.
                 </p>
               </Reveal>
             </div>
@@ -117,7 +135,7 @@ export default function Index() {
 
       <div id="how"><HowItWorksSection /></div>
 
-      {/* DIFFERENTIATORS — editorial split */}
+      {/* DIFFERENTIATORS - editorial split */}
       <section className="py-24 lg:py-32 surface-cream">
         <div className="container grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-4">
@@ -213,6 +231,41 @@ export default function Index() {
         </div>
       </section>
 
+
+      {/* AREAS WE SERVE - local SEO */}
+      <section className="py-24 lg:py-32 surface-cream">
+        <div className="container">
+          <Reveal>
+            <p className="eyebrow eyebrow-amber mb-4">Where we work</p>
+            <h2 className="font-display text-4xl lg:text-5xl text-foreground max-w-3xl mb-5 text-balance leading-tight">
+              Marketing help for local businesses across North Mississippi.
+            </h2>
+            <p className="text-lg text-foreground/65 max-w-2xl text-pretty">
+              Aurex is based in North Mississippi and partners with med spas, home service companies, and
+              health practices throughout the region and the greater Memphis area. If your business runs on
+              local customers, we help you capture and book more of them.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <ul className="mt-12 flex flex-wrap gap-2.5">
+              {serviceAreas.map((area) => (
+                <li
+                  key={area}
+                  className="px-4 py-2 rounded-full border hairline text-sm text-foreground/75 bg-card hover:border-accent/45 hover:text-foreground transition-colors"
+                >
+                  {area}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="mt-8 text-sm text-foreground/55 max-w-3xl">
+              Proudly serving Oxford, Tupelo, Southaven, Olive Branch, and surrounding North Mississippi and
+              West Tennessee communities. Work with us remotely from anywhere your local service business needs growth.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       <GuaranteeSection />
 

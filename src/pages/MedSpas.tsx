@@ -20,8 +20,8 @@ export default function MedSpas() {
   return (
     <Layout>
       <Seo
-        title="Med Spa Growth Systems | Aurex"
-        description="Fill your med spa calendar with $500+ visits. Aurex reactivates lapsed patients, captures missed calls, and cuts no-shows, before you scale ad spend."
+        title="Med Spa Marketing in North Mississippi | Aurex"
+        description="Med spa marketing for North Mississippi and the Memphis area. Aurex reactivates lapsed patients, captures missed calls, and cuts no-shows to fill your calendar with $500+ visits, before you scale ad spend."
         path="/med-spas"
         jsonLd={{
           "@context": "https://schema.org",

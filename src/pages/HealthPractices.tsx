@@ -20,8 +20,8 @@ export default function HealthPractices() {
   return (
     <Layout>
       <Seo
-        title="Patient Recall & Acquisition Systems | Aurex"
-        description="Recall the patients you have already earned and stop losing them to no-shows. Aurex builds patient communication systems for clinics, dental, and wellness practices."
+        title="Marketing & Patient Recall for North Mississippi Practices | Aurex"
+        description="Marketing and patient recall for clinics, dental, and wellness practices in North Mississippi and the Memphis area. Recall the patients you have already earned and cut no-shows with done-for-you systems."
         path="/health-practices"
         jsonLd={{
           "@context": "https://schema.org",

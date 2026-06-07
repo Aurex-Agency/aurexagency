@@ -20,8 +20,8 @@ export default function HomeServices() {
   return (
     <Layout>
       <Seo
-        title="Lead Systems for Roofers, HVAC & Plumbers | Aurex"
-        description="Stop letting jobs go to voicemail. Aurex turns missed calls and cold quotes into booked jobs for home service businesses, with 5-minute lead response built in."
+        title="Marketing for Roofers, HVAC & Plumbers in North Mississippi | Aurex"
+        description="Home services marketing for North Mississippi and the Memphis area. Aurex turns missed calls and cold quotes into booked jobs for roofers, HVAC, and plumbers, with 5-minute lead response built in."
         path="/home-services"
         jsonLd={{
           "@context": "https://schema.org",

@@ -19,10 +19,16 @@ export const Seo = ({ title, description, path, image, jsonLd }: SeoProps) => {
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
+      <meta name="geo.region" content="US-MS" />
+      <meta name="geo.placename" content="Oxford, North Mississippi" />
+      <meta name="geo.position" content="34.3665;-89.5192" />
+      <meta name="ICBM" content="34.3665, -89.5192" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:site_name" content="Aurex" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {ogImage && <meta property="og:image" content={ogImage} />}
