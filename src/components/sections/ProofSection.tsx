@@ -20,27 +20,27 @@ const proof = [
 
 export function ProofSection() {
   return (
-    <section className="py-20 lg:py-28 surface-cream-warm">
+    <section className="py-20 lg:py-28 surface-cream">
       <div className="container">
         <Reveal>
           <p className="eyebrow eyebrow-amber mb-4">The evidence</p>
-          <h2 className="font-display text-4xl lg:text-5xl text-ink max-w-3xl mb-5 text-balance">
-            We are not selling theories. We are running the playbook the research already proved.
+          <h2 className="font-display text-4xl lg:text-5xl text-foreground max-w-3xl mb-5 text-balance leading-tight">
+            We are not selling theories. We run the playbook the research already proved.
           </h2>
         </Reveal>
-        <div className="mt-12 grid md:grid-cols-3 gap-5">
+        <div className="mt-16 grid md:grid-cols-3 border-t hairline">
           {proof.map((p, i) => (
             <Reveal key={p.stat} delay={i * 0.08}>
-              <div className="card-premium p-7 h-full">
-                <div className="font-display text-4xl text-ink mb-3">{p.stat}</div>
-                <p className="text-ink/75 leading-relaxed mb-4">{p.body}</p>
-                <p className="text-xs uppercase tracking-[0.18em] text-ink/50 font-semibold">{p.source}</p>
+              <div className={`py-10 h-full ${i === 0 ? "md:pr-10" : "md:px-10 border-t md:border-t-0 md:border-l hairline"}`}>
+                <div className="font-display text-6xl lg:text-7xl text-accent mb-5 tnum tracking-tight leading-none">{p.stat}</div>
+                <p className="text-foreground/75 leading-relaxed mb-6 text-lg">{p.body}</p>
+                <p className="label-mono">{p.source}</p>
               </div>
             </Reveal>
           ))}
         </div>
         <Reveal delay={0.2}>
-          <p className="mt-8 text-sm text-ink/50 max-w-3xl">
+          <p className="mt-10 text-sm text-foreground/45 max-w-3xl">
             Sources referenced for context. We will share full citations in your strategy call.
           </p>
         </Reveal>

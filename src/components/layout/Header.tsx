@@ -38,7 +38,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-cream/85 backdrop-blur-xl border-b hairline" : "bg-transparent"
+        scrolled ? "bg-background/80 backdrop-blur-xl border-b hairline" : "bg-transparent"
       }`}
     >
       <nav className="container flex items-center justify-between h-16 lg:h-20">
@@ -47,15 +47,17 @@ export function Header() {
         </Link>
 
 
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-7">
           {nav.map((n) => {
             const active = location.pathname === n.href;
             return (
               <Link
                 key={n.name}
                 to={n.href}
-                className={`px-3 py-2 rounded-full text-sm font-medium transition-colors ${
-                  active ? "text-ink" : "text-ink/60 hover:text-ink"
+                className={`relative text-[13px] font-medium tracking-tight transition-colors after:absolute after:left-0 after:-bottom-1.5 after:h-px after:bg-accent after:transition-all after:duration-300 ${
+                  active
+                    ? "text-foreground after:w-full"
+                    : "text-foreground/55 hover:text-foreground after:w-0 hover:after:w-full"
                 }`}
               >
                 {n.name}
@@ -65,11 +67,11 @@ export function Header() {
         </div>
 
         <div className="hidden lg:block">
-          <button onClick={goAudit} className="btn-amber px-5 h-11 text-sm">Book a Call</button>
+          <button onClick={goAudit} className="btn-amber px-5 h-10 text-[13px]">Book a Call</button>
         </div>
 
         <button
-          className="lg:hidden p-2 rounded-md text-ink"
+          className="lg:hidden p-2 rounded-md text-foreground"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
@@ -84,14 +86,14 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden bg-cream border-t hairline overflow-hidden"
+            className="lg:hidden bg-background/95 backdrop-blur-xl border-t hairline overflow-hidden"
           >
             <div className="container py-4 flex flex-col gap-1">
               {nav.map((n) => (
                 <Link
                   key={n.name}
                   to={n.href}
-                  className="px-3 py-3 rounded-lg text-base text-ink hover:bg-ink/5"
+                  className="px-3 py-3 rounded-lg text-base text-foreground/80 hover:text-foreground hover:bg-foreground/5"
                 >
                   {n.name}
                 </Link>

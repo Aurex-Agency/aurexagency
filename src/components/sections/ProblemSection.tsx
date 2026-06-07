@@ -27,18 +27,22 @@ export function ProblemSection({
       <div className="container">
         <Reveal>
           <p className="eyebrow eyebrow-amber mb-4">{eyebrow}</p>
-          <h2 className="font-display text-4xl lg:text-5xl text-ink max-w-3xl mb-5 text-balance">{title}</h2>
-          <p className="text-lg text-ink/70 max-w-2xl text-pretty">{sub}</p>
+          <h2 className="font-display text-4xl lg:text-5xl text-foreground max-w-3xl mb-5 text-balance leading-tight">{title}</h2>
+          <p className="text-lg text-foreground/65 max-w-2xl text-pretty">{sub}</p>
         </Reveal>
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div className="mt-16 border-t hairline">
           {gaps.map((g, i) => (
             <Reveal key={g.title} delay={i * 0.05}>
-              <div className="card-premium p-7 h-full">
-                <div className="w-11 h-11 rounded-xl bg-ink text-amber flex items-center justify-center mb-5">
-                  <g.icon className="w-5 h-5" />
+              <div className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start py-8 border-b hairline transition-colors hover:bg-foreground/[0.02]">
+                <div className="md:col-span-5 flex items-center gap-5">
+                  <span className="section-index text-2xl lg:text-3xl tnum w-12 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                  <div className="mark w-11 h-11">
+                    <g.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-display text-2xl text-foreground">{g.title}</h3>
                 </div>
-                <h3 className="font-display text-xl text-ink mb-2">{g.title}</h3>
-                <p className="text-ink/70 leading-relaxed">{g.body}</p>
+                <p className="md:col-span-7 text-foreground/65 leading-relaxed md:pl-8 md:border-l hairline">{g.body}</p>
               </div>
             </Reveal>
           ))}

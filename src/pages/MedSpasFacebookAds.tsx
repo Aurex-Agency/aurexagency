@@ -119,7 +119,7 @@ export default function MedSpasFacebookAds() {
         ]}
       />
 
-      <section className="pt-32 pb-16 bg-cream">
+      <section className="pt-32 pb-16 surface-cream">
         <div className="container max-w-4xl">
           <Reveal>
             <p className="eyebrow eyebrow-amber mb-4">For Med Spas and Aesthetics</p>
@@ -163,7 +163,7 @@ export default function MedSpasFacebookAds() {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
+      <section className="py-20 surface-cream-warm">
         <div className="container max-w-5xl">
           <Reveal>
             <p className="eyebrow eyebrow-amber mb-3">The six-step playbook</p>
@@ -209,7 +209,7 @@ export default function MedSpasFacebookAds() {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
+      <section className="py-20 surface-cream-warm">
         <div className="container max-w-5xl">
           <Reveal>
             <p className="eyebrow eyebrow-amber mb-3">The four mistakes</p>
