@@ -9,6 +9,7 @@ import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { testimonials, TestimonialCard } from "@/pages/Results";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, ShieldCheck, Target, BarChart3, Wrench } from "lucide-react";
+import { cities } from "@/data/cities";
 
 const homeTestimonials = [testimonials[0], testimonials[2], testimonials[4]];
 
@@ -30,12 +31,6 @@ const heroStats = [
   { value: "30", unit: "days", label: "to proven, attributable revenue" },
   { value: "21×", unit: "", label: "more leads qualified at 5-min response" },
   { value: "$0", unit: "", label: "ad spend until the system converts" },
-];
-
-const serviceAreas = [
-  "Oxford", "Tupelo", "Southaven", "Olive Branch", "Hernando", "Horn Lake",
-  "Batesville", "New Albany", "Pontotoc", "Corinth", "Holly Springs",
-  "Starkville", "Columbus", "Memphis area",
 ];
 
 export default function Index() {
@@ -248,14 +243,24 @@ export default function Index() {
           </Reveal>
           <Reveal delay={0.1}>
             <ul className="mt-12 flex flex-wrap gap-2.5">
-              {serviceAreas.map((area) => (
-                <li
-                  key={area}
-                  className="px-4 py-2 rounded-full border hairline text-sm text-foreground/75 bg-card hover:border-accent/45 hover:text-foreground transition-colors"
-                >
-                  {area}
+              {cities.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    to={`/marketing/${c.slug}`}
+                    className="px-4 py-2 rounded-full border hairline text-sm text-foreground/75 bg-card hover:border-accent/45 hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+                  >
+                    {c.name} <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/marketing"
+                  className="px-4 py-2 rounded-full text-sm text-accent hover:underline underline-offset-4 inline-flex items-center gap-1.5"
+                >
+                  View all locations <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </li>
             </ul>
           </Reveal>
           <Reveal delay={0.15}>
