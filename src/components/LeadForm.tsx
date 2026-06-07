@@ -53,7 +53,7 @@ export function LeadForm({ defaultIndustry = "", ctaLabel = "Request My Free Rev
   };
 
   const inputCls =
-    "w-full h-12 px-4 rounded-xl bg-cream border hairline text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-amber/50 focus:border-amber/50 transition";
+    "w-full h-12 px-4 rounded-lg bg-secondary border hairline text-foreground placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition";
 
   return (
     <div className="card-premium p-6 sm:p-8 space-y-4">

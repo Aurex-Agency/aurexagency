@@ -15,6 +15,10 @@ export default {
         sans: ["Inter", "system-ui", "sans-serif"],
         display: ["Fraunces", "Georgia", "serif"],
         serif: ["Fraunces", "Georgia", "serif"],
+        mono: ["'IBM Plex Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
+      letterSpacing: {
+        widest: "0.28em",
       },
       colors: {
         border: "hsl(var(--border))",

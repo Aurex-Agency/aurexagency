@@ -19,8 +19,7 @@ const cols = {
 
 export function Footer() {
   return (
-    <footer className="surface-ink relative overflow-hidden">
-      <div className="absolute inset-0 mesh-amber opacity-30 pointer-events-none" />
+    <footer className="surface-ink surface-ink-grad grain relative overflow-hidden border-t border-[hsl(var(--foreground)/0.08)]">
       <div className="container relative py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           <div>
@@ -35,13 +34,13 @@ export function Footer() {
 
           {Object.entries(cols).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-xs uppercase tracking-[0.22em] text-amber font-semibold mb-5">
+              <h4 className="label-mono eyebrow-amber mb-5">
                 {title}
               </h4>
               <ul className="space-y-3">
                 {links.map((l) => (
                   <li key={l.name}>
-                    <Link to={l.href} className="text-cream/70 hover:text-amber text-sm transition-colors">
+                    <Link to={l.href} className="text-cream/70 hover:text-accent text-sm transition-colors">
                       {l.name}
                     </Link>
                   </li>
@@ -57,7 +56,7 @@ export function Footer() {
             © {new Date().getFullYear()} Aurex. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-cream/40 text-sm">
-            <a href="mailto:hello@aurexagency.com" className="hover:text-amber">hello@aurexagency.com</a>
+            <a href="mailto:hello@aurexagency.com" className="hover:text-accent">hello@aurexagency.com</a>
             <span>North Mississippi. Serving local service businesses nationwide.</span>
           </div>
         </div>
