@@ -10,6 +10,7 @@ const nav = [
   { name: "Home Services", href: "/home-services" },
   { name: "Health Practices", href: "/health-practices" },
   { name: "Results", href: "/results" },
+  { name: "Calculator", href: "/roi-calculator" },
   { name: "Contact", href: "/contact" },
 ];
 
