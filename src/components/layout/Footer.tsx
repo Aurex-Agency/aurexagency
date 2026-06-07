@@ -5,6 +5,7 @@ const cols = {
   Site: [
     { name: "Home", href: "/" },
     { name: "Results", href: "/results" },
+    { name: "Locations", href: "/marketing" },
     { name: "Contact", href: "/contact" },
   ],
   Industries: [
@@ -13,6 +14,7 @@ const cols = {
     { name: "Health Practices", href: "/health-practices" },
   ],
   Start: [
+    { name: "Book a Call", href: "/book" },
     { name: "Free Revenue Audit", href: "/contact#audit" },
   ],
 };

@@ -12,6 +12,8 @@ import HealthPractices from "./pages/HealthPractices";
 import Results from "./pages/Results";
 import Contact from "./pages/Contact";
 import Book from "./pages/Book";
+import Locations from "./pages/Locations";
+import CityLanding from "./pages/CityLanding";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,8 @@ const App = () => (
           <Route path="/results" element={<Results />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/book" element={<Book />} />
+          <Route path="/marketing" element={<Locations />} />
+          <Route path="/marketing/:citySlug" element={<CityLanding />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
