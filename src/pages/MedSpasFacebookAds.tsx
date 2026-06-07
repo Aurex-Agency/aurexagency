@@ -93,8 +93,8 @@ export default function MedSpasFacebookAds() {
   return (
     <Layout>
       <Seo
-        title="Facebook Ads for Med Spas | Aurex"
-        description="The Facebook and Instagram ads playbook for med spas: offers that book, audiences that convert, and the follow-up system that makes ad spend actually pay back."
+        title="Facebook Ads for Med Spas in North Mississippi | Aurex"
+        description="The Facebook and Instagram ads playbook for med spas, from Aurex, a North Mississippi med spa marketing agency: offers that book, audiences that convert, and the follow-up system that makes ad spend actually pay back."
         path="/med-spas/facebook-ads"
         jsonLd={[
           {

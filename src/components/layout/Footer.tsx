@@ -24,7 +24,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           <div>
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <img src={aurexLogoMain} alt="Aurex — ROI-First Growth Partner" className="h-10 w-auto" />
+              <img src={aurexLogoMain} alt="Aurex, ROI-first marketing agency in North Mississippi" className="h-10 w-auto" />
             </Link>
 
             <p className="text-cream/60 text-sm leading-relaxed max-w-xs">

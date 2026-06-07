@@ -11,7 +11,7 @@ html, body {
 @layer base {
   :root {
     /*
-      Aurex — "dark luxury" system.
+      Aurex - "dark luxury" system.
       Deep navy ink surfaces, luminous cyan accent, bright editorial type.
       NOTE: the `ink` color token is intentionally mapped to a LIGHT value so that
       the existing `text-ink` usages read as primary light text on dark surfaces.
@@ -62,7 +62,7 @@ html, body {
     --cream: 200 24% 96%;
     --cream-warm: 205 16% 88%;
 
-    /* Accent family — cyan + electric blue lifted from the logo. */
+    /* Accent family - cyan + electric blue lifted from the logo. */
     --amber: 186 92% 50%;        /* primary cyan accent */
     --amber-soft: 184 95% 62%;   /* brighter cyan for hovers */
     --amber-deep: 187 88% 58%;   /* eyebrow / link accent on dark */
@@ -87,7 +87,7 @@ html, body {
     --sidebar-ring: 186 92% 50%;
   }
 
-  /* Single dark theme — keep .dark consistent for any class-toggled UI. */
+  /* Single dark theme - keep .dark consistent for any class-toggled UI. */
   .dark {
     --background: 222 47% 6%;
     --foreground: 200 24% 96%;
@@ -161,14 +161,14 @@ html, body {
     mix-blend-mode: soft-light;
   }
 
-  /* Restrained accent glow — no candy gradients */
+  /* Restrained accent glow - no candy gradients */
   .mesh-amber {
     background:
       radial-gradient(46rem 30rem at 12% 0%, hsl(var(--brand-cyan) / 0.10), transparent 58%),
       radial-gradient(40rem 26rem at 92% 8%, hsl(var(--brand-blue) / 0.10), transparent 60%);
   }
 
-  /* Fine structural grid — reads as intentional layout, not decoration */
+  /* Fine structural grid - reads as intentional layout, not decoration */
   .grid-lines {
     background-image:
       linear-gradient(to right, hsl(var(--foreground) / 0.035) 1px, transparent 1px);

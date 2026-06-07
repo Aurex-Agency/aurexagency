@@ -25,7 +25,7 @@ const steps = [
 ];
 
 const assurances = [
-  { icon: PhoneCall, label: "A real operator on the line — never an SDR reading a script." },
+  { icon: PhoneCall, label: "A real operator on the line, never an SDR reading a script." },
   { icon: Clock, label: "We reply within one business day. Usually much faster." },
   { icon: ShieldCheck, label: "No pressure. We only pitch a retainer if the numbers justify it." },
 ];
@@ -91,8 +91,8 @@ export default function Book() {
   return (
     <Layout>
       <Seo
-        title="Book a Call | Aurex"
-        description="Book your free 30-minute revenue audit with Aurex. A real operator maps your five revenue leaks and projects your first 30 days. No pressure, no SDR pitch."
+        title="Book a Free Marketing Audit | North Mississippi | Aurex"
+        description="Book your free 30-minute revenue audit with Aurex, a North Mississippi marketing agency serving Oxford, Tupelo, Southaven and the Memphis area. A real operator maps your revenue leaks and projects your first 30 days. No pressure, no SDR pitch."
         path="/book"
         jsonLd={{
           "@context": "https://schema.org",
@@ -125,12 +125,12 @@ export default function Book() {
             </h1>
             <p className="mt-7 text-lg lg:text-xl text-foreground/65 max-w-2xl text-pretty">
               Thirty minutes with a real operator who will show you exactly where your next month of
-              revenue is already hiding — before you spend a dollar on ads.
+              revenue is already hiding, before you spend a dollar on ads.
             </p>
           </Reveal>
 
           <div className="mt-14 lg:mt-16 grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* LEFT — what to expect */}
+            {/* LEFT - what to expect */}
             <div className="lg:col-span-7 order-2 lg:order-1">
               {/* What happens */}
               <Reveal delay={0.1}>
@@ -190,7 +190,7 @@ export default function Book() {
               </Reveal>
             </div>
 
-            {/* RIGHT — booking card */}
+            {/* RIGHT - booking card */}
             <div className="lg:col-span-5 order-1 lg:order-2">
               <Reveal delay={0.12}>
                 <div className="lg:sticky lg:top-28">
@@ -205,7 +205,7 @@ export default function Book() {
                         <h2 className="font-display text-3xl text-foreground mb-3">You're on the list.</h2>
                         <p className="text-foreground/65 leading-relaxed max-w-sm mx-auto">
                           We'll confirm your call within one business day at the email you provided. Keep an eye
-                          on your inbox — and your phone.
+                          on your inbox and your phone.
                         </p>
                         <Link to="/results" className="mt-8 inline-flex btn-ghost-ink h-12 px-6 cursor-pointer">
                           See client results <ArrowRight className="w-4 h-4" />
@@ -216,7 +216,7 @@ export default function Book() {
                         <div className="mb-6">
                           <h2 className="font-display text-2xl text-foreground">Request your call</h2>
                           <p className="text-sm text-foreground/55 mt-1">
-                            Takes about two minutes. No ad pitch — just the numbers.
+                            Takes about two minutes. No ad pitch, just the numbers.
                           </p>
                         </div>
 
