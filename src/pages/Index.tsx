@@ -8,7 +8,19 @@ import { ComparisonSection } from "@/components/sections/ComparisonSection";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
-import { testimonials, TestimonialCard } from "@/pages/Results";
+import { testimonials } from "@/data/aurex";
+
+type Testimonial = (typeof testimonials)[number];
+const TestimonialCard = ({ t }: { t: Testimonial; delay?: number }) => (
+  <div className="card-soft h-full p-7 flex flex-col">
+    <div className="text-2xl font-extrabold text-accent">{t.metric}</div>
+    <p className="mt-4 text-foreground/75 leading-relaxed italic flex-1">"{t.quote}"</p>
+    <div className="mt-6 pt-5 border-t hairline">
+      <div className="font-semibold text-foreground">{t.name}</div>
+      <div className="text-sm text-foreground/55">{t.business}</div>
+    </div>
+  </div>
+);
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 
