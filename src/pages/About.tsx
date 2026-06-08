@@ -47,7 +47,7 @@ export default function About() {
             <FadeUp><p className="text-accent">If that's the kind of partner you've been looking for, let's talk.</p></FadeUp>
           </div>
           <FadeUp>
-            <p className="mt-8 text-2xl font-extrabold text-foreground">Kalob<span className="text-foreground/50 font-medium">, Founder of Aurex</span></p>
+            <p className="mt-8 text-2xl font-extrabold text-foreground">The Aurex Team</p>
           </FadeUp>
         </div>
       </section>
