@@ -119,7 +119,7 @@ export const alacarte: { name: string; price: string }[] = [
 ];
 
 export const comparison: { label: string; aurex: string; agency: string; freelancer: string }[] = [
-  { label: "Who does the work", aurex: "The founder, every time", agency: "Junior account staff", freelancer: "One person, one skill" },
+  { label: "Who does the work", aurex: "Senior in-house team", agency: "Junior account staff", freelancer: "One person, one skill" },
   { label: "What you actually buy", aurex: "Measurable ROI", agency: "Activity and leads", freelancer: "A single deliverable" },
   { label: "Commitment", aurex: "No lock-in, pause anytime", agency: "6 to 12 month contracts", freelancer: "Per project" },
   { label: "Scope", aurex: "Full marketing dept in one queue", agency: "A scoped retainer", freelancer: "One skill" },
