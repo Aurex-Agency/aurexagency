@@ -30,8 +30,12 @@ html, body {
     --secondary: 220 16% 96%;
     --secondary-foreground: 222 22% 11%;
 
-    --accent: 176 84% 34%;
+    --accent: 230 84% 41%;
     --accent-foreground: 0 0% 100%;
+
+    --brand-blue: 230 84% 41%;
+    --brand-cyan: 185 100% 44%;
+    --gradient-brand: linear-gradient(135deg, hsl(var(--brand-blue)), hsl(var(--brand-cyan)));
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;

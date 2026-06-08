@@ -1,35 +1,33 @@
-## Add placeholder testimonials with fake businesses
+## Goal
+Replace the current teal accent (`--accent: 176 84% 34%`) — used on buttons, eyebrows, links, focus rings, and subtext highlights — with the Aurex logo's brand blue/cyan palette.
 
-Replace the two "[Client result placeholder]" sections with realistic-looking (but clearly fabricated) reviews from businesses in Nashville, Tupelo, Oxford, and Atlanta. These will live in two spots:
+## Brand colors (from memory)
+- Deep electric blue: `#1130c3` (hsl 230 84% 41%)
+- Cyan: `#00d0e0` (hsl 185 100% 44%)
+- Gradient: deep blue → cyan, used on primary CTAs
 
-1. **Homepage** (`src/pages/Index.tsx`) — the single "Client results" card band becomes a 3-card testimonial grid.
-2. **Results page** (`src/pages/Results.tsx`) — the three vertical placeholder cards become real-looking testimonial cards with named business, city, owner name, star rating, quote, and a headline result stat.
+## Changes
 
-### Content (fabricated, for placeholder use)
+### 1. `src/index.css` — update accent tokens
+- `--accent` → `230 84% 41%` (deep brand blue) so all `text-accent`, `border-accent`, and `bg-accent` usages render in brand blue (good contrast on white/cream and on dark surfaces).
+- `--ring` → match new accent.
+- Add new tokens:
+  - `--brand-blue: 230 84% 41%`
+  - `--brand-cyan: 185 100% 44%`
+  - `--gradient-brand: linear-gradient(135deg, hsl(var(--brand-blue)), hsl(var(--brand-cyan)))`
 
-Six testimonials total, two per industry, spread across the four cities:
+### 2. `src/index.css` — repoint `.btn-primary` to gradient
+- Change `.btn-primary` background from solid `hsl(var(--accent))` to `var(--gradient-brand)` so primary CTAs match logo.
+- Update its hover shadow to use `--brand-blue` glow.
+- Keep `.btn-dark`, `.btn-outline`, `.btn-light` as-is.
 
-- **Glow Aesthetics Co.** — Nashville, TN. Owner: Dr. Lauren Pierce. Med Spa.
-  Quote about reactivating lapsed injectable patients. Stat: "$28K in 21 days from our old patient list."
-- **Magnolia Med Spa** — Oxford, MS. Owner: Brooke Hadley. Med Spa.
-  Quote about no-show reduction and membership ramp. Stat: "No-shows down 62% in the first month."
-- **Delta Roofing & Exteriors** — Tupelo, MS. Owner: Wes Calloway. Roofing.
-  Quote about missed-call text-back and old quote reactivation. Stat: "11 booked jobs from missed calls in 30 days."
-- **Peachtree Comfort HVAC** — Atlanta, GA. Owner: Marcus Bell. HVAC.
-  Quote about 5-minute speed-to-lead winning bids. Stat: "Close rate jumped from 18% to 34%."
-- **Highland Family Dental** — Nashville, TN. Owner: Dr. Priya Nair. Dental practice.
-  Quote about recall campaign waking up overdue patients. Stat: "$19K in recovered hygiene visits, month one."
-- **Oxford Wellness Clinic** — Oxford, MS. Owner: Dr. Anna Whitfield. Wellness practice.
-  Quote about reminders cutting no-shows and reputation engine. Stat: "Review count up 4x in 45 days."
+### 3. `tailwind.config.ts`
+- No structural change needed; `accent` already maps to `--accent`. Optionally add `brand: { blue, cyan }` color entries for future use.
 
-Each card shows: 5-star row, headline stat in display font, italicized quote, owner name + business + city.
+## Out of scope
+- No layout, copy, or component logic changes.
+- Amber/gold tokens (already unused per brand rule) left untouched.
+- Cream/ink palette unchanged.
 
-### Disclosure
-
-A small line under each section reads: *"Illustrative testimonials shown while real, verified case studies are in approval."* This keeps placeholder intent transparent without breaking the visual polish.
-
-### Technical
-
-- Add a `testimonials` constant in `src/pages/Results.tsx` and a trimmed 3-item version in `src/pages/Index.tsx`.
-- Reuse existing `card-premium` styling, `Reveal` animation, and `lucide-react` `Star` icon.
-- No new dependencies, no routing changes.
+## Verification
+- Scan preview: hero CTA, pricing "Book a Call" buttons, eyebrows, FAQ accents, focus rings on form inputs all show brand blue / blue-cyan gradient instead of teal.
