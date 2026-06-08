@@ -16,7 +16,7 @@ export default function About() {
     <Layout>
       <Seo
         title="About | Aurex"
-        description="Aurex is a one-operator marketing studio in North Mississippi built on a simple idea: marketing should be an investment you can measure. The person who builds your system is the person who runs it."
+        description="Aurex is a senior in-house marketing team in North Mississippi built on a simple idea: marketing should be an investment you can measure. The team that builds your system is the team that runs it. Nothing outsourced."
         path="/about"
       />
 
