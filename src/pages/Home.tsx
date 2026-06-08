@@ -19,7 +19,7 @@ export default function Home() {
     <Layout>
       <Seo
         title="Aurex | Your Marketing Department, On Demand"
-        description="Aurex turns your marketing into an investment you can measure. Ads, funnels, follow-up, and the systems behind them, run by one operator who owns the number. Flat monthly pricing, no contracts. North Mississippi."
+        description="Aurex turns your marketing into an investment you can measure. Ads, funnels, follow-up, and the systems behind them, run by a senior in-house team that owns the number. Flat monthly pricing, no contracts. North Mississippi."
         path="/"
       />
 
