@@ -2,16 +2,18 @@ import { Link } from "react-router-dom";
 import aurexLogoMain from "@/assets/aurex-logo-main.png";
 
 const cols = {
-  Site: [
+  Company: [
     { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Results", href: "/results" },
-    { name: "Locations", href: "/marketing" },
     { name: "Contact", href: "/contact" },
   ],
   Industries: [
     { name: "Med Spas", href: "/med-spas" },
     { name: "Home Services", href: "/home-services" },
     { name: "Health Practices", href: "/health-practices" },
+    { name: "Locations", href: "/marketing" },
   ],
   Start: [
     { name: "Customer Value Calculator", href: "/roi-calculator" },

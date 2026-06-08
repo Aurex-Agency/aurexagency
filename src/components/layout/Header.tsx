@@ -6,11 +6,9 @@ import aurexLogoMain from "@/assets/aurex-logo-main.png";
 
 const nav = [
   { name: "Home", href: "/" },
-  { name: "Med Spas", href: "/med-spas" },
-  { name: "Home Services", href: "/home-services" },
-  { name: "Health Practices", href: "/health-practices" },
+  { name: "Services", href: "/services" },
+  { name: "Pricing", href: "/pricing" },
   { name: "Results", href: "/results" },
-  { name: "Calculator", href: "/roi-calculator" },
   { name: "Contact", href: "/contact" },
 ];
 
