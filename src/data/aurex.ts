@@ -15,7 +15,7 @@ export const CONTACT_EMAIL = "hello@aurexagency.com";
 
 export const ONE_LINER = "Your marketing department, on demand. Built to prove ROI.";
 export const SUB_LINE =
-  "We don't sell you leads and disappear. We turn your marketing into an investment you can actually measure: ads, funnels, follow-up, and the systems behind them, run by one operator who owns the number.";
+  "We don't sell you leads and disappear. We turn your marketing into an investment you can actually measure: ads, funnels, follow-up, and the systems behind them, run by a senior in-house team that owns the number.";
 
 export const nav = [
   { name: "How it works", href: "/how-it-works" },
