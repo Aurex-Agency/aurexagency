@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { nav } from "@/data/aurex";
+import aurexLogo from "@/assets/aurex-logo-main.png";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,8 +26,8 @@ export function Header() {
       }`}
     >
       <nav className="shell flex items-center justify-between h-16 lg:h-[72px]">
-        <Link to="/" className="font-extrabold text-2xl tracking-tight text-foreground">
-          Aurex<span className="text-accent">.</span>
+        <Link to="/" className="flex items-center" aria-label="Aurex Agency home">
+          <img src={aurexLogo} alt="Aurex Agency" className="h-8 lg:h-9 w-auto" />
         </Link>
 
         <div className="hidden md:flex items-center gap-7">
