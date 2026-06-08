@@ -51,7 +51,7 @@ export default function Contact() {
               Let's make your marketing measurable.
             </h1>
             <p className="mt-6 text-lg text-foreground/65 leading-relaxed max-w-xl">
-              Thirty minutes, one operator, zero fluff. We'll find where your revenue is leaking and show you
+              Thirty minutes, our senior team, zero fluff. We'll find where your revenue is leaking and show you
               the fastest path to proving ROI.
             </p>
 
