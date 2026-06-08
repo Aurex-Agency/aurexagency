@@ -28,7 +28,7 @@ export function Footer() {
               <img src={aurexLogo} alt="Aurex Agency" className="h-10 w-auto" />
             </Link>
             <p className="mt-4 text-white/55 leading-relaxed">
-              Your marketing department, on demand. Built to prove ROI, run by one operator who owns the number.
+              Your marketing department, on demand. Built to prove ROI, run by a senior in-house team that owns the number.
             </p>
             <p className="mt-5 text-sm text-white/40">North Mississippi · Tupelo · Oxford · Ripley</p>
           </div>

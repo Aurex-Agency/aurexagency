@@ -25,7 +25,7 @@ const steps = [
 ];
 
 const assurances = [
-  { icon: PhoneCall, label: "A real operator on the line, never an SDR reading a script." },
+  { icon: PhoneCall, label: "A senior strategist from our team on the line, never an SDR reading a script." },
   { icon: Clock, label: "We reply within one business day. Usually much faster." },
   { icon: ShieldCheck, label: "No pressure. We only pitch a retainer if the numbers justify it." },
 ];
@@ -92,7 +92,7 @@ export default function Book() {
     <Layout>
       <Seo
         title="Book a Free Marketing Audit | North Mississippi | Aurex"
-        description="Book your free 30-minute revenue audit with Aurex, a North Mississippi marketing agency serving Oxford, Tupelo, Southaven and the Memphis area. A real operator maps your revenue leaks and projects your first 30 days. No pressure, no SDR pitch."
+        description="Book your free 30-minute revenue audit with Aurex, a North Mississippi marketing agency serving Oxford, Tupelo, Southaven and the Memphis area. A senior strategist from our team maps your revenue leaks and projects your first 30 days. No pressure, no SDR pitch."
         path="/book"
         jsonLd={{
           "@context": "https://schema.org",
