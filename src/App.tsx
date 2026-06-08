@@ -12,6 +12,8 @@ import HealthPractices from "./pages/HealthPractices";
 import Results from "./pages/Results";
 import Contact from "./pages/Contact";
 import Book from "./pages/Book";
+import Pricing from "./pages/Pricing";
+import Services from "./pages/Services";
 import Locations from "./pages/Locations";
 import CityLanding from "./pages/CityLanding";
 import RoiCalculator from "./pages/RoiCalculator";
@@ -28,6 +30,8 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/med-spas" element={<MedSpas />} />
           <Route path="/med-spas/facebook-ads" element={<MedSpasFacebookAds />} />
           <Route path="/home-services" element={<HomeServices />} />
