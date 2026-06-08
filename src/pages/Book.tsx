@@ -4,7 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { GuaranteeSection } from "@/components/sections/GuaranteeSection";
-import { testimonials } from "@/pages/Results";
+import { testimonials } from "@/data/aurex";
 import { toast } from "@/components/ui/sonner";
 import { z } from "zod";
 import { ArrowRight, Clock, ShieldCheck, PhoneCall, Star, Check } from "lucide-react";
