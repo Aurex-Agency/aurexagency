@@ -182,9 +182,9 @@ export default function Book() {
                   </blockquote>
                   <figcaption className="mt-5 pt-5 border-t hairline flex items-center justify-between gap-4 flex-wrap">
                     <span className="text-sm text-foreground/70">
-                      <span className="text-foreground font-medium">{t.owner}</span> · {t.business}, {t.city}
+                      <span className="text-foreground font-medium">{t.name}</span> · {t.business}
                     </span>
-                    <span className="label-mono eyebrow-amber">{t.stat}</span>
+                    <span className="label-mono eyebrow-amber">{t.metric}</span>
                   </figcaption>
                 </figure>
               </Reveal>
