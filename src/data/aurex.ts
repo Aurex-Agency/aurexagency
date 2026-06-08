@@ -149,7 +149,7 @@ export const faqs: { q: string; a: string }[] = [
   { q: "Can I really pause or cancel anytime?", a: "Yes. No lock-in. Cancel and your current paid month simply finishes with no future billing. Pause and we hold your slot for up to 30 days, which is perfect for seasonal businesses." },
   { q: "How fast will I get work back?", a: "Standard turnaround is 3 to 4 business days on Ads and Funnel, and 2 to 3 days on All-Access. Need something faster? Rush turnaround delivers in 24 to 48 hours." },
   { q: "What if I just need a website or CRM built?", a: "Those are one-time builds with flat, transparent pricing. You can buy a build on its own or alongside a subscription. No quote games." },
-  { q: "Do you actually do the work yourself?", a: "Yes. Aurex is run by one operator who builds and runs your system. No account managers, no junior hand-offs, no telephone game." },
+  { q: "Do you actually do the work yourself?", a: "Yes. A senior in-house Aurex team builds and runs your system. No account managers, no junior hand-offs, nothing outsourced." },
   { q: "How do you measure ROI?", a: "Every plan includes a dashboard that ties spend to booked revenue. We report the number that matters, not impressions and reach." },
   { q: "Are there contracts?", a: "No. The whole model is built on betting that results keep you here, not paperwork. Pause or cancel whenever you need to." },
 ];
