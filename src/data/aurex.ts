@@ -159,7 +159,7 @@ export const metrics: { value: number; prefix?: string; suffix?: string; label: 
   { value: 30, suffix: " days", label: "to provable ROI from a cold list" },
   { value: 312, label: "dormant leads reactivated" },
   { value: 47000, prefix: "$", label: "in recovered revenue" },
-  { value: 1, suffix: " operator", label: "owns your number, start to finish" },
+  { value: 0, suffix: " hand-offs", label: "one in-house team owns your number" },
 ];
 
 export const testimonials: { metric: string; quote: string; name: string; business: string }[] = [
