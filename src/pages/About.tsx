@@ -39,9 +39,9 @@ export default function About() {
             <FadeUp><p>Agencies sell activity and lock you into long contracts. Freelancers hand you a deliverable and disappear. Both leave the owner guessing.</p></FadeUp>
             <FadeUp>
               <p>
-                So Aurex is built differently. One operator builds and runs the whole system, ads, funnels,
-                follow-up, and the CRM behind them, and reports the return every month. Marketing you can put on
-                a balance sheet as an investment, not a line item you hope is working.
+                So Aurex is built differently. One senior team builds and runs the whole system in-house, ads, funnels,
+                follow-up, and the CRM behind them, and reports the return every month. Nothing handed off, nothing outsourced.
+                Marketing you can put on a balance sheet as an investment, not a line item you hope is working.
               </p>
             </FadeUp>
             <FadeUp><p className="text-accent">If that's the kind of partner you've been looking for, let's talk.</p></FadeUp>
