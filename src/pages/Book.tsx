@@ -16,7 +16,7 @@ const steps = [
   },
   {
     title: "We map your five revenue leaks",
-    body: "On a focused 30-minute call, a real operator walks your dormant list, missed calls, follow-up speed, no-shows, and reviews.",
+    body: "On a focused 30-minute call, a senior strategist from our team walks your dormant list, missed calls, follow-up speed, no-shows, and reviews.",
   },
   {
     title: "You leave with a 30-day projection",
@@ -101,7 +101,7 @@ export default function Book() {
           provider: { "@type": "Organization", name: "Aurex", url: "https://www.aurexagency.com/" },
           areaServed: "US",
           description:
-            "A free 30-minute strategy call where an Aurex operator maps your five revenue leaks and projects your first 30 days of booked revenue.",
+            "A free 30-minute strategy call where an Aurex senior strategist maps your five revenue leaks and projects your first 30 days of booked revenue.",
         }}
       />
 
@@ -124,7 +124,7 @@ export default function Book() {
               <span className="italic text-accent">See the money first.</span>
             </h1>
             <p className="mt-7 text-lg lg:text-xl text-foreground/65 max-w-2xl text-pretty">
-              Thirty minutes with a real operator who will show you exactly where your next month of
+              Thirty minutes with a senior strategist from our team who will show you exactly where your next month of
               revenue is already hiding, before you spend a dollar on ads.
             </p>
           </Reveal>

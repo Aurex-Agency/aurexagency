@@ -216,7 +216,7 @@ export default function RoiCalculator() {
       <FinalCTASection
         eyebrow="Turn the math into customers"
         title="Now let us show you how to actually add them."
-        sub="A 30 minute call with a real operator. We map where your next customers will come from and what your first 30 days would look like."
+        sub="A 30 minute call with a senior strategist from our team. We map where your next customers will come from and what your first 30 days would look like."
       />
     </Layout>
   );
