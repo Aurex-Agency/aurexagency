@@ -6,7 +6,7 @@ import { whoFor } from "@/data/aurex";
 import { Check } from "lucide-react";
 
 const promises = [
-  { t: "The founder does the work", b: "No account managers, no junior hand-offs. The person who builds your system is the person who runs it." },
+  { t: "A senior team, no hand-offs", b: "No account managers, no junior hand-offs, nothing outsourced. The team that builds your system is the team that runs it." },
   { t: "You own the number", b: "We don't hide behind reach and impressions. We report booked revenue and the return on your spend." },
   { t: "No lock-in, ever", b: "We bet on results keeping you here, not contracts. Pause or cancel whenever you need to." },
 ];
