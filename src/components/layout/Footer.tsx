@@ -14,7 +14,7 @@ const cols = {
     { name: "Health Practices", href: "/health-practices" },
   ],
   Start: [
-    { name: "Revenue Leak Calculator", href: "/roi-calculator" },
+    { name: "Customer Value Calculator", href: "/roi-calculator" },
     { name: "Book a Call", href: "/book" },
     { name: "Free Revenue Audit", href: "/contact#audit" },
   ],

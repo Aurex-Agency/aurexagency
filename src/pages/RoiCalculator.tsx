@@ -4,7 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
-import { ArrowRight, PhoneOff, CalendarX, DatabaseZap, TrendingUp } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 
 const usd = (n: number) =>
   new Intl.NumberFormat("en-US", {
@@ -13,27 +13,20 @@ const usd = (n: number) =>
     maximumFractionDigits: 0,
   }).format(Math.max(0, Math.round(n)));
 
-// Conservative recovery assumptions, shown to the user for transparency.
-const LEAD_RECAPTURE = 0.5; // share of missed/slow leads we get back into a conversation
-const NOSHOW_RECOVERY = 0.5; // share of no-shows prevented by reminders
-const DB_REACTIVATION = 0.03; // share of past customers reactivated in first 90 days
-
 interface Inputs {
-  avgRevenue: number;
-  monthlyLeads: number;
-  missedPct: number;
-  closeRate: number;
-  databaseSize: number;
-  monthlyNoShows: number;
+  avgSale: number;
+  perYear: number;
+  years: number;
+  newPerMonth: number;
+  extraPerMonth: number;
 }
 
 const defaults: Inputs = {
-  avgRevenue: 500,
-  monthlyLeads: 100,
-  missedPct: 30,
-  closeRate: 30,
-  databaseSize: 1000,
-  monthlyNoShows: 10,
+  avgSale: 500,
+  perYear: 2,
+  years: 3,
+  newPerMonth: 20,
+  extraPerMonth: 10,
 };
 
 export default function RoiCalculator() {
@@ -43,76 +36,44 @@ export default function RoiCalculator() {
     setV((s) => ({ ...s, [k]: Math.max(0, Number(e.target.value) || 0) }));
 
   const r = useMemo(() => {
-    const recoveredLeads = v.monthlyLeads * (v.missedPct / 100) * LEAD_RECAPTURE;
-    const leadCustomers = recoveredLeads * (v.closeRate / 100);
-    const leadRevenueMonthly = leadCustomers * v.avgRevenue;
-
-    const noShowRevenueMonthly = v.monthlyNoShows * NOSHOW_RECOVERY * v.avgRevenue;
-
-    const monthly = leadRevenueMonthly + noShowRevenueMonthly;
-    const annual = monthly * 12;
-
-    const dormantOneTime = v.databaseSize * DB_REACTIVATION * v.avgRevenue;
-    const firstYear = annual + dormantOneTime;
-
-    return {
-      leadRevenueMonthly,
-      noShowRevenueMonthly,
-      monthly,
-      annual,
-      dormantOneTime,
-      firstYear,
-      leadCustomers,
-    };
+    const yearlyValue = v.avgSale * v.perYear;
+    const ltv = yearlyValue * v.years;
+    const newPerYear = v.newPerMonth * 12;
+    const currentAnnual = newPerYear * yearlyValue;
+    const addedAnnual = v.extraPerMonth * 12 * yearlyValue;
+    const addedLifetime = v.extraPerMonth * 12 * ltv;
+    return { yearlyValue, ltv, newPerYear, currentAnnual, addedAnnual, addedLifetime };
   }, [v]);
 
-  const breakdown = [
-    {
-      icon: PhoneOff,
-      label: "Missed & slow-to-answer leads",
-      value: usd(r.leadRevenueMonthly),
-      unit: "/mo",
-      note: "Instant text-back and 5-minute response recapture leads you lose to voicemail and slow replies.",
-    },
-    {
-      icon: CalendarX,
-      label: "No-shows & cancellations",
-      value: usd(r.noShowRevenueMonthly),
-      unit: "/mo",
-      note: "Automated reminders cut the empty slots that quietly drain your calendar.",
-    },
-    {
-      icon: DatabaseZap,
-      label: "Dormant past customers",
-      value: usd(r.dormantOneTime),
-      unit: " one-time",
-      note: "Reactivating a slice of your existing database in the first 90 days.",
-    },
+  const fields = [
+    { k: "avgSale" as const, label: "Average sale", prefix: "$", step: 25, help: "What a customer spends in a typical visit or purchase." },
+    { k: "perYear" as const, label: "Purchases per year", prefix: "", step: 1, help: "How many times a year the average customer buys from you." },
+    { k: "years" as const, label: "Years a customer stays", prefix: "", step: 1, help: "How long the average customer keeps coming back." },
+    { k: "newPerMonth" as const, label: "New customers per month", prefix: "", step: 1, help: "Roughly how many first-time customers you win each month." },
   ];
 
-  const fields = [
-    { k: "avgRevenue" as const, label: "Average revenue per customer", prefix: "$", min: 0, step: 25, help: "Your average ticket or first-visit value." },
-    { k: "monthlyLeads" as const, label: "New leads & calls per month", prefix: "", min: 0, step: 5, help: "Calls, form fills, and DMs combined." },
-    { k: "databaseSize" as const, label: "Past customers in your database", prefix: "", min: 0, step: 50, help: "People who have paid you at least once." },
-    { k: "monthlyNoShows" as const, label: "No-shows or cancellations per month", prefix: "", min: 0, step: 1, help: "Booked appointments that fall through." },
+  const miniStats = [
+    { label: "Value per customer / year", value: usd(r.yearlyValue) },
+    { label: "New customers / year", value: r.newPerYear.toLocaleString() },
+    { label: "New-customer revenue / year", value: usd(r.currentAnnual) },
   ];
 
   return (
     <Layout>
       <Seo
-        title="Revenue Leak Calculator | See What You're Missing | Aurex"
-        description="Free revenue leak calculator. Enter your average revenue per customer and a few numbers to see how much money your North Mississippi business is missing from missed calls, slow follow-up, no-shows, and a dormant database."
+        title="Customer Value & Growth Calculator | Aurex"
+        description="Free customer value calculator. Enter your average sale and a couple of numbers to see your customer lifetime value and exactly what a few more customers a month is worth to your business."
         path="/roi-calculator"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
-          name: "Aurex Revenue Leak Calculator",
+          name: "Aurex Customer Value & Growth Calculator",
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web",
           url: "https://www.aurexagency.com/roi-calculator",
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
           description:
-            "Estimate the revenue your local business is losing to missed calls, slow follow-up, no-shows, and a dormant customer database.",
+            "Calculate your customer lifetime value and the revenue impact of adding more customers each month.",
         }}
       />
 
@@ -123,29 +84,28 @@ export default function RoiCalculator() {
         <div className="container relative">
           <Reveal>
             <div className="flex items-center justify-between border-b hairline pb-6 mb-12">
-              <p className="eyebrow eyebrow-amber">Revenue leak calculator</p>
+              <p className="eyebrow eyebrow-amber">Customer value calculator</p>
               <p className="label-mono hidden sm:block">Free · No email required</p>
             </div>
           </Reveal>
 
           <Reveal>
             <h1 className="font-display text-[2.5rem] leading-[1.04] sm:text-6xl lg:text-7xl text-foreground tracking-tight text-balance max-w-4xl">
-              See how much revenue you are leaving{" "}
-              <span className="italic text-accent">on the table.</span>
+              What is a customer really worth?{" "}
+              <span className="italic text-accent">Let's do the math.</span>
             </h1>
             <p className="mt-7 text-lg lg:text-xl text-foreground/65 max-w-2xl text-pretty">
-              Enter a few numbers about your business. We will estimate the revenue slipping through missed
-              calls, slow follow-up, no-shows, and a dormant customer list, the exact leaks Aurex plugs.
+              Most owners undervalue a single customer. Enter three quick numbers to see your true customer
+              lifetime value, then see what just a few more customers a month would add to your bottom line.
             </p>
           </Reveal>
 
           <div className="mt-14 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* INPUTS */}
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-5">
               <Reveal delay={0.1}>
                 <div className="card-premium p-6 sm:p-8">
-                  <h2 className="font-display text-2xl text-foreground mb-6">Your numbers</h2>
-
+                  <h2 className="font-display text-2xl text-foreground mb-6">Your business</h2>
                   <div className="space-y-6">
                     {fields.map((f) => (
                       <div key={f.k}>
@@ -157,7 +117,7 @@ export default function RoiCalculator() {
                           <input
                             id={f.k}
                             type="number"
-                            min={f.min}
+                            min={0}
                             step={f.step}
                             value={v[f.k]}
                             onChange={set(f.k)}
@@ -167,107 +127,84 @@ export default function RoiCalculator() {
                         <p className="mt-1.5 text-xs text-foreground/45">{f.help}</p>
                       </div>
                     ))}
-
-                    {/* Sliders */}
-                    <div>
-                      <div className="flex items-baseline justify-between mb-2">
-                        <label htmlFor="missedPct" className="label-mono">Leads you miss or answer slowly</label>
-                        <span className="font-display text-xl text-accent tnum">{v.missedPct}%</span>
-                      </div>
-                      <input
-                        id="missedPct"
-                        type="range"
-                        min={0}
-                        max={60}
-                        step={1}
-                        value={v.missedPct}
-                        onChange={set("missedPct")}
-                        style={{ accentColor: "hsl(var(--accent))" }}
-                        className="w-full cursor-pointer"
-                      />
-                      <p className="mt-1.5 text-xs text-foreground/45">Industry average for local businesses is 25 to 40%.</p>
-                    </div>
-
-                    <div>
-                      <div className="flex items-baseline justify-between mb-2">
-                        <label htmlFor="closeRate" className="label-mono">Close rate on leads you reach</label>
-                        <span className="font-display text-xl text-accent tnum">{v.closeRate}%</span>
-                      </div>
-                      <input
-                        id="closeRate"
-                        type="range"
-                        min={0}
-                        max={100}
-                        step={1}
-                        value={v.closeRate}
-                        onChange={set("closeRate")}
-                        style={{ accentColor: "hsl(var(--accent))" }}
-                        className="w-full cursor-pointer"
-                      />
-                    </div>
                   </div>
                 </div>
               </Reveal>
             </div>
 
             {/* RESULTS */}
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-7">
               <Reveal delay={0.16}>
                 <div className="lg:sticky lg:top-28 space-y-5">
+                  {/* LTV hero */}
                   <div className="card-premium p-7 sm:p-9 relative overflow-hidden">
                     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
-                    <div className="flex items-center gap-2 label-mono eyebrow-amber mb-4">
-                      <TrendingUp className="w-4 h-4" /> Revenue you are missing
-                    </div>
+                    <p className="label-mono eyebrow-amber mb-4">Your customer lifetime value</p>
                     <div className="font-display text-6xl lg:text-7xl text-accent tnum tracking-tight leading-none">
-                      {usd(r.annual)}
+                      {usd(r.ltv)}
                     </div>
-                    <p className="mt-3 text-foreground/65">
-                      per year in recurring missed revenue, about{" "}
-                      <span className="text-foreground font-medium">{usd(r.monthly)}</span> every month.
+                    <p className="mt-3 text-foreground/65 max-w-md">
+                      That is what one new customer is worth to you over {v.years || 0}{" "}
+                      {v.years === 1 ? "year" : "years"}, not just their first visit of {usd(v.avgSale)}.
                     </p>
 
-                    <div className="mt-7 pt-7 border-t hairline">
-                      <div className="flex items-end justify-between gap-4">
-                        <div>
-                          <div className="label-mono mb-1">First-year opportunity</div>
-                          <div className="font-display text-3xl text-foreground tnum">{usd(r.firstYear)}</div>
+                    <div className="mt-7 pt-6 border-t hairline grid grid-cols-1 sm:grid-cols-3 gap-5">
+                      {miniStats.map((s) => (
+                        <div key={s.label}>
+                          <div className="font-display text-2xl lg:text-3xl text-foreground tnum">{s.value}</div>
+                          <div className="text-xs text-foreground/50 mt-1 leading-snug">{s.label}</div>
                         </div>
-                        <p className="text-xs text-foreground/45 max-w-[12rem] text-right">
-                          Recurring missed revenue plus a one-time dormant database reactivation.
-                        </p>
-                      </div>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Breakdown */}
-                  <div className="card-premium p-2">
-                    {breakdown.map((b, i) => (
-                      <div
-                        key={b.label}
-                        className={`flex gap-4 p-5 ${i !== 0 ? "border-t hairline" : ""}`}
-                      >
-                        <span className="mark w-10 h-10 mt-0.5"><b.icon className="w-4 h-4" /></span>
-                        <div className="flex-1">
-                          <div className="flex items-baseline justify-between gap-3">
-                            <span className="text-foreground font-medium">{b.label}</span>
-                            <span className="font-display text-xl text-foreground tnum whitespace-nowrap">
-                              {b.value}<span className="text-sm text-foreground/45">{b.unit}</span>
-                            </span>
-                          </div>
-                          <p className="text-sm text-foreground/55 mt-1 leading-relaxed">{b.note}</p>
-                        </div>
+                  {/* Growth scenario */}
+                  <div className="card-premium p-7 sm:p-9">
+                    <div className="flex items-center gap-2 label-mono mb-5">
+                      <TrendingUp className="w-4 h-4 text-accent" /> Your growth scenario
+                    </div>
+                    <div className="flex items-baseline justify-between mb-2">
+                      <label htmlFor="extra" className="text-foreground">
+                        If you added{" "}
+                        <span className="font-display text-2xl text-accent tnum">{v.extraPerMonth}</span> more
+                        customers per month
+                      </label>
+                    </div>
+                    <input
+                      id="extra"
+                      type="range"
+                      min={0}
+                      max={50}
+                      step={1}
+                      value={v.extraPerMonth}
+                      onChange={set("extraPerMonth")}
+                      style={{ accentColor: "hsl(var(--accent))" }}
+                      className="w-full cursor-pointer"
+                      aria-label="Extra customers per month"
+                    />
+
+                    <div className="mt-6 grid sm:grid-cols-2 gap-px bg-[hsl(var(--hairline))] border hairline rounded-xl overflow-hidden">
+                      <div className="bg-card p-6">
+                        <div className="label-mono mb-2">Added revenue, year one</div>
+                        <div className="font-display text-4xl text-foreground tnum">{usd(r.addedAnnual)}</div>
                       </div>
-                    ))}
+                      <div className="bg-card p-6">
+                        <div className="label-mono eyebrow-amber mb-2">Added lifetime revenue</div>
+                        <div className="font-display text-4xl text-accent tnum">{usd(r.addedLifetime)}</div>
+                      </div>
+                    </div>
+
+                    <p className="mt-5 text-sm text-foreground/55 leading-relaxed">
+                      Capturing missed calls, answering leads in minutes, and reactivating past customers is
+                      usually all it takes to add this many. That is exactly what Aurex builds for you.
+                    </p>
                   </div>
 
                   <Link to="/book" className="btn-amber w-full h-14 text-base cursor-pointer">
-                    Get my real numbers in a free audit <ArrowRight className="w-4 h-4" />
+                    Show me how to add these customers <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <p className="text-xs text-foreground/45 text-center leading-relaxed">
-                    Illustrative estimate. Assumes we recapture {LEAD_RECAPTURE * 100}% of missed or slow leads,
-                    prevent {NOSHOW_RECOVERY * 100}% of no-shows, and reactivate {DB_REACTIVATION * 100}% of your
-                    past customers in 90 days. Your audit runs the math on your real data.
+                  <p className="text-xs text-foreground/45 text-center">
+                    Numbers update as you type. Estimates for planning, not a guarantee.
                   </p>
                 </div>
               </Reveal>
@@ -277,9 +214,9 @@ export default function RoiCalculator() {
       </section>
 
       <FinalCTASection
-        eyebrow="Turn the estimate into a plan"
-        title="That number is sitting in your business right now. Let us prove it."
-        sub="A 30 minute call with a real operator. We run these numbers on your actual data and show you exactly what your first 30 days would look like."
+        eyebrow="Turn the math into customers"
+        title="Now let us show you how to actually add them."
+        sub="A 30 minute call with a real operator. We map where your next customers will come from and what your first 30 days would look like."
       />
     </Layout>
   );
