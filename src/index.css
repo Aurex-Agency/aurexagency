@@ -10,102 +10,51 @@ html, body {
 
 @layer base {
   :root {
-    /*
-      Aurex - "dark luxury" system.
-      Deep navy ink surfaces, luminous cyan accent, bright editorial type.
-      NOTE: the `ink` color token is intentionally mapped to a LIGHT value so that
-      the existing `text-ink` usages read as primary light text on dark surfaces.
-      Deep panels are driven by `--surface-deep` / the surface-* utilities, not by `ink`.
-    */
+    /* Aurex - light "Conversion Factory" inspired system: white canvas,
+       charcoal ink, confident teal accent, bold sans typography. */
+    --background: 0 0% 100%;
+    --foreground: 222 22% 11%;
 
-    /* Core surfaces */
-    --background: 222 47% 6%;
-    --foreground: 200 24% 96%;
+    --muted: 220 16% 96%;
+    --muted-foreground: 220 9% 40%;
 
-    --surface-deep: 224 56% 4%;
-    --surface-raised: 222 40% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 22% 11%;
 
-    --card: 222 38% 9.5%;
-    --card-foreground: 200 24% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 22% 11%;
 
-    --popover: 222 44% 7%;
-    --popover-foreground: 200 24% 96%;
+    --primary: 222 24% 11%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Cyan accent is primary action color on dark */
-    --primary: 186 92% 50%;
-    --primary-foreground: 224 56% 5%;
+    --secondary: 220 16% 96%;
+    --secondary-foreground: 222 22% 11%;
 
-    --secondary: 222 30% 13%;
-    --secondary-foreground: 200 24% 96%;
+    --accent: 176 84% 34%;
+    --accent-foreground: 0 0% 100%;
 
-    --muted: 222 26% 12%;
-    --muted-foreground: 210 14% 64%;
-
-    --accent: 186 92% 50%;
-    --accent-foreground: 224 56% 5%;
-
-    --destructive: 0 72% 56%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 213 28% 16%;
-    --input: 213 28% 16%;
-    --ring: 186 92% 50%;
+    --border: 220 14% 90%;
+    --input: 220 14% 90%;
+    --ring: 176 84% 34%;
 
-    --radius: 0.625rem;
+    --radius: 0.75rem;
 
-    /* Legacy/brand tokens kept so components do not break. */
-    /* `ink` = primary LIGHT text (see note above). */
-    --ink: 200 24% 96%;
-    --ink-soft: 205 18% 84%;
-    --ink-muted: 210 13% 60%;
-    /* `cream` = light text/foreground for the historically-dark sections. */
-    --cream: 200 24% 96%;
-    --cream-warm: 205 16% 88%;
+    /* near-black for dark contrast sections */
+    --ink: 222 32% 8%;
+    /* warm off-white for alternating bands */
+    --paper: 40 33% 98%;
 
-    /* Accent family - cyan + electric blue lifted from the logo. */
-    --amber: 186 92% 50%;        /* primary cyan accent */
-    --amber-soft: 184 95% 62%;   /* brighter cyan for hovers */
-    --amber-deep: 187 88% 58%;   /* eyebrow / link accent on dark */
-
-    --brand-blue: 205 92% 62%;
-    --brand-blue-soft: 211 94% 70%;
-    --brand-cyan: 186 92% 52%;
-    --brand-cyan-soft: 184 95% 64%;
-
-    --hairline: 213 28% 16%;
-
-    --success: 152 56% 50%;
-    --success-foreground: 224 56% 5%;
-
-    --sidebar-background: 222 44% 7%;
-    --sidebar-foreground: 200 20% 90%;
-    --sidebar-primary: 186 92% 50%;
-    --sidebar-primary-foreground: 224 56% 5%;
-    --sidebar-accent: 222 30% 13%;
-    --sidebar-accent-foreground: 200 24% 96%;
-    --sidebar-border: 213 28% 16%;
-    --sidebar-ring: 186 92% 50%;
-  }
-
-  /* Single dark theme - keep .dark consistent for any class-toggled UI. */
-  .dark {
-    --background: 222 47% 6%;
-    --foreground: 200 24% 96%;
-    --card: 222 38% 9.5%;
-    --card-foreground: 200 24% 96%;
-    --popover: 222 44% 7%;
-    --popover-foreground: 200 24% 96%;
-    --primary: 186 92% 50%;
-    --primary-foreground: 224 56% 5%;
-    --secondary: 222 30% 13%;
-    --secondary-foreground: 200 24% 96%;
-    --muted: 222 26% 12%;
-    --muted-foreground: 210 14% 64%;
-    --accent: 186 92% 50%;
-    --accent-foreground: 224 56% 5%;
-    --border: 213 28% 16%;
-    --input: 213 28% 16%;
-    --ring: 186 92% 50%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 22% 20%;
+    --sidebar-primary: 176 84% 34%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 16% 96%;
+    --sidebar-accent-foreground: 222 22% 11%;
+    --sidebar-border: 220 14% 90%;
+    --sidebar-ring: 176 84% 34%;
   }
 }
 
@@ -113,178 +62,78 @@ html, body {
   * { @apply border-border; }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-feature-settings: "ss01", "cv11";
+    font-family: "Inter", system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-feature-settings: "ss01";
-    letter-spacing: -0.02em;
-    font-weight: 400;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.025em;
   }
-  ::selection { background: hsl(var(--accent) / 0.85); color: hsl(var(--surface-deep)); }
+  ::selection { background: hsl(var(--accent) / 0.9); color: #fff; }
 }
 
 @layer components {
-  .font-display { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.025em; }
-  .font-body { font-family: 'Inter', system-ui, sans-serif; }
+  .shell { @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8; }
 
-  /* ---- Surfaces -------------------------------------------------------- */
-  /* Historically-named surfaces, now mapped to the dark palette so the
-     whole site reads as one cohesive dark-luxury canvas. */
-  .surface-ink {
-    background: hsl(var(--surface-deep));
-    color: hsl(var(--cream));
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-accent;
   }
-  .surface-ink-grad {
+
+  /* Surfaces */
+  .surface-dark { background: hsl(var(--ink)); color: #fff; }
+  .surface-muted { background: hsl(var(--muted)); }
+  .surface-paper { background: hsl(var(--paper)); }
+  .brushed {
     background:
-      radial-gradient(1100px 520px at 18% -10%, hsl(var(--brand-cyan) / 0.10), transparent 60%),
-      radial-gradient(900px 500px at 88% 110%, hsl(var(--brand-blue) / 0.12), transparent 62%),
-      linear-gradient(180deg, hsl(var(--surface-deep)) 0%, hsl(222 50% 5%) 100%);
-  }
-  .surface-cream {
-    background: hsl(var(--background));
-    color: hsl(var(--foreground));
-  }
-  .surface-cream-warm {
-    background: hsl(var(--surface-raised));
-    color: hsl(var(--foreground));
+      radial-gradient(120% 130% at 50% -10%, hsl(220 18% 17%) 0%, hsl(var(--ink)) 58%);
   }
 
-  /* Subtle film grain for depth on dark surfaces */
+  /* Film grain for dark sections */
   .grain::after {
     content: "";
     position: absolute; inset: 0;
     pointer-events: none;
-    opacity: 0.05;
+    opacity: 0.06;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     mix-blend-mode: soft-light;
   }
 
-  /* Restrained accent glow - no candy gradients */
-  .mesh-amber {
-    background:
-      radial-gradient(46rem 30rem at 12% 0%, hsl(var(--brand-cyan) / 0.10), transparent 58%),
-      radial-gradient(40rem 26rem at 92% 8%, hsl(var(--brand-blue) / 0.10), transparent 60%);
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-200;
   }
+  .btn-primary { @apply btn; background: hsl(var(--accent)); color: #fff; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -14px hsl(var(--accent) / 0.7); filter: brightness(1.05); }
+  .btn-dark { @apply btn; background: hsl(var(--ink)); color: #fff; }
+  .btn-dark:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -16px hsl(var(--ink) / 0.5); }
+  .btn-outline { @apply btn; border: 1px solid hsl(var(--foreground) / 0.18); color: hsl(var(--foreground)); background: transparent; }
+  .btn-outline:hover { background: hsl(var(--foreground) / 0.04); }
+  .btn-light { @apply btn; background: #fff; color: hsl(var(--ink)); }
+  .btn-light:hover { transform: translateY(-1px); }
 
-  /* Fine structural grid - reads as intentional layout, not decoration */
-  .grid-lines {
-    background-image:
-      linear-gradient(to right, hsl(var(--foreground) / 0.035) 1px, transparent 1px);
-    background-size: 8.333% 100%;
+  /* Cards */
+  .card-soft {
+    @apply rounded-2xl bg-card;
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 1px 2px hsl(220 25% 10% / 0.04), 0 16px 40px -28px hsl(220 25% 10% / 0.18);
   }
-
-  .hairline { border-color: hsl(var(--hairline)); }
-  .rule {
-    height: 1px;
-    background: linear-gradient(90deg, hsl(var(--foreground) / 0.18), transparent);
-  }
-  .divider-thin {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(var(--foreground) / 0.16), transparent);
-  }
-
-  /* ---- Buttons --------------------------------------------------------- */
-  /* Primary CTA: confident cyan fill, dark text, precise glow. */
-  .btn-amber {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-300;
-    background: hsl(var(--accent));
-    color: hsl(var(--surface-deep));
-    box-shadow: 0 0 0 1px hsl(var(--accent) / 0.5), 0 14px 36px -12px hsl(var(--accent) / 0.55);
-  }
-  .btn-amber:hover {
-    background: hsl(var(--amber-soft));
-    transform: translateY(-1px);
-    box-shadow: 0 0 0 1px hsl(var(--amber-soft) / 0.6), 0 20px 48px -12px hsl(var(--accent) / 0.7);
-  }
-
-  .btn-ink {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300;
-    background: hsl(var(--cream));
-    color: hsl(var(--surface-deep));
-  }
-  .btn-ink:hover { background: hsl(0 0% 100%); transform: translateY(-1px); }
-
-  /* Ghost: hairline outline that works on dark */
-  .btn-ghost-ink {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300;
-    background: transparent; color: hsl(var(--cream));
-    border: 1px solid hsl(var(--foreground) / 0.22);
-  }
-  .btn-ghost-ink:hover { background: hsl(var(--foreground) / 0.06); border-color: hsl(var(--accent) / 0.5); }
-
-  /* ---- Editorial labels ----------------------------------------------- */
-  .eyebrow {
-    @apply inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-widest font-medium;
-    color: hsl(var(--ink-muted));
-  }
-  .eyebrow::before {
-    content: "";
-    width: 1.75rem;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.6;
-  }
-  .eyebrow-amber { color: hsl(var(--amber-deep)); }
-
-  .label-mono {
-    @apply font-mono text-[11px] uppercase tracking-widest font-medium;
-    color: hsl(var(--ink-muted));
-  }
-
-  /* Oversized faint section index numeral */
-  .section-index {
-    @apply font-mono font-medium;
-    color: hsl(var(--foreground) / 0.16);
-  }
-
-  /* ---- Cards ----------------------------------------------------------- */
-  .card-premium {
-    @apply rounded-xl transition-all duration-300;
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--foreground) / 0.08);
-    box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.04), 0 24px 48px -32px hsl(0 0% 0% / 0.7);
-  }
-  .card-premium:hover {
-    transform: translateY(-2px);
+  .card-hover { @apply transition-all duration-200; }
+  .card-hover:hover {
+    transform: translateY(-3px);
     border-color: hsl(var(--accent) / 0.45);
-    box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.05), 0 30px 60px -28px hsl(var(--accent) / 0.22);
+    box-shadow: 0 1px 2px hsl(220 25% 10% / 0.04), 0 26px 50px -28px hsl(220 25% 10% / 0.26);
   }
 
-  /* Small accent mark used in place of repetitive icon-in-a-box chips */
-  .mark {
-    @apply inline-flex items-center justify-center shrink-0 rounded-lg;
-    background: hsl(var(--accent) / 0.12);
-    color: hsl(var(--accent));
-    border: 1px solid hsl(var(--accent) / 0.22);
-  }
+  .hairline { border-color: hsl(var(--border)); }
 }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
-  .tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+  .tnum { font-variant-numeric: tabular-nums; }
 
-  .animate-fade-up { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-in { animation: fadeIn 0.6s ease-out both; }
-  @keyframes fadeIn { from {opacity:0} to {opacity:1} }
-
-  .animate-drift {
-    animation: drift 16s ease-in-out infinite alternate;
-  }
-  @keyframes drift {
-    0% { transform: translate3d(0,0,0) scale(1); }
-    100% { transform: translate3d(2%,-2%,0) scale(1.05); }
-  }
-
-  .marquee {
-    animation: marquee 40s linear infinite;
-  }
+  .marquee { animation: marquee 32s linear infinite; }
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
