@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { CONTACT_EMAIL } from "@/data/aurex";
+import aurexLogo from "@/assets/aurex-logo-main.png";
 
 const cols = {
   Company: [
@@ -23,9 +24,9 @@ export function Footer() {
       <div className="shell relative py-16 lg:py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-2 max-w-sm">
-            <div className="font-extrabold text-2xl tracking-tight">
-              Aurex<span className="text-accent">.</span>
-            </div>
+            <Link to="/" className="inline-flex items-center" aria-label="Aurex Agency home">
+              <img src={aurexLogo} alt="Aurex Agency" className="h-10 w-auto" />
+            </Link>
             <p className="mt-4 text-white/55 leading-relaxed">
               Your marketing department, on demand. Built to prove ROI, run by one operator who owns the number.
             </p>
