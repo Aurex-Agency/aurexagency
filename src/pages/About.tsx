@@ -25,7 +25,7 @@ export default function About() {
           <FadeUp>
             <p className="eyebrow mb-5">About Aurex</p>
             <h1 className="text-5xl lg:text-7xl font-extrabold tracking-[-0.03em] text-foreground text-balance max-w-4xl leading-[1.03]">
-              Built and run by one operator who owns the number.
+              Built and run by a senior in-house team that owns the number.
             </h1>
           </FadeUp>
         </div>
