@@ -10,7 +10,7 @@ export function ServicesGrid() {
         <FadeUp>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-clay-deep mb-4">What's included</p>
           <h2 className="font-display text-4xl lg:text-5xl text-coal tracking-[-0.02em] max-w-3xl text-balance leading-[1.08]">
-            Everything your marketing needs, run by one operator.
+            Everything your marketing needs, run by one in-house team.
           </h2>
           <p className="mt-5 text-lg text-coal/65 max-w-2xl leading-relaxed">
             Productized and built to work together. No piecing it together from six vendors.

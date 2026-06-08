@@ -15,7 +15,7 @@ export const CONTACT_EMAIL = "hello@aurexagency.com";
 
 export const ONE_LINER = "Your marketing department, on demand. Built to prove ROI.";
 export const SUB_LINE =
-  "We don't sell you leads and disappear. We turn your marketing into an investment you can actually measure: ads, funnels, follow-up, and the systems behind them, run by one operator who owns the number.";
+  "We don't sell you leads and disappear. We turn your marketing into an investment you can actually measure: ads, funnels, follow-up, and the systems behind them, run by a senior in-house team that owns the number.";
 
 export const nav = [
   { name: "How it works", href: "/how-it-works" },
@@ -119,7 +119,7 @@ export const alacarte: { name: string; price: string }[] = [
 ];
 
 export const comparison: { label: string; aurex: string; agency: string; freelancer: string }[] = [
-  { label: "Who does the work", aurex: "The founder, every time", agency: "Junior account staff", freelancer: "One person, one skill" },
+  { label: "Who does the work", aurex: "Senior in-house team", agency: "Junior account staff", freelancer: "One person, one skill" },
   { label: "What you actually buy", aurex: "Measurable ROI", agency: "Activity and leads", freelancer: "A single deliverable" },
   { label: "Commitment", aurex: "No lock-in, pause anytime", agency: "6 to 12 month contracts", freelancer: "Per project" },
   { label: "Scope", aurex: "Full marketing dept in one queue", agency: "A scoped retainer", freelancer: "One skill" },
@@ -149,7 +149,7 @@ export const faqs: { q: string; a: string }[] = [
   { q: "Can I really pause or cancel anytime?", a: "Yes. No lock-in. Cancel and your current paid month simply finishes with no future billing. Pause and we hold your slot for up to 30 days, which is perfect for seasonal businesses." },
   { q: "How fast will I get work back?", a: "Standard turnaround is 3 to 4 business days on Ads and Funnel, and 2 to 3 days on All-Access. Need something faster? Rush turnaround delivers in 24 to 48 hours." },
   { q: "What if I just need a website or CRM built?", a: "Those are one-time builds with flat, transparent pricing. You can buy a build on its own or alongside a subscription. No quote games." },
-  { q: "Do you actually do the work yourself?", a: "Yes. Aurex is run by one operator who builds and runs your system. No account managers, no junior hand-offs, no telephone game." },
+  { q: "Do you actually do the work yourself?", a: "Yes. A senior in-house Aurex team builds and runs your system. No account managers, no junior hand-offs, nothing outsourced." },
   { q: "How do you measure ROI?", a: "Every plan includes a dashboard that ties spend to booked revenue. We report the number that matters, not impressions and reach." },
   { q: "Are there contracts?", a: "No. The whole model is built on betting that results keep you here, not paperwork. Pause or cancel whenever you need to." },
 ];
@@ -159,7 +159,7 @@ export const metrics: { value: number; prefix?: string; suffix?: string; label: 
   { value: 30, suffix: " days", label: "to provable ROI from a cold list" },
   { value: 312, label: "dormant leads reactivated" },
   { value: 47000, prefix: "$", label: "in recovered revenue" },
-  { value: 1, suffix: " operator", label: "owns your number, start to finish" },
+  { value: 0, suffix: " hand-offs", label: "one in-house team owns your number" },
 ];
 
 export const testimonials: { metric: string; quote: string; name: string; business: string }[] = [

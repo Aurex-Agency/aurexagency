@@ -12,7 +12,7 @@ interface FinalCTAProps {
 export function FinalCTASection({
   eyebrow = "Get your free revenue audit",
   title = "Tell us where it hurts. We will show you the revenue hiding in plain sight.",
-  sub = "A 30 minute call with a real operator. We map your five gaps, run the numbers on your dormant list, and tell you exactly what your first 30 days would look like.",
+  sub = "A 30 minute call with a senior strategist from our team. We map your five gaps, run the numbers on your dormant list, and tell you exactly what your first 30 days would look like.",
   defaultIndustry,
   ctaLabel,
 }: FinalCTAProps) {

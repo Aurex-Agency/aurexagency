@@ -103,7 +103,7 @@ export default function MedSpas() {
       <FinalCTASection
         eyebrow="Free med spa revenue audit"
         title="Show us your CRM. We will show you the revenue hiding in it."
-        sub="A 30 minute call with a real operator. We audit your five gaps, project your first 30 days, and walk you through the exact plan."
+        sub="A 30 minute call with a senior strategist from our team. We audit your five gaps, project your first 30 days, and walk you through the exact plan."
         defaultIndustry="Med Spa / Aesthetics"
         ctaLabel="Send My Med Spa Audit"
       />

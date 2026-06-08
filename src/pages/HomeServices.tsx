@@ -103,7 +103,7 @@ export default function HomeServices() {
       <FinalCTASection
         eyebrow="Free home services revenue audit"
         title="Show us your CRM and your missed-call log. We will show you the booked jobs hiding in them."
-        sub="A 30 minute call with a real operator. We map your five gaps, project your first 30 days of recovered jobs, and walk you through the exact plan."
+        sub="A 30 minute call with a senior strategist from our team. We map your five gaps, project your first 30 days of recovered jobs, and walk you through the exact plan."
         defaultIndustry="Home Services (Roofing, HVAC, Plumbing)"
         ctaLabel="Send My Home Services Audit"
       />

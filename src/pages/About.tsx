@@ -6,7 +6,7 @@ import { whoFor } from "@/data/aurex";
 import { Check } from "lucide-react";
 
 const promises = [
-  { t: "The founder does the work", b: "No account managers, no junior hand-offs. The person who builds your system is the person who runs it." },
+  { t: "A senior team, no hand-offs", b: "No account managers, no junior hand-offs, nothing outsourced. The team that builds your system is the team that runs it." },
   { t: "You own the number", b: "We don't hide behind reach and impressions. We report booked revenue and the return on your spend." },
   { t: "No lock-in, ever", b: "We bet on results keeping you here, not contracts. Pause or cancel whenever you need to." },
 ];
@@ -16,7 +16,7 @@ export default function About() {
     <Layout>
       <Seo
         title="About | Aurex"
-        description="Aurex is a one-operator marketing studio in North Mississippi built on a simple idea: marketing should be an investment you can measure. The person who builds your system is the person who runs it."
+        description="Aurex is a senior in-house marketing team in North Mississippi built on a simple idea: marketing should be an investment you can measure. The team that builds your system is the team that runs it. Nothing outsourced."
         path="/about"
       />
 
@@ -25,7 +25,7 @@ export default function About() {
           <FadeUp>
             <p className="eyebrow mb-5">About Aurex</p>
             <h1 className="text-5xl lg:text-7xl font-extrabold tracking-[-0.03em] text-foreground text-balance max-w-4xl leading-[1.03]">
-              Built and run by one operator who owns the number.
+              Built and run by a senior in-house team that owns the number.
             </h1>
           </FadeUp>
         </div>
@@ -39,15 +39,15 @@ export default function About() {
             <FadeUp><p>Agencies sell activity and lock you into long contracts. Freelancers hand you a deliverable and disappear. Both leave the owner guessing.</p></FadeUp>
             <FadeUp>
               <p>
-                So Aurex is built differently. One operator builds and runs the whole system, ads, funnels,
-                follow-up, and the CRM behind them, and reports the return every month. Marketing you can put on
-                a balance sheet as an investment, not a line item you hope is working.
+                So Aurex is built differently. One senior team builds and runs the whole system in-house, ads, funnels,
+                follow-up, and the CRM behind them, and reports the return every month. Nothing handed off, nothing outsourced.
+                Marketing you can put on a balance sheet as an investment, not a line item you hope is working.
               </p>
             </FadeUp>
             <FadeUp><p className="text-accent">If that's the kind of partner you've been looking for, let's talk.</p></FadeUp>
           </div>
           <FadeUp>
-            <p className="mt-8 text-2xl font-extrabold text-foreground">Kalob<span className="text-foreground/50 font-medium">, Founder of Aurex</span></p>
+            <p className="mt-8 text-2xl font-extrabold text-foreground">The Aurex Team</p>
           </FadeUp>
         </div>
       </section>

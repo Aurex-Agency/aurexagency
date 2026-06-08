@@ -253,7 +253,7 @@ export default function MedSpasFacebookAds() {
       <FinalCTASection
         eyebrow="Free med spa revenue audit"
         title="See exactly where ads will pay back, and where they will not."
-        sub="A 30 minute call with a real operator. We audit your foundation, project your first 30 days, and tell you honestly whether you are ready to scale paid acquisition."
+        sub="A 30 minute call with a senior strategist from our team. We audit your foundation, project your first 30 days, and tell you honestly whether you are ready to scale paid acquisition."
         defaultIndustry="Med Spa / Aesthetics"
         ctaLabel="Send My Med Spa Audit"
       />

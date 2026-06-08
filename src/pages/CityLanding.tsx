@@ -208,7 +208,7 @@ export default function CityLanding() {
       <FinalCTASection
         eyebrow={`Free revenue audit for ${city.name}`}
         title={`Show us your ${city.name} business. We will show you the revenue hiding in it.`}
-        sub={`A 30 minute call with a real operator. We map your five revenue leaks, run the numbers, and show you exactly what your first 30 days in ${city.name} would look like.`}
+        sub={`A 30 minute call with a senior strategist from our team. We map your five revenue leaks, run the numbers, and show you exactly what your first 30 days in ${city.name} would look like.`}
       />
     </Layout>
   );

@@ -123,7 +123,7 @@ export default function Index() {
           <Reveal>
             <p className="eyebrow eyebrow-amber mb-4">Client results</p>
             <h2 className="font-display text-4xl lg:text-5xl text-foreground max-w-3xl mb-5 text-balance leading-tight">
-              Operator-to-operator wins across the South.
+              Owner-to-owner wins across the South.
             </h2>
           </Reveal>
           <div className="mt-12 grid md:grid-cols-3 gap-5">

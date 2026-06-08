@@ -25,7 +25,7 @@ export const pains: { pain: string; outcome: string }[] = [
   { pain: "Leads go cold before you call back.", outcome: "Instant, automated follow-up that works while you work." },
   { pain: "No idea what's actually working.", outcome: "One dashboard. Real numbers. Booked jobs, not vanity metrics." },
   { pain: "Marketing scattered across six tools.", outcome: "One system that runs the whole thing." },
-  { pain: "Hiring a team you can't afford.", outcome: "One operator. Big-agency results." },
+  { pain: "Hiring a team you can't afford.", outcome: "One in-house team. Big-agency results." },
 ];
 
 export const phases: { n: string; name: string; tag: string; body: string }[] = [

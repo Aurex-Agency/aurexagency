@@ -19,7 +19,7 @@ export default function Home() {
     <Layout>
       <Seo
         title="Aurex | Your Marketing Department, On Demand"
-        description="Aurex turns your marketing into an investment you can measure. Ads, funnels, follow-up, and the systems behind them, run by one operator who owns the number. Flat monthly pricing, no contracts. North Mississippi."
+        description="Aurex turns your marketing into an investment you can measure. Ads, funnels, follow-up, and the systems behind them, run by a senior in-house team that owns the number. Flat monthly pricing, no contracts. North Mississippi."
         path="/"
       />
 
@@ -122,7 +122,7 @@ export default function Home() {
           <FadeUp>
             <p className="eyebrow mb-4">One queue. The whole department.</p>
             <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground max-w-3xl text-balance leading-[1.07]">
-              Everything your marketing needs, run by one operator.
+              Everything your marketing needs, run by one in-house team.
             </h2>
           </FadeUp>
           <Stagger className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

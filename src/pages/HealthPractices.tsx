@@ -103,7 +103,7 @@ export default function HealthPractices() {
       <FinalCTASection
         eyebrow="Free practice revenue audit"
         title="Show us your recall list. We will show you the patients ready to come back."
-        sub="A 30 minute call with a real operator. We map your five gaps, project your first 30 days of recovered visits, and walk you through the exact plan. Operational systems only, no clinical or compliance claims."
+        sub="A 30 minute call with a senior strategist from our team. We map your five gaps, project your first 30 days of recovered visits, and walk you through the exact plan. Operational systems only, no clinical or compliance claims."
         defaultIndustry="Health Practice / Clinic / Dental"
         ctaLabel="Send My Practice Audit"
       />
