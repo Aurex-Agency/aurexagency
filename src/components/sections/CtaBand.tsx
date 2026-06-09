@@ -13,7 +13,7 @@ export function CtaBand({
     <section className="surface-dark grain relative overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-80"
-        style={{ background: "radial-gradient(38rem 22rem at 50% 0%, hsl(176 84% 34% / 0.18), transparent 65%)" }}
+        style={{ background: "radial-gradient(38rem 22rem at 50% 0%, hsl(205 90% 55% / 0.16), transparent 65%)" }}
       />
       <div className="shell relative py-20 lg:py-28 text-center">
         <FadeUp>

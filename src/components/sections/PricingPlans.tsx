@@ -47,7 +47,7 @@ export function PricingPlans({ showToggle = true }: { showToggle?: boolean }) {
           <FadeItem key={t.name} className="h-full">
             <div
               className={`relative h-full rounded-3xl p-8 flex flex-col ${
-                t.popular ? "surface-dark text-white shadow-[0_40px_90px_-45px_rgba(15,20,30,0.6)]" : "card-soft"
+                t.popular ? "surface-dark text-white ring-1 ring-accent/40 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.8)]" : "card-soft"
               }`}
             >
               {t.popular && (

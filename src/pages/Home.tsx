@@ -27,7 +27,7 @@ export default function Home() {
       <section className="relative bg-background pt-32 lg:pt-40 pb-16 lg:pb-20 overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0 opacity-60"
-          style={{ background: "radial-gradient(40rem 26rem at 15% 0%, hsl(176 84% 34% / 0.08), transparent 60%)" }}
+          style={{ background: "radial-gradient(40rem 26rem at 15% 0%, hsl(205 90% 55% / 0.10), transparent 60%)" }}
         />
         <div className="shell relative grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           <div className="lg:col-span-7">
@@ -52,7 +52,7 @@ export default function Home() {
           {/* ROI dashboard mock */}
           <div className="lg:col-span-5">
             <FadeUp delay={0.15}>
-              <div className="grain relative rounded-3xl surface-dark p-6 sm:p-7 shadow-[0_40px_90px_-44px_rgba(15,20,30,0.6)] overflow-hidden">
+              <div className="grain relative rounded-3xl surface-dark p-6 sm:p-7 border border-white/10 shadow-[0_40px_90px_-44px_rgba(0,0,0,0.8)] overflow-hidden">
                 <div className="relative flex items-center justify-between mb-6">
                   <span className="text-sm font-medium text-white/80">Aurex · ROI Dashboard</span>
                   <span className="text-[11px] uppercase tracking-widest text-white/40">This month</span>
@@ -67,7 +67,7 @@ export default function Home() {
                 </div>
                 <div className="mt-7 flex items-end gap-2 h-24">
                   {[34, 48, 41, 63, 72, 95].map((h, i) => (
-                    <div key={i} className="flex-1 rounded-t-md" style={{ height: `${h}%`, background: i === 5 ? "hsl(176 84% 40%)" : "rgba(255,255,255,0.12)" }} />
+                    <div key={i} className="flex-1 rounded-t-md" style={{ height: `${h}%`, background: i === 5 ? "hsl(190 95% 55%)" : "rgba(255,255,255,0.12)" }} />
                   ))}
                 </div>
                 <div className="mt-6 grid grid-cols-2 gap-3">
