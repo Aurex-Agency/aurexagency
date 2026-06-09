@@ -10,55 +10,55 @@ html, body {
 
 @layer base {
   :root {
-    /* Aurex - light "Conversion Factory" inspired system: white canvas,
-       charcoal ink, confident teal accent, bold sans typography. */
-    --background: 0 0% 100%;
-    --foreground: 222 22% 11%;
+    /* Aurex - deep navy + brand blue/cyan system. Mainly blue:
+       navy surfaces, light text, luminous blue-to-cyan accent. */
+    --background: 224 47% 7%;
+    --foreground: 205 30% 96%;
 
-    --muted: 220 16% 96%;
-    --muted-foreground: 220 9% 40%;
+    --muted: 222 38% 11%;
+    --muted-foreground: 214 16% 66%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 22% 11%;
+    --card: 222 36% 10%;
+    --card-foreground: 205 30% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 22% 11%;
+    --popover: 222 44% 8%;
+    --popover-foreground: 205 30% 96%;
 
-    --primary: 222 24% 11%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 205 90% 58%;
+    --primary-foreground: 224 52% 7%;
 
-    --secondary: 220 16% 96%;
-    --secondary-foreground: 222 22% 11%;
+    --secondary: 222 28% 15%;
+    --secondary-foreground: 205 30% 96%;
 
-    --accent: 230 84% 41%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 205 90% 58%;
+    --accent-foreground: 224 52% 7%;
 
-    --brand-blue: 230 84% 41%;
-    --brand-cyan: 185 100% 44%;
+    --brand-blue: 222 86% 60%;
+    --brand-cyan: 187 95% 52%;
     --gradient-brand: linear-gradient(135deg, hsl(var(--brand-blue)), hsl(var(--brand-cyan)));
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 90%;
-    --input: 220 14% 90%;
-    --ring: 176 84% 34%;
+    --border: 214 28% 18%;
+    --input: 214 28% 18%;
+    --ring: 205 90% 58%;
 
     --radius: 0.75rem;
 
-    /* near-black for dark contrast sections */
-    --ink: 222 32% 8%;
-    /* warm off-white for alternating bands */
-    --paper: 40 33% 98%;
+    /* deepest navy for dark contrast sections */
+    --ink: 226 56% 4%;
+    /* elevated navy band */
+    --paper: 222 40% 9%;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 222 22% 20%;
-    --sidebar-primary: 176 84% 34%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 16% 96%;
-    --sidebar-accent-foreground: 222 22% 11%;
-    --sidebar-border: 220 14% 90%;
-    --sidebar-ring: 176 84% 34%;
+    --sidebar-background: 224 47% 7%;
+    --sidebar-foreground: 205 26% 88%;
+    --sidebar-primary: 205 90% 58%;
+    --sidebar-primary-foreground: 224 52% 7%;
+    --sidebar-accent: 222 28% 15%;
+    --sidebar-accent-foreground: 205 30% 96%;
+    --sidebar-border: 214 28% 18%;
+    --sidebar-ring: 205 90% 58%;
   }
 }
 
@@ -74,7 +74,7 @@ html, body {
     font-weight: 800;
     letter-spacing: -0.025em;
   }
-  ::selection { background: hsl(var(--accent) / 0.9); color: #fff; }
+  ::selection { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); }
 }
 
 @layer components {
@@ -90,7 +90,7 @@ html, body {
   .surface-paper { background: hsl(var(--paper)); }
   .brushed {
     background:
-      radial-gradient(120% 130% at 50% -10%, hsl(220 18% 17%) 0%, hsl(var(--ink)) 58%);
+      radial-gradient(120% 130% at 50% -10%, hsl(222 34% 14%) 0%, hsl(var(--ink)) 58%);
   }
 
   /* Film grain for dark sections */
@@ -108,11 +108,11 @@ html, body {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-200;
   }
   .btn-primary { @apply btn; background: var(--gradient-brand); color: #fff; }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -14px hsl(var(--brand-blue) / 0.7); filter: brightness(1.05); }
-  .btn-dark { @apply btn; background: hsl(var(--ink)); color: #fff; }
-  .btn-dark:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -16px hsl(var(--ink) / 0.5); }
-  .btn-outline { @apply btn; border: 1px solid hsl(var(--foreground) / 0.18); color: hsl(var(--foreground)); background: transparent; }
-  .btn-outline:hover { background: hsl(var(--foreground) / 0.04); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -14px hsl(var(--brand-cyan) / 0.7); filter: brightness(1.06); }
+  .btn-dark { @apply btn; background: hsl(var(--foreground)); color: hsl(var(--ink)); }
+  .btn-dark:hover { transform: translateY(-1px); filter: brightness(1.04); box-shadow: 0 14px 34px -18px hsl(0 0% 0% / 0.6); }
+  .btn-outline { @apply btn; border: 1px solid hsl(var(--foreground) / 0.2); color: hsl(var(--foreground)); background: transparent; }
+  .btn-outline:hover { background: hsl(var(--foreground) / 0.06); border-color: hsl(var(--accent) / 0.5); }
   .btn-light { @apply btn; background: #fff; color: hsl(var(--ink)); }
   .btn-light:hover { transform: translateY(-1px); }
 
@@ -120,13 +120,13 @@ html, body {
   .card-soft {
     @apply rounded-2xl bg-card;
     border: 1px solid hsl(var(--border));
-    box-shadow: 0 1px 2px hsl(220 25% 10% / 0.04), 0 16px 40px -28px hsl(220 25% 10% / 0.18);
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.03), 0 24px 50px -34px hsl(0 0% 0% / 0.7);
   }
   .card-hover { @apply transition-all duration-200; }
   .card-hover:hover {
     transform: translateY(-3px);
     border-color: hsl(var(--accent) / 0.45);
-    box-shadow: 0 1px 2px hsl(220 25% 10% / 0.04), 0 26px 50px -28px hsl(220 25% 10% / 0.26);
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 30px 60px -32px hsl(var(--accent) / 0.25);
   }
 
   .hairline { border-color: hsl(var(--border)); }
