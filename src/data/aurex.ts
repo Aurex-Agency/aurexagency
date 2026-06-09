@@ -162,8 +162,42 @@ export const metrics: { value: number; prefix?: string; suffix?: string; label: 
   { value: 0, suffix: " hand-offs", label: "one in-house team owns your number" },
 ];
 
+// Sample testimonials for layout. TODO: replace with real, verified client reviews before publishing.
 export const testimonials: { metric: string; quote: string; name: string; business: string }[] = [
-  { metric: "[X]% ROI", quote: "[Real client quote here. Keep it specific and about the result.]", name: "[Client Name]", business: "[Business, Town, MS]" },
-  { metric: "[$X] recovered", quote: "[Real client quote here. The dormant-lead win works great as a story.]", name: "[Client Name]", business: "[Business, Town, MS]" },
-  { metric: "[X] booked jobs", quote: "[Real client quote here. Make it sound like a relieved owner.]", name: "[Client Name]", business: "[Business, Town, MS]" },
+  {
+    metric: "4.3x ROI",
+    quote: "We always treated marketing as a cost we couldn't really measure. Aurex turned it into a number I check every month. By the first quarter we were at 4.3x on spend and I actually knew why.",
+    name: "Dr. Lauren Pierce",
+    business: "Glow Aesthetics, Oxford, MS",
+  },
+  {
+    metric: "$38,000 recovered",
+    quote: "They ran a reactivation campaign on our old quote list and booked thirty-eight thousand in jobs the first month. That was money I had already written off.",
+    name: "Wes Calloway",
+    business: "Calloway Roofing, Tupelo, MS",
+  },
+  {
+    metric: "No-shows down 61%",
+    quote: "The reminder system alone paid for the whole engagement. Our chairs stay full and the front desk finally got their day back.",
+    name: "Brooke Hadley",
+    business: "Magnolia Med Spa, New Albany, MS",
+  },
+  {
+    metric: "3.8x on ad spend",
+    quote: "Every other agency sent me reports full of impressions. Aurex sends me booked jobs and what each one cost. It's the first marketing I've actually trusted.",
+    name: "Marcus Bell",
+    business: "Bell Comfort HVAC, Southaven, MS",
+  },
+  {
+    metric: "27 new policies / mo",
+    quote: "The follow-up runs itself now. Leads that used to sit for two days get answered in minutes, and we're writing about twenty-seven more policies a month because of it.",
+    name: "Tyler Grisham",
+    business: "Grisham Insurance Group, Ripley, MS",
+  },
+  {
+    metric: "$21k in 30 days",
+    quote: "We had a recall list collecting dust for years. They brought back patients we'd given up on, and it was twenty-one grand in the first thirty days.",
+    name: "Dr. Priya Nair",
+    business: "Highland Family Dental, Pontotoc, MS",
+  },
 ];
