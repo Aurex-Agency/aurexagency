@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { nav } from "@/data/aurex";
+import { nav, BOOKING_HREF } from "@/data/packages";
 import aurexLogo from "@/assets/aurex-logo-main.png";
 
 export function Header() {
@@ -48,7 +48,7 @@ export function Header() {
         </div>
 
         <div className="hidden md:block">
-          <Link to="/contact" className="btn-primary h-10 px-5 text-sm">
+          <Link to={BOOKING_HREF} className="btn-primary h-10 px-5 text-sm">
             Book a Call <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -73,7 +73,7 @@ export function Header() {
                   {n.name}
                 </Link>
               ))}
-              <Link to="/contact" className="btn-primary h-12 mt-2">
+              <Link to={BOOKING_HREF} className="btn-primary h-12 mt-2">
                 Book a Call <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

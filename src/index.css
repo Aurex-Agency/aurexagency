@@ -10,55 +10,65 @@ html, body {
 
 @layer base {
   :root {
-    /* Aurex - deep navy + brand blue/cyan system. Mainly blue:
-       navy surfaces, light text, luminous blue-to-cyan accent. */
-    --background: 224 47% 7%;
-    --foreground: 205 30% 96%;
+    /* Aurex — light, warm base (approachable local) with a navy + blue/cyan
+       brand accent that matches the logo. Bold navy is reserved for
+       high-impact moments (hero accents, the popular tier, CTA bands). */
 
-    --muted: 222 38% 11%;
-    --muted-foreground: 214 16% 66%;
+    /* Warm off-white page + deep navy ink text */
+    --background: 38 36% 97%;
+    --foreground: 222 32% 14%;
 
-    --card: 222 36% 10%;
-    --card-foreground: 205 30% 96%;
+    /* Warm light surface for alternating bands */
+    --muted: 36 28% 94%;
+    --muted-foreground: 222 12% 42%;
 
-    --popover: 222 44% 8%;
-    --popover-foreground: 205 30% 96%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 32% 14%;
 
-    --primary: 205 90% 58%;
-    --primary-foreground: 224 52% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 32% 14%;
 
-    --secondary: 222 28% 15%;
-    --secondary-foreground: 205 30% 96%;
+    /* Brand blue, used for primary buttons + accents */
+    --primary: 222 84% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --accent: 205 90% 58%;
-    --accent-foreground: 224 52% 7%;
+    --secondary: 36 28% 93%;
+    --secondary-foreground: 222 32% 14%;
 
-    --brand-blue: 222 86% 60%;
-    --brand-cyan: 187 95% 52%;
+    /* Slightly deeper blue so text/eyebrows stay readable on light bg */
+    --accent: 214 86% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    /* The brand gradient straight off the logo */
+    --brand-blue: 222 86% 56%;
+    --brand-cyan: 187 92% 48%;
     --gradient-brand: linear-gradient(135deg, hsl(var(--brand-blue)), hsl(var(--brand-cyan)));
 
-    --destructive: 0 72% 55%;
+    --success: 152 56% 38%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 28% 18%;
-    --input: 214 28% 18%;
-    --ring: 205 90% 58%;
+    --border: 36 20% 88%;
+    --input: 36 20% 88%;
+    --ring: 222 84% 55%;
 
-    --radius: 0.75rem;
+    --radius: 0.85rem;
 
-    /* deepest navy for dark contrast sections */
-    --ink: 226 56% 4%;
-    /* elevated navy band */
-    --paper: 222 40% 9%;
+    /* Deep navy for high-impact dark sections */
+    --ink: 224 47% 7%;
+    /* Elevated navy band */
+    --ink-soft: 222 38% 12%;
 
-    --sidebar-background: 224 47% 7%;
-    --sidebar-foreground: 205 26% 88%;
-    --sidebar-primary: 205 90% 58%;
-    --sidebar-primary-foreground: 224 52% 7%;
-    --sidebar-accent: 222 28% 15%;
-    --sidebar-accent-foreground: 205 30% 96%;
-    --sidebar-border: 214 28% 18%;
-    --sidebar-ring: 205 90% 58%;
+    --sidebar-background: 38 36% 97%;
+    --sidebar-foreground: 222 24% 24%;
+    --sidebar-primary: 222 84% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 36 28% 93%;
+    --sidebar-accent-foreground: 222 32% 14%;
+    --sidebar-border: 36 20% 88%;
+    --sidebar-ring: 222 84% 55%;
   }
 }
 
@@ -74,7 +84,7 @@ html, body {
     font-weight: 800;
     letter-spacing: -0.025em;
   }
-  ::selection { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); }
+  ::selection { background: hsl(var(--brand-blue)); color: #fff; }
 }
 
 @layer components {
@@ -83,14 +93,22 @@ html, body {
   .eyebrow {
     @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-accent;
   }
+  /* Eyebrow variant for dark sections */
+  .eyebrow-light {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em];
+    color: hsl(var(--brand-cyan));
+  }
 
   /* Surfaces */
   .surface-dark { background: hsl(var(--ink)); color: #fff; }
+  .surface-ink-soft { background: hsl(var(--ink-soft)); color: #fff; }
   .surface-muted { background: hsl(var(--muted)); }
-  .surface-paper { background: hsl(var(--paper)); }
+  .surface-paper { background: hsl(var(--card)); }
+
+  /* Subtle navy radial for dark hero/CTA backdrops */
   .brushed {
     background:
-      radial-gradient(120% 130% at 50% -10%, hsl(222 34% 14%) 0%, hsl(var(--ink)) 58%);
+      radial-gradient(120% 130% at 50% -10%, hsl(222 40% 16%) 0%, hsl(var(--ink)) 60%);
   }
 
   /* Film grain for dark sections */
@@ -107,26 +125,26 @@ html, body {
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-200;
   }
-  .btn-primary { @apply btn; background: var(--gradient-brand); color: #fff; }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -14px hsl(var(--brand-cyan) / 0.7); filter: brightness(1.06); }
-  .btn-dark { @apply btn; background: hsl(var(--foreground)); color: hsl(var(--ink)); }
-  .btn-dark:hover { transform: translateY(-1px); filter: brightness(1.04); box-shadow: 0 14px 34px -18px hsl(0 0% 0% / 0.6); }
-  .btn-outline { @apply btn; border: 1px solid hsl(var(--foreground) / 0.2); color: hsl(var(--foreground)); background: transparent; }
-  .btn-outline:hover { background: hsl(var(--foreground) / 0.06); border-color: hsl(var(--accent) / 0.5); }
+  .btn-primary { @apply btn; background: var(--gradient-brand); color: #fff; box-shadow: 0 10px 30px -12px hsl(var(--brand-blue) / 0.5); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px -14px hsl(var(--brand-cyan) / 0.6); filter: brightness(1.05); }
+  .btn-dark { @apply btn; background: hsl(var(--ink)); color: #fff; }
+  .btn-dark:hover { transform: translateY(-1px); filter: brightness(1.12); box-shadow: 0 14px 34px -18px hsl(0 0% 0% / 0.4); }
+  .btn-outline { @apply btn; border: 1px solid hsl(var(--foreground) / 0.18); color: hsl(var(--foreground)); background: transparent; }
+  .btn-outline:hover { background: hsl(var(--foreground) / 0.04); border-color: hsl(var(--accent) / 0.5); color: hsl(var(--accent)); }
   .btn-light { @apply btn; background: #fff; color: hsl(var(--ink)); }
-  .btn-light:hover { transform: translateY(-1px); }
+  .btn-light:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -18px hsl(0 0% 0% / 0.5); }
 
   /* Cards */
   .card-soft {
     @apply rounded-2xl bg-card;
     border: 1px solid hsl(var(--border));
-    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.03), 0 24px 50px -34px hsl(0 0% 0% / 0.7);
+    box-shadow: 0 1px 2px hsl(222 30% 20% / 0.04), 0 18px 40px -28px hsl(222 30% 20% / 0.22);
   }
   .card-hover { @apply transition-all duration-200; }
   .card-hover:hover {
     transform: translateY(-3px);
-    border-color: hsl(var(--accent) / 0.45);
-    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 30px 60px -32px hsl(var(--accent) / 0.25);
+    border-color: hsl(var(--accent) / 0.4);
+    box-shadow: 0 1px 2px hsl(222 30% 20% / 0.05), 0 26px 50px -30px hsl(var(--brand-blue) / 0.3);
   }
 
   .hairline { border-color: hsl(var(--border)); }
@@ -136,6 +154,12 @@ html, body {
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
   .tnum { font-variant-numeric: tabular-nums; }
+  .text-gradient-brand {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
   .marquee { animation: marquee 32s linear infinite; }
   @keyframes marquee {

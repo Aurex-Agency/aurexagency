@@ -13,9 +13,6 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Fraunces", "Georgia", "serif"],
-        serif: ["Fraunces", "Georgia", "serif"],
-        mono: ["'IBM Plex Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       letterSpacing: {
         widest: "0.28em",
@@ -61,37 +58,10 @@ export default {
         ink: {
           DEFAULT: "hsl(var(--ink))",
           soft: "hsl(var(--ink-soft))",
-          muted: "hsl(var(--ink-muted))",
         },
-        cream: {
-          DEFAULT: "hsl(var(--cream))",
-          warm: "hsl(var(--cream-warm))",
-        },
-        /* Warm "Southern premium" palette for the single-page site */
-        bone: {
-          DEFAULT: "#F7F4EF",
-          100: "#FBFAF6",
-          200: "#EFEAE0",
-          300: "#E4DDD0",
-        },
-        coal: {
-          DEFAULT: "#1A1714",
-          soft: "#242019",
-          light: "#3B342B",
-        },
-        clay: {
-          DEFAULT: "#B8623A",
-          soft: "#CB7A52",
-          deep: "#9C4E2B",
-        },
-        taupe: {
-          DEFAULT: "#8C8377",
-          light: "#B6AEA2",
-        },
-        amber: {
-          DEFAULT: "hsl(var(--amber))",
-          soft: "hsl(var(--amber-soft))",
-          deep: "hsl(var(--amber-deep))",
+        brand: {
+          blue: "hsl(var(--brand-blue))",
+          cyan: "hsl(var(--brand-cyan))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
