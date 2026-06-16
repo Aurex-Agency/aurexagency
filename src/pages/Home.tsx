@@ -5,6 +5,7 @@ import { FadeUp, Stagger, FadeItem } from "@/components/Motion";
 import { TierTeaser } from "@/components/packages/TierCard";
 import { BookCta } from "@/components/sections/BookCta";
 import { tiers, TAGLINE, BOOKING_HREF, RISK_REVERSAL } from "@/data/packages";
+import { clientLogos, testimonials } from "@/data/proof";
 import { ArrowRight, PhoneOff, Clock, EyeOff } from "lucide-react";
 
 const SITE = "https://www.aurexagency.com";
@@ -172,40 +173,63 @@ export default function Home() {
             <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground text-balance leading-[1.1]">
               Trusted by owners across North Mississippi.
             </h2>
-            <p className="mt-5 text-foreground/60">
-              Logos and real owner quotes will live here. Nothing made up, real work only.
-            </p>
+            {testimonials.length === 0 && (
+              <p className="mt-5 text-foreground/60">
+                Logos and real owner quotes will live here. Nothing made up, real work only.
+              </p>
+            )}
           </FadeUp>
 
-          {/* Logo placeholder slots */}
+          {/* Client logos — real logos when present, else placeholder slots */}
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {Array.from({ length: 5 }).map((_, i) => (
-              /* TODO: replace with a real client logo before launch. */
-              <div key={i} className="card-soft border-dashed h-20 flex items-center justify-center">
-                <span className="text-xs text-foreground/35">Client logo</span>
-              </div>
-            ))}
+            {clientLogos.length > 0
+              ? clientLogos.map((logo) => (
+                  <div key={logo.name} className="card-soft h-20 flex items-center justify-center p-4">
+                    <img src={logo.src} alt={logo.name} className="max-h-10 w-auto opacity-80" loading="lazy" />
+                  </div>
+                ))
+              : Array.from({ length: 5 }).map((_, i) => (
+                  <div key={i} className="card-soft border-dashed h-20 flex items-center justify-center">
+                    <span className="text-xs text-foreground/35">Client logo</span>
+                  </div>
+                ))}
           </div>
 
-          {/* Testimonial placeholder slots */}
+          {/* Testimonials — real quotes when present, else placeholder slots */}
           <Stagger className="mt-5 grid md:grid-cols-3 gap-5">
-            {[0, 1, 2].map((i) => (
-              <FadeItem key={i} className="h-full">
-                {/* TODO: replace with a real, verified client quote before launch. */}
-                <div className="card-soft h-full p-7 border-dashed">
-                  <div className="space-y-2">
-                    <div className="h-3 w-full rounded bg-foreground/[0.05]" />
-                    <div className="h-3 w-11/12 rounded bg-foreground/[0.05]" />
-                    <div className="h-3 w-3/4 rounded bg-foreground/[0.05]" />
-                  </div>
-                  <div className="mt-5 flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-full bg-foreground/[0.06]" />
-                    <div className="h-4 w-28 rounded bg-foreground/[0.06]" />
-                  </div>
-                  <p className="mt-4 text-xs text-foreground/40">Owner quote coming soon</p>
-                </div>
-              </FadeItem>
-            ))}
+            {testimonials.length > 0
+              ? testimonials.map((t) => (
+                  <FadeItem key={t.name} className="h-full">
+                    <div className="card-soft h-full p-7">
+                      <p className="text-foreground/80 leading-relaxed">“{t.quote}”</p>
+                      <div className="mt-5 flex items-center gap-3">
+                        <div className="h-9 w-9 rounded-full bg-accent/10 text-accent flex items-center justify-center font-bold">
+                          {t.name.charAt(0)}
+                        </div>
+                        <div>
+                          <div className="font-semibold text-foreground text-sm">{t.name}</div>
+                          <div className="text-xs text-foreground/55">{t.business}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </FadeItem>
+                ))
+              : [0, 1, 2].map((i) => (
+                  <FadeItem key={i} className="h-full">
+                    <div className="card-soft h-full p-7 border-dashed">
+                      <div className="space-y-2">
+                        <div className="h-3 w-full rounded bg-foreground/[0.05]" />
+                        <div className="h-3 w-11/12 rounded bg-foreground/[0.05]" />
+                        <div className="h-3 w-3/4 rounded bg-foreground/[0.05]" />
+                      </div>
+                      <div className="mt-5 flex items-center gap-3">
+                        <div className="h-9 w-9 rounded-full bg-foreground/[0.06]" />
+                        <div className="h-4 w-28 rounded bg-foreground/[0.06]" />
+                      </div>
+                      <p className="mt-4 text-xs text-foreground/40">Owner quote coming soon</p>
+                    </div>
+                  </FadeItem>
+                ))}
           </Stagger>
         </div>
       </section>

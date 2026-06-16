@@ -6,6 +6,7 @@ import { Faq } from "@/components/packages/Faq";
 import { BookCta } from "@/components/sections/BookCta";
 import { BookingSection } from "@/components/sections/BookingSection";
 import { qualifiers, pillars, process, verticals, faqs, STRATEGY_HREF } from "@/data/growth";
+import { caseStudies } from "@/data/proof";
 import { ArrowRight, Check, Package, Wrench } from "lucide-react";
 
 const SITE = "https://www.aurexagency.com";
@@ -319,26 +320,37 @@ export default function Growth() {
             <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground text-balance leading-[1.1]">
               Real results from real local businesses.
             </h2>
-            <p className="mt-5 text-foreground/60">
-              Case studies and numbers from custom builds will live here. Nothing made up, real work only.
-            </p>
+            {caseStudies.length === 0 && (
+              <p className="mt-5 text-foreground/60">
+                Case studies and numbers from custom builds will live here. Nothing made up, real work only.
+              </p>
+            )}
           </FadeUp>
           <Stagger className="mt-10 grid md:grid-cols-3 gap-5">
-            {[0, 1, 2].map((i) => (
-              <FadeItem key={i} className="h-full">
-                {/* TODO: replace with a real client result + quote before launch. */}
-                <div className="card-soft h-full p-7 border-dashed">
-                  <div className="h-7 w-24 rounded-md bg-foreground/[0.06]" />
-                  <div className="mt-4 space-y-2">
-                    <div className="h-3 w-full rounded bg-foreground/[0.05]" />
-                    <div className="h-3 w-11/12 rounded bg-foreground/[0.05]" />
-                    <div className="h-3 w-3/4 rounded bg-foreground/[0.05]" />
-                  </div>
-                  <div className="mt-5 h-4 w-32 rounded bg-foreground/[0.06]" />
-                  <p className="mt-4 text-xs text-foreground/40">Case study coming soon</p>
-                </div>
-              </FadeItem>
-            ))}
+            {caseStudies.length > 0
+              ? caseStudies.map((c) => (
+                  <FadeItem key={c.business + c.result} className="h-full">
+                    <div className="card-soft h-full p-7">
+                      <div className="text-xl font-extrabold tracking-tight text-foreground">{c.result}</div>
+                      <p className="mt-3 text-foreground/70 text-sm leading-relaxed">{c.body}</p>
+                      <div className="mt-4 text-xs font-semibold text-foreground/55">{c.business}</div>
+                    </div>
+                  </FadeItem>
+                ))
+              : [0, 1, 2].map((i) => (
+                  <FadeItem key={i} className="h-full">
+                    <div className="card-soft h-full p-7 border-dashed">
+                      <div className="h-7 w-24 rounded-md bg-foreground/[0.06]" />
+                      <div className="mt-4 space-y-2">
+                        <div className="h-3 w-full rounded bg-foreground/[0.05]" />
+                        <div className="h-3 w-11/12 rounded bg-foreground/[0.05]" />
+                        <div className="h-3 w-3/4 rounded bg-foreground/[0.05]" />
+                      </div>
+                      <div className="mt-5 h-4 w-32 rounded bg-foreground/[0.06]" />
+                      <p className="mt-4 text-xs text-foreground/40">Case study coming soon</p>
+                    </div>
+                  </FadeItem>
+                ))}
           </Stagger>
         </div>
       </section>
