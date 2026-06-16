@@ -2,32 +2,43 @@ import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { FadeUp } from "@/components/Motion";
-import { faqs } from "@/data/packages";
+import { faqs as packageFaqs } from "@/data/packages";
 
-/** Objection-handling FAQ, in the owner's voice. */
-export function Faq() {
+/** Objection-handling FAQ, in the owner's voice. Reused across pages. */
+export function Faq({
+  items = packageFaqs,
+  eyebrow = "Straight answers",
+  heading = "The stuff owners actually ask.",
+  sub = "Still wondering about something? Book a call and ask me straight.",
+  surface = "paper",
+}: {
+  items?: { q: string; a: string }[];
+  eyebrow?: string;
+  heading?: string;
+  sub?: string;
+  surface?: "paper" | "muted";
+}) {
   const [open, setOpen] = useState<number | null>(0);
   const reduce = useReducedMotion();
+  const surfaceClass = surface === "muted" ? "surface-muted" : "bg-background";
 
   return (
-    <section className="bg-background py-20 lg:py-28">
+    <section className={`${surfaceClass} py-20 lg:py-28`}>
       <div className="shell grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
         <div className="lg:col-span-4">
           <FadeUp>
-            <p className="eyebrow mb-4">Straight answers</p>
+            <p className="eyebrow mb-4">{eyebrow}</p>
             <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance leading-[1.07]">
-              The stuff owners actually ask.
+              {heading}
             </h2>
-            <p className="mt-5 text-foreground/60 leading-relaxed max-w-sm">
-              Still wondering about something? Book a call and ask me straight.
-            </p>
+            <p className="mt-5 text-foreground/60 leading-relaxed max-w-sm">{sub}</p>
           </FadeUp>
         </div>
 
         <div className="lg:col-span-8">
           <FadeUp delay={0.08}>
             <div className="border-t hairline">
-              {faqs.map((f, i) => {
+              {items.map((f, i) => {
                 const isOpen = open === i;
                 return (
                   <div key={i} className="border-b hairline">

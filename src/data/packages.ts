@@ -48,17 +48,10 @@ export interface Tier {
   forYou: string;
   /** 2–3 sentence, outcome-first description. */
   blurb: string;
-  /** "Everything in the tier below, plus..." label. */
-  inheritNote?: string;
-  /** Name of the system this tier adds (for the stacked-value heading). */
-  addsSystem?: string;
   /** Benefit-framed feature list (proof it's handled). */
   features: string[];
   /** Boxed guarantee. */
   guarantee: string;
-  /** Contrast line that frames this tier against the one below. */
-  framing?: string;
-  popular?: boolean;
   cta: string;
 }
 
@@ -88,14 +81,11 @@ export const tiers: Tier[] = [
     name: "The Front Door",
     price: 397,
     icon: Zap,
-    popular: true,
     outcome: "Stop losing jobs to whoever calls back first.",
     forYou:
       "This is for you if you're spending money on leads and still losing jobs to whoever calls back first.",
     blurb:
       "You already pay to make the phone ring. The money leaks out when a lead sits for ten minutes and books the other guy. This makes sure every lead gets answered in seconds, gets qualified, and lands on your calendar, day or night, whether you're on a roof or asleep.",
-    inheritNote: "Everything in Get-Found, plus the Speed-to-Lead Machine:",
-    addsSystem: "the Speed-to-Lead Machine",
     features: [
       "Every lead, from a call, a form, Facebook, anywhere, gets answered in under 60 seconds, day or night.",
       "We text them back, ask the right questions, and put a booked job on your calendar.",
@@ -106,8 +96,6 @@ export const tiers: Tier[] = [
     ],
     guarantee:
       "If any lead goes more than five minutes without a response in your first 90 days, that month is on me.",
-    framing:
-      "Get-Found protects the front door. The Front Door makes sure somebody's standing at it.",
     cta: "Get the Front Door",
   },
   {
@@ -120,8 +108,6 @@ export const tiers: Tier[] = [
       "This is for you if your best customers would refer you, they just never get asked.",
     blurb:
       "Your happiest customers are your cheapest source of new work, and most of them never get asked. This puts that on autopilot: it asks for the referral after every job, rewards the people who send you business, and quietly pulls past customers back in when you've got room on the schedule.",
-    inheritNote: "Everything in the Front Door, plus the Referral & Repeat System:",
-    addsSystem: "the Referral & Repeat System",
     features: [
       "After every job your customer gets asked to refer you, with a $50 reward or $50 to a local cause if they'd rather give back.",
       "Each customer gets their own referral page that tracks their progress and rewards.",
@@ -130,12 +116,29 @@ export const tiers: Tier[] = [
       "Every month you get a Growth Report: referrals, repeat revenue, and your top referrers.",
     ],
     guarantee:
-      "Same promise as every tier: no contract and cancel anytime. If it's not earning its keep, you walk.",
-    framing:
-      "The Front Door stops you losing money. The Growth Engine turns your happy customers into your sales team.",
+      "Same promise as every system: no contract and cancel anytime. If it's not earning its keep, you walk.",
     cta: "Build the Growth Engine",
   },
 ];
+
+/* ------------------------------------------------------------------ */
+/* The bundle — all three systems together                           */
+/* ------------------------------------------------------------------ */
+
+export const bundle = {
+  name: "The Complete System",
+  price: 697,
+  // What the three would cost bought separately (97 + 397 + 597).
+  separateTotal: 1091,
+  get savings() {
+    return this.separateTotal - this.price;
+  },
+  outcome: "Run all three. Nothing slips, every job gets caught, and your best customers bring you more.",
+  blurb:
+    "Most owners don't have just one leak, they have all three: a Google listing nobody's watching, leads going cold, and happy customers who never get asked for the next job. The Complete System runs all three at once, so the whole thing works together instead of piecemeal.",
+  systems: ["The Get-Found System", "The Front Door", "The Growth Engine"],
+  cta: "Get the Complete System",
+};
 
 /* ------------------------------------------------------------------ */
 /* Objection-handling FAQ, in the owner's voice                       */
