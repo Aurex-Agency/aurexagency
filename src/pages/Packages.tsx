@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Seo } from "@/components/Seo";
 import { FadeUp, Stagger, FadeItem } from "@/components/Motion";
 import { TierCard } from "@/components/packages/TierCard";
+import { BundleBanner } from "@/components/packages/BundleBanner";
 import { Faq } from "@/components/packages/Faq";
 import { BookCta } from "@/components/sections/BookCta";
 import { BookingSection } from "@/components/sections/BookingSection";
@@ -70,8 +71,8 @@ export default function Packages() {
             ))}
           </Stagger>
           <p className="mt-5 text-center text-sm text-foreground/45">
-            <span className="font-semibold text-foreground/60">{TAGLINE}</span> Each tier adds the next, so the value
-            stacks as you grow.
+            <span className="font-semibold text-foreground/60">{TAGLINE}</span> Three separate systems. Run the one you
+            need, or run all three together for less.
           </p>
         </div>
       </section>
@@ -79,12 +80,17 @@ export default function Packages() {
       {/* THE THREE TIERS */}
       <section id="tiers" className="scroll-mt-24 bg-background pb-8 lg:pb-12">
         <div className="shell">
-          <div className="grid lg:grid-cols-3 gap-6 lg:gap-7 items-start">
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
             {tiers.map((tier) => (
               <FadeUp key={tier.id} className="h-full">
                 <TierCard tier={tier} />
               </FadeUp>
             ))}
+          </div>
+
+          {/* Bundle — all three together for less */}
+          <div className="mt-7 lg:mt-8">
+            <BundleBanner />
           </div>
 
           {/* Risk reversal repeated right under pricing */}

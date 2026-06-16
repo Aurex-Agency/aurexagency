@@ -2,157 +2,153 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Seo } from "@/components/Seo";
 import { FadeUp, Stagger, FadeItem } from "@/components/Motion";
-import { ComparisonTable } from "@/components/sections/ComparisonTable";
-import { PricingPlans } from "@/components/sections/PricingPlans";
-import { CtaBand } from "@/components/sections/CtaBand";
-import { ONE_LINER, SUB_LINE, services, whoFor, landOffers } from "@/data/aurex";
-import { ArrowRight, ArrowUpRight, Check, TrendingUp } from "lucide-react";
+import { TierTeaser } from "@/components/packages/TierCard";
+import { BookCta } from "@/components/sections/BookCta";
+import { tiers, TAGLINE, BOOKING_HREF, RISK_REVERSAL } from "@/data/packages";
+import { clientLogos, testimonials } from "@/data/proof";
+import { ArrowRight, PhoneOff, Clock, EyeOff } from "lucide-react";
+
+const SITE = "https://www.aurexagency.com";
+
+const problems = [
+  {
+    icon: Clock,
+    title: "Slow callbacks",
+    body: "A lead waits ten minutes, calls the next guy, and books him instead. You paid for that call and lost the job.",
+  },
+  {
+    icon: EyeOff,
+    title: "A neglected profile",
+    body: "Wrong hours, bad edits, reviews sitting unanswered. People see it and quietly call somebody who looks more on top of it.",
+  },
+  {
+    icon: PhoneOff,
+    title: "No follow-up",
+    body: "The leads that don't book right away just go cold. Nobody chases them, so the money you spent to get them walks away.",
+  },
+];
 
 const steps = [
-  { n: "01", t: "Subscribe", b: "Pick a plan and your branded client portal opens in minutes. No long onboarding." },
-  { n: "02", t: "Request", b: "Drop unlimited requests in your queue. We work one task at a time and finish it properly." },
-  { n: "03", t: "We prove it", b: "We build, launch, and report the only number that matters: revenue you can measure." },
+  { n: "01", t: "Book a call", b: "Fifteen minutes. We talk through how leads come in today and where you're losing them. No pressure." },
+  { n: "02", t: "I build & install in days", b: "I set the whole system up and put it in place for you. You don't learn any software or lift a finger." },
+  { n: "03", t: "You catch jobs you were losing", b: "Leads get answered, profiles get watched, customers come back. You just take the calls." },
 ];
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Aurex Agency — Be the first one they call",
+    url: `${SITE}/`,
+    description:
+      "Marketing systems for North Mississippi home-service businesses and cash-pay clinics that get the phone ringing with paying jobs and make sure you never lose a lead you already paid for.",
+  };
+
   return (
     <Layout>
       <Seo
-        title="Aurex | Your Marketing Department, On Demand"
-        description="Aurex turns your marketing into an investment you can measure. Ads, funnels, follow-up, and the systems behind them, run by a senior in-house team that owns the number. Flat monthly pricing, no contracts. North Mississippi."
+        title="Be the First One They Call | Aurex Agency — North Mississippi"
+        description="Marketing systems for North Mississippi home-service businesses and clinics: get found, answer every lead in seconds, and turn customers into more customers. Protect it. Answer it. Grow it. No contract, cancel anytime."
         path="/"
+        jsonLd={jsonLd}
       />
 
       {/* HERO */}
-      <section className="relative bg-background pt-32 lg:pt-40 pb-16 lg:pb-20 overflow-hidden">
+      <section className="relative bg-background pt-32 lg:pt-44 pb-16 lg:pb-24 overflow-hidden">
         <div
-          className="pointer-events-none absolute inset-0 opacity-60"
-          style={{ background: "radial-gradient(40rem 26rem at 15% 0%, hsl(205 90% 55% / 0.10), transparent 60%)" }}
+          className="pointer-events-none absolute inset-0 opacity-70"
+          style={{ background: "radial-gradient(44rem 26rem at 50% -4%, hsl(205 90% 55% / 0.10), transparent 62%)" }}
         />
-        <div className="shell relative grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-          <div className="lg:col-span-7">
-            <FadeUp>
-              <p className="eyebrow mb-5">Marketing you can measure as an investment</p>
-              <h1 className="text-[2.75rem] leading-[1.05] sm:text-6xl lg:text-[4rem] lg:leading-[1.03] font-extrabold tracking-[-0.03em] text-foreground text-balance">
-                {ONE_LINER}
-              </h1>
-              <p className="mt-7 text-lg lg:text-xl text-foreground/65 leading-relaxed max-w-xl">{SUB_LINE}</p>
-              <div className="mt-9 flex flex-wrap items-center gap-3">
-                <Link to="/contact" className="btn-primary h-14 px-7 text-base">
-                  Book a Call <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link to="/pricing" className="btn-outline h-14 px-7 text-base">See pricing</Link>
-              </div>
-              <p className="mt-7 text-sm text-foreground/50">
-                Built for med spas, clinics, roofers &amp; insurance agencies across North Mississippi.
-              </p>
-            </FadeUp>
-          </div>
-
-          {/* ROI dashboard mock */}
-          <div className="lg:col-span-5">
-            <FadeUp delay={0.15}>
-              <div className="grain relative rounded-3xl surface-dark p-6 sm:p-7 border border-white/10 shadow-[0_40px_90px_-44px_rgba(0,0,0,0.8)] overflow-hidden">
-                <div className="relative flex items-center justify-between mb-6">
-                  <span className="text-sm font-medium text-white/80">Aurex · ROI Dashboard</span>
-                  <span className="text-[11px] uppercase tracking-widest text-white/40">This month</span>
-                </div>
-                {/* TODO: sample numbers for illustration */}
-                <div className="relative">
-                  <div className="text-[11px] uppercase tracking-widest text-white/40">Return on investment</div>
-                  <div className="flex items-end gap-2">
-                    <span className="text-6xl font-extrabold text-accent tnum leading-none">4.2x</span>
-                    <span className="mb-2 text-sm text-white/50 inline-flex items-center gap-1"><TrendingUp className="w-4 h-4" /> up 38%</span>
-                  </div>
-                </div>
-                <div className="mt-7 flex items-end gap-2 h-24">
-                  {[34, 48, 41, 63, 72, 95].map((h, i) => (
-                    <div key={i} className="flex-1 rounded-t-md" style={{ height: `${h}%`, background: i === 5 ? "hsl(190 95% 55%)" : "rgba(255,255,255,0.12)" }} />
-                  ))}
-                </div>
-                <div className="mt-6 grid grid-cols-2 gap-3">
-                  <div className="rounded-xl bg-white/[0.05] p-4">
-                    <div className="text-[11px] text-white/45">Booked revenue</div>
-                    <div className="text-xl font-bold text-white tnum">$47,000</div>
-                  </div>
-                  <div className="rounded-xl bg-white/[0.05] p-4">
-                    <div className="text-[11px] text-white/45">Ad spend</div>
-                    <div className="text-xl font-bold text-white tnum">$11,200</div>
-                  </div>
-                </div>
-              </div>
-            </FadeUp>
-          </div>
-        </div>
-
-        {/* who-for strip */}
-        <div className="shell relative mt-14">
-          <FadeUp delay={0.1}>
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-foreground/45 border-t hairline pt-6">
-              <span className="font-semibold text-foreground/60">Who we build for:</span>
-              {whoFor.map((w, i) => (
-                <span key={w}>{w}{i < whoFor.length - 1 ? " ·" : ""}</span>
-              ))}
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* THE DIFFERENCE */}
-      <section className="surface-muted py-24 lg:py-32">
-        <div className="shell">
+        <div className="shell relative text-center max-w-3xl mx-auto">
           <FadeUp>
-            <p className="eyebrow mb-4">Why Aurex</p>
-            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground max-w-3xl text-balance leading-[1.07]">
-              You don't need another agency that sells you leads.
-            </h2>
-            <p className="mt-5 text-lg text-foreground/65 max-w-2xl">
-              Agencies bill for activity. Freelancers hand you a deliverable. Aurex owns the number, and reports it.
+            <p className="eyebrow justify-center mb-5">Marketing systems for local service businesses</p>
+            <h1 className="text-[2.9rem] leading-[1.04] sm:text-6xl lg:text-[4.5rem] lg:leading-[1.02] font-extrabold tracking-[-0.03em] text-foreground text-balance">
+              Be the first one they call.
+            </h1>
+            <p className="mt-6 text-xl lg:text-2xl font-bold tracking-tight text-gradient-brand">{TAGLINE}</p>
+            <p className="mt-5 text-lg text-foreground/65 leading-relaxed max-w-2xl mx-auto">
+              You already pay to make the phone ring. I build the systems that make sure you actually catch those
+              calls, turn them into booked jobs, and never lose a lead you already paid for.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+              <Link to={BOOKING_HREF} className="btn-primary h-14 px-7 text-base">
+                Book a 15-Minute Call <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link to="/packages" className="btn-outline h-14 px-7 text-base">See the packages</Link>
+            </div>
+            <p className="mt-7 text-sm text-foreground/50">
+              Built for roofers, HVAC, plumbers, med spas &amp; insurance across North Mississippi.
             </p>
           </FadeUp>
-          <div className="mt-12">
-            <ComparisonTable />
-          </div>
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section className="bg-background py-24 lg:py-32">
+      {/* PROBLEM */}
+      <section className="surface-muted py-20 lg:py-28">
         <div className="shell">
-          <FadeUp>
-            <p className="eyebrow mb-4">One queue. The whole department.</p>
-            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground max-w-3xl text-balance leading-[1.07]">
-              Everything your marketing needs, run by one in-house team.
+          <FadeUp className="max-w-2xl">
+            <p className="eyebrow mb-4">The problem</p>
+            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance leading-[1.07]">
+              You pay to make the phone ring. Then you lose the leads.
             </h2>
+            <p className="mt-5 text-lg text-foreground/65">
+              It's almost never a lead problem. It's what happens after the lead comes in, and it's costing you real
+              jobs every week.
+            </p>
           </FadeUp>
-          <Stagger className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {services.map((s) => (
-              <FadeItem key={s.title} className="h-full">
-                <div className="card-soft card-hover h-full p-7">
-                  <span className="inline-flex w-12 h-12 rounded-xl bg-accent/10 text-accent items-center justify-center mb-5">
-                    <s.icon className="w-5 h-5" />
+          <Stagger className="mt-12 grid md:grid-cols-3 gap-5">
+            {problems.map((p) => (
+              <FadeItem key={p.title} className="h-full">
+                <div className="card-soft h-full p-7">
+                  <span className="inline-flex w-12 h-12 rounded-xl bg-destructive/10 text-destructive items-center justify-center mb-5">
+                    <p.icon className="w-5 h-5" />
                   </span>
-                  <h3 className="text-lg font-bold text-foreground mb-2">{s.title}</h3>
-                  <p className="text-foreground/60 leading-relaxed text-sm">{s.body}</p>
+                  <h3 className="text-lg font-bold text-foreground mb-2">{p.title}</h3>
+                  <p className="text-foreground/60 leading-relaxed text-sm">{p.body}</p>
                 </div>
               </FadeItem>
             ))}
           </Stagger>
-          <FadeUp delay={0.1}>
-            <Link to="/services" className="mt-10 inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all">
-              See how the queue works <ArrowRight className="w-4 h-4" />
+        </div>
+      </section>
+
+      {/* 3-TIER TEASER */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="shell">
+          <FadeUp className="text-center max-w-2xl mx-auto">
+            <p className="eyebrow justify-center mb-4">Pick your system</p>
+            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance leading-[1.07]">
+              Three simple systems. Plain monthly prices.
+            </h2>
+            <p className="mt-5 text-lg text-foreground/65">
+              <span className="font-semibold text-foreground/80">{TAGLINE}</span> Start with one, or run all three
+              together. {RISK_REVERSAL}
+            </p>
+          </FadeUp>
+          <Stagger className="mt-12 grid sm:grid-cols-3 gap-5">
+            {tiers.map((tier) => (
+              <FadeItem key={tier.id} className="h-full">
+                <Link to="/packages" className="block h-full">
+                  <TierTeaser tier={tier} />
+                </Link>
+              </FadeItem>
+            ))}
+          </Stagger>
+          <FadeUp className="mt-10 text-center">
+            <Link to="/packages" className="btn-primary h-13 px-7 text-base inline-flex" style={{ height: "3.25rem" }}>
+              See everything each one includes <ArrowRight className="w-4 h-4" />
             </Link>
           </FadeUp>
         </div>
       </section>
 
-      {/* HOW IT WORKS (steps) */}
-      <section className="surface-muted py-24 lg:py-32">
+      {/* HOW IT WORKS */}
+      <section className="surface-muted py-20 lg:py-28">
         <div className="shell">
-          <FadeUp>
+          <FadeUp className="max-w-2xl">
             <p className="eyebrow mb-4">How it works</p>
-            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground max-w-3xl text-balance leading-[1.07]">
-              Subscribe, request, and watch the number move.
+            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance leading-[1.07]">
+              Easy to start. Almost nothing on you.
             </h2>
           </FadeUp>
           <Stagger className="mt-12 grid md:grid-cols-3 gap-5">
@@ -169,58 +165,76 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LAND OFFER */}
-      <section className="bg-background py-24 lg:py-32">
+      {/* PROOF — placeholder, never fabricated */}
+      <section className="bg-background py-20 lg:py-28">
         <div className="shell">
-          <FadeUp>
-            <div className="card-soft p-8 lg:p-12 grid lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8">
-                <p className="eyebrow mb-4">Start here</p>
-                <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground text-balance leading-[1.1]">
-                  {landOffers[0].name}: provable ROI in about 30 days.
-                </h2>
-                <p className="mt-4 text-lg text-foreground/65 max-w-2xl">{landOffers[0].body}</p>
-                <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-foreground/70">
-                  {["No subscription required", "Works from your existing CRM", "See the math before you commit"].map((x) => (
-                    <li key={x} className="flex items-center gap-2"><Check className="w-4 h-4 text-accent" /> {x}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="lg:col-span-4 lg:text-right">
-                <div className="text-4xl font-extrabold text-foreground tnum">{landOffers[0].price}</div>
-                <Link to="/contact" className="btn-primary h-13 px-7 mt-5" style={{ height: "3.25rem" }}>
-                  Start with a reactivation <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* PRICING */}
-      <section id="pricing" className="surface-muted py-24 lg:py-32">
-        <div className="shell">
-          <FadeUp className="text-center">
-            <p className="eyebrow justify-center mb-4">Transparent pricing</p>
-            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground max-w-3xl mx-auto text-balance leading-[1.07]">
-              Flat monthly pricing. Out in the open.
+          <FadeUp className="text-center max-w-2xl mx-auto">
+            <p className="eyebrow justify-center mb-4">Local businesses we work with</p>
+            <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground text-balance leading-[1.1]">
+              Trusted by owners across North Mississippi.
             </h2>
-            <p className="mt-5 text-lg text-foreground/65 max-w-2xl mx-auto">
-              No "call for a quote." Pick a plan, get the whole department in one queue.
-            </p>
+            {testimonials.length === 0 && (
+              <p className="mt-5 text-foreground/60">
+                Logos and real owner quotes will live here. Nothing made up, real work only.
+              </p>
+            )}
           </FadeUp>
-          <div className="mt-10">
-            <PricingPlans />
+
+          {/* Client logos — real logos when present, else placeholder slots */}
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {clientLogos.length > 0
+              ? clientLogos.map((logo) => (
+                  <div key={logo.name} className="card-soft h-20 flex items-center justify-center p-4">
+                    <img src={logo.src} alt={logo.name} className="max-h-10 w-auto opacity-80" loading="lazy" />
+                  </div>
+                ))
+              : Array.from({ length: 5 }).map((_, i) => (
+                  <div key={i} className="card-soft border-dashed h-20 flex items-center justify-center">
+                    <span className="text-xs text-foreground/35">Client logo</span>
+                  </div>
+                ))}
           </div>
-          <FadeUp delay={0.1} className="text-center">
-            <Link to="/pricing" className="mt-8 inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all">
-              See full pricing &amp; one-time builds <ArrowRight className="w-4 h-4" />
-            </Link>
-          </FadeUp>
+
+          {/* Testimonials — real quotes when present, else placeholder slots */}
+          <Stagger className="mt-5 grid md:grid-cols-3 gap-5">
+            {testimonials.length > 0
+              ? testimonials.map((t) => (
+                  <FadeItem key={t.name} className="h-full">
+                    <div className="card-soft h-full p-7">
+                      <p className="text-foreground/80 leading-relaxed">“{t.quote}”</p>
+                      <div className="mt-5 flex items-center gap-3">
+                        <div className="h-9 w-9 rounded-full bg-accent/10 text-accent flex items-center justify-center font-bold">
+                          {t.name.charAt(0)}
+                        </div>
+                        <div>
+                          <div className="font-semibold text-foreground text-sm">{t.name}</div>
+                          <div className="text-xs text-foreground/55">{t.business}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </FadeItem>
+                ))
+              : [0, 1, 2].map((i) => (
+                  <FadeItem key={i} className="h-full">
+                    <div className="card-soft h-full p-7 border-dashed">
+                      <div className="space-y-2">
+                        <div className="h-3 w-full rounded bg-foreground/[0.05]" />
+                        <div className="h-3 w-11/12 rounded bg-foreground/[0.05]" />
+                        <div className="h-3 w-3/4 rounded bg-foreground/[0.05]" />
+                      </div>
+                      <div className="mt-5 flex items-center gap-3">
+                        <div className="h-9 w-9 rounded-full bg-foreground/[0.06]" />
+                        <div className="h-4 w-28 rounded bg-foreground/[0.06]" />
+                      </div>
+                      <p className="mt-4 text-xs text-foreground/40">Owner quote coming soon</p>
+                    </div>
+                  </FadeItem>
+                ))}
+          </Stagger>
         </div>
       </section>
 
-      <CtaBand />
+      <BookCta />
     </Layout>
   );
 }

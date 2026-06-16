@@ -13,11 +13,13 @@ export function BookCta({
   sub = "Book a free 15-minute call. I'll show you exactly where you're losing jobs and what I'd put in place to stop it. No pressure, no jargon.",
   href = BOOKING_HREF,
   note = RISK_REVERSAL,
+  cta = "Book a 15-Minute Call",
 }: {
   title?: string;
   sub?: string;
   href?: string;
   note?: string;
+  cta?: string;
 }) {
   const isHash = href.startsWith("#");
   return (
@@ -34,11 +36,11 @@ export function BookCta({
           <p className="mt-5 text-lg text-white/65 max-w-xl mx-auto leading-relaxed">{sub}</p>
           {isHash ? (
             <a href={href} className="btn-primary h-14 px-8 text-base mt-9">
-              Book a 15-Minute Call <ArrowRight className="w-4 h-4" />
+              {cta} <ArrowRight className="w-4 h-4" />
             </a>
           ) : (
             <Link to={href} className="btn-primary h-14 px-8 text-base mt-9">
-              Book a 15-Minute Call <ArrowRight className="w-4 h-4" />
+              {cta} <ArrowRight className="w-4 h-4" />
             </Link>
           )}
           {note && <p className="mt-5 text-sm text-white/45">{note}</p>}
