@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Packages from "./pages/Packages";
 import Growth from "./pages/Growth";
 import About from "./pages/About";
+import NorthMississippi from "./pages/NorthMississippi";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/packages" element={<Packages />} />
           <Route path="/growth" element={<Growth />} />
           <Route path="/about" element={<About />} />
+          <Route path="/northmississippi" element={<NorthMississippi />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
