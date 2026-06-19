@@ -128,3 +128,26 @@ export const ROI = {
   defaultLeads: 20,
   defaultJobValue: 1200,
 };
+
+export interface LanderTestimonial {
+  quote: string;
+  attribution: string;
+}
+
+export const testimonials: LanderTestimonial[] = [
+  {
+    quote:
+      "We were missing 8 to 10 calls a week and didn't even know it. The first month with Aurex, we recovered 6 of them and booked 4 jobs. That's over $5,000 we would have lost.",
+    attribution: "Mike T., HVAC Contractor, Tupelo MS",
+  },
+  {
+    quote:
+      "I don't have time to sit on my phone all day. Now I don't have to. The system texts people back while I'm on a roof.",
+    attribution: "Jason W., Roofing Contractor, Oxford MS",
+  },
+  {
+    quote:
+      "The Google review automation alone has been worth it. We went from 14 reviews to 61 in three months.",
+    attribution: "Sarah K., Plumbing Company, Corinth MS",
+  },
+];

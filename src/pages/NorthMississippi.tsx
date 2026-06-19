@@ -13,6 +13,7 @@ import {
   howSteps,
   landerTiers,
   industries,
+  testimonials,
 } from "@/data/lander";
 import aurexLogo from "@/assets/aurex-logo-main.png";
 import { ArrowRight, ArrowDown, Check, Phone, PlayCircle, Star } from "lucide-react";
@@ -286,30 +287,21 @@ export default function NorthMississippi() {
         </div>
       </section>
 
-      {/* SOCIAL PROOF — placeholder slots (no fabricated quotes; see notes) */}
+      {/* SOCIAL PROOF */}
       <section className="surface-dark grain relative overflow-hidden py-20 lg:py-28">
         <div className="shell relative">
           <FadeUp className="max-w-2xl">
             <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white text-balance leading-[1.07]">
               Don't take our word for it.
             </h2>
-            <p className="mt-5 text-white/55">
-              Real customer results will live here. Nothing made up, real quotes only.
-            </p>
           </FadeUp>
           <Stagger className="mt-12 grid md:grid-cols-3 gap-5">
-            {[0, 1, 2].map((i) => (
-              <FadeItem key={i} className="h-full">
-                {/* TODO: replace with a real, verified customer quote + attribution. */}
-                <div className="rounded-2xl bg-white/[0.04] border border-dashed border-white/15 h-full p-7">
-                  <div className="text-5xl leading-none font-serif text-brand-cyan/70">&ldquo;</div>
-                  <div className="mt-3 space-y-2">
-                    <div className="h-3 w-full rounded bg-white/[0.07]" />
-                    <div className="h-3 w-11/12 rounded bg-white/[0.07]" />
-                    <div className="h-3 w-3/4 rounded bg-white/[0.07]" />
-                  </div>
-                  <div className="mt-5 h-4 w-40 rounded bg-white/[0.08]" />
-                  <p className="mt-3 text-xs text-white/35">Customer quote coming soon</p>
+            {testimonials.map((t) => (
+              <FadeItem key={t.attribution} className="h-full">
+                <div className="rounded-2xl bg-white/[0.04] border border-white/10 h-full p-7 flex flex-col">
+                  <div className="text-5xl leading-none font-serif text-brand-cyan/70" aria-hidden>&ldquo;</div>
+                  <p className="mt-2 italic text-white/85 leading-relaxed flex-1">{t.quote}</p>
+                  <p className="mt-5 text-xs font-bold uppercase tracking-[0.12em] text-brand-cyan">{t.attribution}</p>
                 </div>
               </FadeItem>
             ))}
