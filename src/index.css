@@ -161,6 +161,34 @@ html, body {
     -webkit-text-fill-color: transparent;
   }
 
+  /* ROI calculator range sliders (dark section) */
+  .roi-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 999px;
+    background: hsl(0 0% 100% / 0.14);
+    outline: none;
+  }
+  .roi-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--gradient-brand);
+    cursor: pointer;
+    box-shadow: 0 2px 10px hsl(var(--brand-cyan) / 0.5);
+  }
+  .roi-slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 999px;
+    background: hsl(var(--brand-blue));
+    cursor: pointer;
+  }
+
   .marquee { animation: marquee 32s linear infinite; }
   @keyframes marquee {
     from { transform: translateX(0); }
