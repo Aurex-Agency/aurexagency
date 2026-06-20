@@ -47,17 +47,21 @@ export function RoiCalculator({ onCta }: { onCta: () => void }) {
   }, [inView, value, reduce]);
 
   return (
-    <section id="roi" className="scroll-mt-20 surface-dark grain relative overflow-hidden py-20 lg:py-28">
+    <section id="roi" className="scroll-mt-20 relative overflow-hidden py-20 lg:py-28 grain blueprint" style={{ background: "hsl(var(--ink-soft))" }}>
       <div
-        className="pointer-events-none absolute inset-0 opacity-80"
-        style={{ background: "radial-gradient(40rem 24rem at 12% 0%, hsl(205 90% 55% / 0.16), transparent 62%)" }}
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "radial-gradient(40rem 24rem at 12% 0%, hsl(187 92% 48% / 0.14), transparent 62%)" }}
       />
       <div className="shell relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Inputs */}
         <div>
-          <p className="eyebrow-light mb-4">See your numbers</p>
-          <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-white text-balance leading-[1.06]">
-            How much are slow response times actually costing you?
+          <div className="flex items-center gap-3 lk-kicker text-brand-cyan mb-6">
+            <span className="text-white/25">07</span>
+            <span className="h-px w-8 bg-white/15" />
+            <span className="text-white/55">See your numbers</span>
+          </div>
+          <h2 className="lk-display text-white text-4xl lg:text-6xl">
+            How much are slow response times costing you?
           </h2>
 
           <div className="mt-10 space-y-8">
@@ -104,19 +108,19 @@ export function RoiCalculator({ onCta }: { onCta: () => void }) {
 
         {/* Output */}
         <div ref={ref}>
-          <div className="rounded-3xl bg-white/[0.04] border border-white/10 p-8 lg:p-10" style={{ borderTopColor: "hsl(var(--brand-cyan))", borderTopWidth: 3 }}>
-            <h3 className="text-xl font-bold text-white">Your estimated monthly revenue at risk</h3>
-            <div className="mt-3 text-6xl lg:text-7xl font-extrabold tnum text-gradient-brand leading-none">
+          <div className="rounded-2xl p-8 lg:p-10" style={{ background: "hsl(var(--ink))", border: "1px solid hsl(0 0% 100% / 0.1)", borderTopColor: "hsl(var(--brand-cyan))", borderTopWidth: 3 }}>
+            <div className="lk-kicker text-white/40 text-[0.65rem]">Your estimated monthly revenue at risk</div>
+            <div className="mt-3 lk-display tnum text-gradient-brand text-7xl lg:text-8xl">
               {currency(display)}
             </div>
             <p className="mt-4 text-sm text-white/50 leading-relaxed">
               Based on industry data: 51% of leads are never contacted. Of those, about 30% would have converted.
             </p>
-            <p className="mt-5 text-base text-white/90 font-semibold">
-              Aurex Agency protects this revenue automatically.
+            <p className="mt-5 font-display text-xl uppercase tracking-wide text-white">
+              Aurex protects this revenue automatically.
             </p>
-            <button onClick={onCta} className="btn-primary h-13 px-7 text-base mt-6 w-full" style={{ height: "3.25rem" }}>
-              Start Protecting Your Revenue <ArrowRight className="w-4 h-4" />
+            <button onClick={onCta} className="btn-lk btn-lk-primary h-13 px-7 mt-7 w-full" style={{ height: "3.25rem" }}>
+              Start Protecting Your Revenue <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>

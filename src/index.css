@@ -148,6 +148,59 @@ html, body {
   }
 
   .hairline { border-color: hsl(var(--border)); }
+
+  /* ------------------------------------------------------------------ */
+  /* North Mississippi lander — industrial-editorial art direction      */
+  /* ------------------------------------------------------------------ */
+  .lander { font-family: "Manrope", system-ui, sans-serif; }
+  .lander .font-display { font-family: "Barlow Condensed", "Inter", sans-serif; }
+
+  /* Oversized condensed display headline */
+  .lk-display {
+    font-family: "Barlow Condensed", "Inter", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: 0.005em;
+  }
+
+  /* Letter-spaced kicker label with a leading tick */
+  .lk-kicker {
+    font-family: "Barlow Condensed", "Inter", sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    font-size: 0.8rem;
+  }
+
+  /* Faint blueprint grid for dark sections (systems / trades cue) */
+  .blueprint::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, hsl(0 0% 100% / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 100% / 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 80%);
+    -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 80%);
+  }
+
+  .lk-hairline { height: 1px; background: linear-gradient(90deg, hsl(var(--brand-cyan) / 0.9), transparent); }
+
+  /* Squared, condensed agency buttons (lander only) */
+  .btn-lk {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    font-family: "Barlow Condensed", "Inter", sans-serif;
+    text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; font-size: 1.05rem;
+    border-radius: 0.6rem; transition: transform .2s ease, box-shadow .25s ease, background .2s ease, color .2s ease;
+  }
+  .btn-lk-primary { background: var(--gradient-brand); color: #fff; box-shadow: 0 14px 36px -14px hsl(var(--brand-blue) / 0.6); }
+  .btn-lk-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 48px -16px hsl(var(--brand-cyan) / 0.65); filter: brightness(1.05); }
+  .btn-lk-ghost { background: transparent; color: #fff; border: 1px solid hsl(0 0% 100% / 0.22); }
+  .btn-lk-ghost:hover { transform: translateY(-2px); border-color: hsl(var(--brand-cyan) / 0.7); background: hsl(0 0% 100% / 0.04); }
+  .btn-lk-dark { background: hsl(var(--ink)); color: #fff; }
+  .btn-lk-dark:hover { transform: translateY(-2px); filter: brightness(1.15); }
 }
 
 @layer utilities {

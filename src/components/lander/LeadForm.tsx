@@ -16,7 +16,9 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 const inputClass =
-  "w-full rounded-xl border-2 border-foreground/15 bg-card px-4 h-12 text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent transition-colors";
+  "w-full rounded-xl border border-transparent bg-muted/70 px-4 h-12 text-foreground placeholder:text-foreground/35 focus:outline-none focus:bg-card focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all";
+
+const labelClass = "block text-[0.7rem] font-bold uppercase tracking-[0.14em] text-foreground/55 mb-1.5";
 
 export function LeadForm({ defaultPlan }: { defaultPlan?: string }) {
   const {
@@ -51,25 +53,25 @@ export function LeadForm({ defaultPlan }: { defaultPlan?: string }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-left" noValidate>
       <div>
-        <label htmlFor="firstName" className="block text-sm font-semibold text-foreground/70 mb-1.5">First name</label>
+        <label htmlFor="firstName" className={labelClass}>First name</label>
         <input id="firstName" className={inputClass} placeholder="Your first name" {...register("firstName")} />
         {errors.firstName && <p className="mt-1 text-sm text-destructive">{errors.firstName.message}</p>}
       </div>
 
       <div>
-        <label htmlFor="businessName" className="block text-sm font-semibold text-foreground/70 mb-1.5">Business name</label>
+        <label htmlFor="businessName" className={labelClass}>Business name</label>
         <input id="businessName" className={inputClass} placeholder="Your business" {...register("businessName")} />
         {errors.businessName && <p className="mt-1 text-sm text-destructive">{errors.businessName.message}</p>}
       </div>
 
       <div>
-        <label htmlFor="phone" className="block text-sm font-semibold text-foreground/70 mb-1.5">Phone number</label>
+        <label htmlFor="phone" className={labelClass}>Phone number</label>
         <input id="phone" type="tel" className={inputClass} placeholder="(662) 555-0123" {...register("phone")} />
         {errors.phone && <p className="mt-1 text-sm text-destructive">{errors.phone.message}</p>}
       </div>
 
       <div>
-        <label htmlFor="plan" className="block text-sm font-semibold text-foreground/70 mb-1.5">
+        <label htmlFor="plan" className={labelClass}>
           Which plan are you interested in?
         </label>
         <select id="plan" className={`${inputClass} appearance-none`} {...register("plan")}>
@@ -80,7 +82,7 @@ export function LeadForm({ defaultPlan }: { defaultPlan?: string }) {
         {errors.plan && <p className="mt-1 text-sm text-destructive">{errors.plan.message}</p>}
       </div>
 
-      <button type="submit" disabled={isSubmitting} className="btn-primary w-full px-6 text-base mt-2" style={{ height: "3.25rem" }}>
+      <button type="submit" disabled={isSubmitting} className="btn-lk btn-lk-primary w-full px-6 mt-2" style={{ height: "3.25rem" }}>
         {isSubmitting ? "Sending…" : "Let's Build Your System"} <ArrowRight className="w-4 h-4" />
       </button>
     </form>
