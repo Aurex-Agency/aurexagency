@@ -13,6 +13,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["'Barlow Condensed'", "'Inter'", "sans-serif"],
+        body: ["'Manrope'", "system-ui", "sans-serif"],
       },
       letterSpacing: {
         widest: "0.28em",
